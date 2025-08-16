@@ -1,0 +1,204 @@
+---
+layout: base.njk
+pagination:
+  data: site.yogaTypes
+  size: 1
+  alias: yogaType
+permalink: "types/{{ yogaType | slug }}/"
+eleventyComputed:
+  title: "{{ yogaType }} Yoga Videos"
+  description: "Browse our collection of {{ yogaType }} yoga videos for distraction-free practice"
+---
+
+<section class="page-header">
+  <h1>{{ yogaType }} Yoga</h1>
+  <div class="type-description">
+    {% if yogaType == "Vinyasa" %}
+      <p>Flowing sequences that synchronize movement with breath. A dynamic practice that builds heat and endurance.</p>
+    {% elif yogaType == "Hatha" %}
+      <p>Traditional practice emphasizing basic postures and alignment. Great for beginners and those wanting a slower pace.</p>
+    {% elif yogaType == "Yin" %}
+      <p>Passive practice with long-held poses that target deep connective tissues. Excellent for increasing flexibility.</p>
+    {% elif yogaType == "Power" %}
+      <p>Vigorous, fitness-based approach to vinyasa-style yoga. Builds strength, endurance, and flexibility.</p>
+    {% elif yogaType == "Restorative" %}
+      <p>Gentle, healing practice using props to support the body. Focuses on deep relaxation and stress reduction.</p>
+    {% else %}
+      <p>Explore videos in this yoga style to learn more about its benefits and approach.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="videos-grid">
+  {% set filteredVideos = [] %}
+  {% set typeCount = 0 %}
+  {% for video in videos %}
+    {% if video.type == yogaType %}
+      {% set typeCount = typeCount + 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if typeCount > 0 %}
+    <div class="video-grid">
+      {% for video in videos %}
+        {% if video.type == yogaType %}
+        <a href="/videos/{{ video.slug }}/" class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}">
+            <span class="video-duration">{{ video.duration }}</span>
+          </div>
+          <h3 class="video-card-title">{{ video.title }}</h3>
+          <div class="video-card-meta">
+            <span class="badge">{{ video.type }}</span>
+            <span class="badge">{{ video.difficulty }}</span>
+          </div>
+          <div class="video-card-instructor">
+            {{ video.instructor }}
+          </div>
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="no-videos-message">
+      <p>No {{ yogaType }} yoga videos are currently available. Check back soon as we continue to add more content.</p>
+      <a href="/" class="btn primary-btn">Browse All Videos</a>
+    </div>
+  {% endif %}
+</section>
+
+<section class="yoga-benefits">
+  <div class="container narrow-container">
+    <h2>Benefits of {{ yogaType }} Yoga</h2>
+
+    <div class="benefits-grid">
+      {% if yogaType == "Vinyasa" %}
+        <div class="benefit-card">
+          <h3>Builds Strength</h3>
+          <p>The continuous movement and flowing sequences build full-body strength.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Increases Flexibility</h3>
+          <p>Dynamic movements help loosen tight muscles and increase range of motion.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Improves Endurance</h3>
+          <p>The flowing nature of the practice builds cardiovascular endurance.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Enhances Focus</h3>
+          <p>Synchronizing breath with movement requires and develops concentration.</p>
+        </div>
+      {% elif yogaType == "Hatha" %}
+        <div class="benefit-card">
+          <h3>Builds Foundation</h3>
+          <p>Develops proper alignment and understanding of basic yoga postures.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Accessible</h3>
+          <p>Suitable for all levels, especially beginners or those preferring a gentler approach.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Reduces Stress</h3>
+          <p>Slower pace and focus on breath helps activate the relaxation response.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Improves Balance</h3>
+          <p>Emphasis on proper alignment helps develop better balance and stability.</p>
+        </div>
+      {% elif yogaType == "Yin" %}
+        <div class="benefit-card">
+          <h3>Deep Flexibility</h3>
+          <p>Long-held poses allow for release in the connective tissues around joints.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Stress Reduction</h3>
+          <p>Activates the parasympathetic nervous system for deep relaxation.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Improved Circulation</h3>
+          <p>Gentle pressure in poses helps improve circulation to joints and tissues.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Mind-Body Connection</h3>
+          <p>Long holds create space for mindfulness and inner awareness.</p>
+        </div>
+      {% elif yogaType == "Power" %}
+        <div class="benefit-card">
+          <h3>Builds Strength</h3>
+          <p>Challenging poses and sequences develop muscular strength and endurance.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Burns Calories</h3>
+          <p>Dynamic, vigorous practice increases heart rate and calorie burn.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Mental Resilience</h3>
+          <p>Challenging sequences build mental strength and determination.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Full Body Workout</h3>
+          <p>Engages all major muscle groups for comprehensive conditioning.</p>
+        </div>
+      {% elif yogaType == "Restorative" %}
+        <div class="benefit-card">
+          <h3>Deep Relaxation</h3>
+          <p>Fully supported poses allow complete release of tension.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Stress Reduction</h3>
+          <p>Activates the parasympathetic nervous system for healing.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Improved Sleep</h3>
+          <p>Calms the mind and relaxes the body for better sleep quality.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Recovery</h3>
+          <p>Excellent for recovery from illness, injury, or intense exercise.</p>
+        </div>
+      {% else %}
+        <div class="benefit-card">
+          <h3>Varied Benefits</h3>
+          <p>Each yoga style offers unique physical and mental benefits.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Holistic Practice</h3>
+          <p>Yoga combines physical postures with breath awareness and mindfulness.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Adaptable</h3>
+          <p>Practices can be modified to suit different bodies and needs.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Mind-Body Connection</h3>
+          <p>All yoga styles help strengthen the connection between mind and body.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="explore-more">
+  <div class="container">
+    <h2>Explore Other Yoga Styles</h2>
+    <div class="yoga-types-grid small-grid">
+      {% for type in site.yogaTypes %}
+        {% if type != yogaType %}
+          <a href="/guide/{{ type | slug }}/" class="yoga-type-card">
+            <h3>{{ type }}</h3>
+            <span class="video-count">
+              {% set otherCount = 0 %}
+              {% for video in videos %}
+                {% if video.type == type %}
+                  {% set otherCount = otherCount + 1 %}
+                {% endif %}
+              {% endfor %}
+              {{ otherCount }} video{% if otherCount != 1 %}s{% endif %}
+            </span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

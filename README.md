@@ -1,6 +1,6 @@
-# Peaceful Yoga Video Collection
+# Mat & Mind
 
-![Peaceful Yoga](https://via.placeholder.com/800x400?text=Peaceful+Yoga)
+![Mat & Mind](https://via.placeholder.com/800x400?text=Mat+and+Mind)
 
 ## Project Overview
 This is a distraction-free yoga video collection website that provides access to curated YouTube yoga videos without the temptations of recommendation algorithms and other distracting elements. The site allows users to focus solely on their yoga practice while still leveraging cloud-hosted content.
@@ -36,27 +36,29 @@ This is a distraction-free yoga video collection website that provides access to
 
 ## 🗂️ Project Structure
 ```
-peaceful-yoga/
-├── _data/             # JSON data files
-│   ├── site.json      # Site configuration
-│   └── videos.json    # Video collection data
-├── _includes/         # Templates and components
-│   ├── components/    # Reusable UI components
-│   └── layouts/       # Page layouts
-├── admin/             # NetlifyCMS admin interface
-├── assets/            # Static assets
-│   └── themes/        # Theme background images
-├── css/               # Stylesheets
-│   ├── styles.css     # Main stylesheet
-│   └── themes.css     # Theme definitions
-├── js/                # JavaScript files
-│   ├── main.js        # Main JavaScript
-│   ├── video-player.js # Video player functions
-│   └── theme-switcher.js # Theme switching functionality
-├── videos/            # Video page templates
-├── types/             # Yoga type page templates
-├── .eleventy.js       # Eleventy configuration
-└── netlify.toml       # Netlify deployment config
+mat-and-mind/
+├── src/                   # Source files
+│   ├── _data/             # JSON data files
+│   │   ├── site.json      # Site configuration
+│   │   └── videos.json    # Video collection data
+│   ├── _includes/         # Templates and components
+│   │   ├── components/    # Reusable UI components
+│   │   ├── guide/         # Guide section components
+│   │   └── layouts/       # Page layouts
+│   ├── admin/             # NetlifyCMS admin interface
+│   ├── assets/            # Static assets
+│   │   └── themes/        # Theme background images
+│   ├── content/           # Content pages
+│   │   ├── about/         # About page content
+│   │   ├── guide/         # Guide page content
+│   │   └── videos/        # Video page content
+│   ├── css/               # Stylesheets
+│   ├── js/                # JavaScript files
+│   └── pages/             # Main site pages
+├── scripts/               # Build and utility scripts
+├── _site/                 # Build output directory
+├── .eleventy.js           # Eleventy configuration
+└── netlify.toml           # Netlify deployment config
 ```
 
 ## 🚀 Getting Started
@@ -68,8 +70,8 @@ peaceful-yoga/
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/peaceful-yoga.git
-   cd peaceful-yoga
+   git clone https://github.com/yourusername/mat-and-mind.git
+   cd mat-and-mind
    ```
 
 2. Install dependencies:
@@ -115,25 +117,25 @@ npm run build
 ```
 
 ## 🔧 Customization
-- Edit `_data/site.json` to change site-wide settings
-- Modify `_data/videos.json` to add/remove videos
-- Customize styles in `css/styles.css`
-- Update templates in the `_includes` directory
-- Add new themes in `css/themes.css`
-- Replace theme background images in `assets/themes/`
+- Edit `src/_data/site.json` to change site-wide settings
+- Modify `src/_data/videos.json` to add/remove videos
+- Customize styles in `src/css/styles.css`
+- Update templates in the `src/_includes` directory
+- Add new themes in `src/css/themes.css`
+- Replace theme background images in `src/assets/themes/`
 
 ## 🌙 Dark Themes
 The site features six immersive dark themes designed for distraction-free yoga practice:
 
 ### Nature Themes
-- **Forest Night**: Deep forest greens with moonlight filtering through trees
-- **Deep Ocean**: Rich blues and teals with bioluminescent accents
-- **Desert Twilight**: Purple-blue desert night with starry skies
+- **Forest**: Deep forest greens with moonlight filtering through trees
+- **Ocean**: Rich blues and teals with underwater scenery
+- **Beach**: Tranquil beach at sunset with mountains
 
 ### Elemental Themes
-- **Flowing Water**: Deep flowing water with ripples and reflections
-- **Ember Glow**: Warm embers and gentle flame colors against darkness
-- **Misty Night**: Swirling mist and clouds against night sky
+- **Water**: Flowing water with ripples and reflections
+- **Lights**: Soft glowing lights against a dark background
+- **Mountain**: Mountain landscape with water reflections
 
 Users can switch between themes using the theme switcher in the bottom right corner.
 

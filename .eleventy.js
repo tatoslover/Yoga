@@ -25,11 +25,11 @@ module.exports = function (eleventyConfig) {
   }
   */
 
-  // Copy the "assets" directory to the output
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("admin");
+  // Copy asset directories to the output
+  eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
+  eleventyConfig.addPassthroughCopy({"src/css": "css"});
+  eleventyConfig.addPassthroughCopy({"src/js": "js"});
+  eleventyConfig.addPassthroughCopy({"src/admin": "admin"});
 
   // Simple duration formatting
   eleventyConfig.addFilter("formatDuration", function (duration) {
@@ -53,7 +53,7 @@ module.exports = function (eleventyConfig) {
   // Base configuration
   return {
     dir: {
-      input: ".",
+      input: "src",
       output: "_site",
       includes: "_includes",
       layouts: "_includes/layouts",
@@ -63,5 +63,7 @@ module.exports = function (eleventyConfig) {
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     passthroughFileCopy: true,
+    // Prevent directory structure leaking into output
+    pathPrefix: "/",
   };
 };

@@ -1,0 +1,73 @@
+---
+layout: base.njk
+---
+
+<div class="video-page">
+    <div class="video-container">
+        <div id="player" data-video-id="{{ video.id }}"></div>
+        <div class="custom-controls">
+            <button class="rewind-15" aria-label="Rewind 15 seconds">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12.5 8c-2.65 0-5.05 1-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+            </button>
+            <button class="play-pause" aria-label="Play or pause">
+                <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <button class="forward-15" aria-label="Forward 15 seconds">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M18.4 10.6C16.55 9 14.15 8 11.5 8c-4.65 0-8.58 3.03-9.96 7.22L3.9 16a8.002 8.002 0 0 1 7.6-5.5c1.95 0 3.73.72 5.12 1.88L13 16h9V7l-3.6 3.6z"/></svg>
+            </button>
+            <button class="fullscreen" aria-label="Toggle fullscreen">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="video-info">
+        <h1 class="video-title">{{ video.title }}</h1>
+
+        <div class="video-meta">
+            <span class="video-type">{{ video.type }}</span>
+            <span class="video-duration">{{ video.duration }}</span>
+            <span class="video-difficulty">{{ video.difficulty }}</span>
+        </div>
+
+        <div class="video-instructor">
+            Instructor: {{ video.instructor }}
+        </div>
+
+        <div class="video-description">
+            <p>{{ video.description }}</p>
+        </div>
+
+        <div class="video-tags">
+            {% for tag in video.tags %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="related-videos">
+        <h2>You Might Also Enjoy</h2>
+        <div class="video-grid">
+            {% set count = 0 %}
+            {% for relatedVideo in videos %}
+                {% if relatedVideo.type == video.type and relatedVideo.slug != video.slug and count < 3 %}
+                    {% set count = count + 1 %}
+                    <a href="/videos/{{ relatedVideo.slug }}/" class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/{{ relatedVideo.id }}/mqdefault.jpg" alt="{{ relatedVideo.title }}">
+                            <span class="video-duration">{{ relatedVideo.duration }}</span>
+                        </div>
+                        <h3 class="video-card-title">{{ relatedVideo.title }}</h3>
+                        <div class="video-card-meta">
+                            <span>{{ relatedVideo.type }}</span>
+                            <span>{{ relatedVideo.difficulty }}</span>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="/js/video-player.js" defer></script>

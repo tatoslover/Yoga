@@ -1,0 +1,428 @@
+---
+layout: base.njk
+title: Experience Levels
+description: Find the right yoga difficulty level for your practice
+permalink: /guide/levels/
+---
+
+<section class="page-header">
+  <h1>Experience Levels</h1>
+  <p>Find the right class for your yoga journey</p>
+</section>
+
+<section class="guide-section-container">
+  <div class="container">
+    <div class="guide-section-wrapper">
+      <div class="guide-section-intro">
+        <h2>Finding Your Level</h2>
+        <p>Yoga is accessible to everyone, regardless of experience or physical ability. Understanding the different experience levels can help you choose classes that will challenge you appropriately and support your growth.</p>
+      </div>
+
+      <div class="guide-selector">
+        <div class="guide-selector-buttons">
+          {% for level in site.difficultyLevels %}
+            <button class="guide-selector-btn" data-target="{{ level | slug }}">
+              <span>{{ level }}</span>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="guide-content-container">
+        {% for level in site.difficultyLevels %}
+          <div class="guide-content-box" id="{{ level | slug }}-content">
+            <h2>{{ level }}</h2>
+            <div class="level-content">
+              {% if level == "Beginner" %}
+                <div class="level-description">
+                  <p>Perfect for those just starting their yoga journey. These classes focus on basic postures, proper alignment, and building a foundation for your practice.</p>
+
+                  <div class="level-details">
+                    <div class="level-detail-item">
+                      <h3>What to Expect</h3>
+                      <ul>
+                        <li>Simple, foundational poses</li>
+                        <li>Detailed instruction and alignment cues</li>
+                        <li>Slower pace with time to explore each pose</li>
+                        <li>Frequent modifications and prop suggestions</li>
+                        <li>Focus on proper breathing techniques</li>
+                        <li>Shorter holding times</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Recommended For</h3>
+                      <ul>
+                        <li>Those new to yoga practice</li>
+                        <li>People returning after a long break</li>
+                        <li>Those working with limitations or injuries</li>
+                        <li>Anyone wanting to refine their foundation</li>
+                        <li>Those looking to learn proper technique</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Benefits of Starting Here</h3>
+                      <ul>
+                        <li>Builds a strong foundation for your practice</li>
+                        <li>Prevents injury by learning proper alignment</li>
+                        <li>Develops body awareness and mindfulness</li>
+                        <li>Builds confidence before advancing</li>
+                        <li>Creates sustainable practice habits</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% elif level == "Intermediate" %}
+                <div class="level-description">
+                  <p>For practitioners with some yoga experience. These classes introduce more complex poses, transitions, and longer holds to deepen your practice.</p>
+
+                  <div class="level-details">
+                    <div class="level-detail-item">
+                      <h3>What to Expect</h3>
+                      <ul>
+                        <li>Faster-paced flows and sequences</li>
+                        <li>More challenging pose variations</li>
+                        <li>Less detailed instruction (assumes basic knowledge)</li>
+                        <li>Longer sequences between breaks</li>
+                        <li>Introduction to inversions and arm balances</li>
+                        <li>Deeper exploration of breath techniques</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Recommended For</h3>
+                      <ul>
+                        <li>Regular practitioners (6+ months experience)</li>
+                        <li>Those comfortable with basic poses and alignment</li>
+                        <li>Students wanting to deepen their practice</li>
+                        <li>Those with good body awareness</li>
+                        <li>Practitioners looking for more challenge</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Benefits of This Level</h3>
+                      <ul>
+                        <li>Builds upon your foundation</li>
+                        <li>Increases strength and flexibility</li>
+                        <li>Deepens your understanding of yoga philosophy</li>
+                        <li>Enhances mind-body connection</li>
+                        <li>Develops more advanced breathing techniques</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% elif level == "Advanced" %}
+                <div class="level-description">
+                  <p>Challenging practices for experienced yogis. These classes include advanced postures, complex sequences, and require greater strength and flexibility.</p>
+
+                  <div class="level-details">
+                    <div class="level-detail-item">
+                      <h3>What to Expect</h3>
+                      <ul>
+                        <li>Complex arm balances and inversions</li>
+                        <li>Deep backbends and forward folds</li>
+                        <li>Challenging transitions between poses</li>
+                        <li>Minimal instruction (assumes significant experience)</li>
+                        <li>Advanced pranayama techniques</li>
+                        <li>Longer holds in challenging positions</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Recommended For</h3>
+                      <ul>
+                        <li>Dedicated practitioners (2+ years experience)</li>
+                        <li>Those with strong body awareness</li>
+                        <li>Students with established home practice</li>
+                        <li>Those with significant strength and flexibility</li>
+                        <li>Practitioners looking to refine advanced poses</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Benefits of This Level</h3>
+                      <ul>
+                        <li>Pushes physical and mental boundaries</li>
+                        <li>Refines advanced techniques</li>
+                        <li>Deepens meditation aspects of practice</li>
+                        <li>Develops advanced breathing control</li>
+                        <li>Offers new challenges to experienced practitioners</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                <div class="level-description">
+                  <p>Suitable for practitioners of all experience levels. These classes offer modifications for beginners and challenges for more experienced students.</p>
+
+                  <div class="level-details">
+                    <div class="level-detail-item">
+                      <h3>What to Expect</h3>
+                      <ul>
+                        <li>Options for different skill levels</li>
+                        <li>Accessible base poses with additional variations</li>
+                        <li>Balanced pace with modifications</li>
+                        <li>Clear cues for both beginners and advanced students</li>
+                        <li>Community-oriented atmosphere</li>
+                        <li>Focus on personal progress</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Recommended For</h3>
+                      <ul>
+                        <li>Mixed-level groups</li>
+                        <li>Families practicing together</li>
+                        <li>Studios with diverse students</li>
+                        <li>Those who prefer variety in their practice</li>
+                        <li>Anyone wanting a balanced approach</li>
+                      </ul>
+                    </div>
+
+                    <div class="level-detail-item">
+                      <h3>Benefits of This Level</h3>
+                      <ul>
+                        <li>Accessible to everyone</li>
+                        <li>Encourages personal adaptations</li>
+                        <li>Builds community across experience levels</li>
+                        <li>Teaches how to modify for your needs</li>
+                        <li>Provides a well-rounded practice</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+              <a href="/difficulty/{{ level | slug }}/" class="btn secondary-btn">View {{ level }} Videos</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all selector buttons and content boxes
+    const selectorButtons = document.querySelectorAll('.guide-selector-btn');
+    const contentBoxes = document.querySelectorAll('.guide-content-box');
+
+    // Set first content box as active by default
+    if (contentBoxes.length > 0) {
+      contentBoxes[0].classList.add('active');
+      selectorButtons[0].classList.add('active');
+    }
+
+    // Add click event to each button
+    selectorButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-target');
+        const targetContent = document.getElementById(`${targetId}-content`);
+
+        // Remove active class from all buttons and content boxes
+        selectorButtons.forEach(btn => btn.classList.remove('active'));
+        contentBoxes.forEach(box => box.classList.remove('active'));
+
+        // Add active class to clicked button and its content
+        this.classList.add('active');
+        targetContent.classList.add('active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .guide-section-container {
+    padding: 2rem 0 4rem;
+  }
+
+  .guide-section-wrapper {
+    background-color: rgba(20, 20, 30, 0.98);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .guide-section-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .guide-section-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .guide-section-intro p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .guide-selector {
+    margin-bottom: 2rem;
+  }
+
+  .guide-selector-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .guide-selector-btn {
+    background-color: rgba(40, 40, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .guide-selector-btn:hover {
+    background-color: rgba(50, 50, 60, 0.98);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .guide-selector-btn.active {
+    background-color: rgba(60, 60, 70, 0.98);
+    border-color: var(--color-secondary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .guide-content-container {
+    position: relative;
+  }
+
+  .guide-content-box {
+    background-color: rgba(25, 25, 35, 0.98);
+    border-radius: 8px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+  }
+
+  .guide-content-box.active {
+    display: block;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .guide-content-box h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+    position: relative;
+    padding-bottom: 0.75rem;
+  }
+
+  .guide-content-box h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    border-radius: 3px;
+  }
+
+  .level-description p {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .level-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .level-detail-item {
+    background-color: rgba(30, 30, 40, 0.95);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .level-detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--color-secondary);
+  }
+
+  .level-detail-item h3 {
+    color: var(--color-secondary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .level-detail-item ul {
+    padding-left: 1.5rem;
+  }
+
+  .level-detail-item li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .btn.secondary-btn {
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .guide-section-wrapper {
+      padding: 1.5rem;
+    }
+
+    .guide-selector-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .guide-selector-btn {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .guide-content-box {
+      padding: 1.5rem;
+    }
+
+    .level-details {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

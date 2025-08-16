@@ -1,7 +1,7 @@
 {
-  "name": "peaceful-yoga-videos",
+  "name": "mat-and-mind",
   "version": "1.0.0",
-  "description": "A distraction-free yoga video collection website",
+  "description": "A distraction-free yoga practice website",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",

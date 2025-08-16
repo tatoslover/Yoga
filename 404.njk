@@ -1,0 +1,96 @@
+---
+layout: base.njk
+title: Page Not Found
+permalink: 404.html
+---
+
+<section class="error-page">
+  <div class="container narrow-container">
+    <div class="error-content">
+      <h1>404</h1>
+      <h2>Page Not Found</h2>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <p>Perhaps your search for inner peace has led you slightly off the path.</p>
+
+      <div class="meditation-graphic">
+        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+          <path d="M12 18c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z"/>
+          <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+        </svg>
+      </div>
+
+      <p class="meditation-quote">
+        "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."
+        <br>
+        <span class="quote-attribution">- Buddha</span>
+      </p>
+
+      <div class="error-actions">
+        <a href="/" class="btn primary-btn">Return Home</a>
+        <a href="/" class="btn secondary-btn">Browse Videos</a>
+        <a href="/guide/" class="btn outline-btn">Yoga Guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .error-page {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+  }
+
+  .error-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .error-page h1 {
+    font-size: 8rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .error-page h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+  }
+
+  .meditation-graphic {
+    margin: var(--spacing-xl) auto;
+    color: var(--color-primary);
+  }
+
+  .meditation-quote {
+    font-style: italic;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text-light);
+  }
+
+  .quote-attribution {
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+  }
+
+  .error-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .error-page h1 {
+      font-size: 6rem;
+    }
+
+    .error-actions {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  }
+</style>

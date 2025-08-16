@@ -1,0 +1,141 @@
+---
+layout: base.njk
+title: Yoga Videos
+description: Browse our collection of distraction-free yoga videos for mindful practice
+---
+
+<section class="filters">
+  <div class="filter-container">
+    <h2>Find Your Practice</h2>
+
+    <div class="filter-group">
+      <h3>By Type</h3>
+      <div class="filter-buttons">
+        <button class="filter-button active" data-filter="all">All Types</button>
+        {% for type in site.yogaTypes %}
+          <button class="filter-button" data-filter="{{ type | slug }}">{{ type }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h3>By Difficulty</h3>
+      <div class="filter-buttons">
+        <button class="filter-button active" data-filter="all">All Levels</button>
+        {% for level in site.difficultyLevels %}
+          <button class="filter-button" data-filter="{{ level | slug }}">{{ level }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <h3>By Duration</h3>
+      <div class="filter-buttons">
+        <button class="filter-button active" data-filter="all">Any Length</button>
+        <button class="filter-button" data-filter="short">Short (less than 20 min)</button>
+        <button class="filter-button" data-filter="medium">Medium (20-40 min)</button>
+        <button class="filter-button" data-filter="long">Long (over 40 min)</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="videos-grid">
+  <h2>Browse All Videos</h2>
+  <div class="video-grid">
+    {% for video in videos %}
+      <a href="/videos/{{ video.slug }}/" class="video-card
+          {{ video.type | slug }}
+          {{ video.difficulty | slug }}
+          {% if video.duration.split(':')[0] | int < 20 %}short{% endif %}
+          {% if video.duration.split(':')[0] | int >= 20 and video.duration.split(':')[0] | int <= 40 %}medium{% endif %}
+          {% if video.duration.split(':')[0] | int > 40 %}long{% endif %}
+        ">
+        <div class="video-thumbnail">
+          <img src="https://img.youtube.com/vi/{{ video.id }}/mqdefault.jpg" alt="{{ video.title }}">
+          <span class="video-duration">{{ video.duration }}</span>
+        </div>
+        <h3 class="video-card-title">{{ video.title }}</h3>
+        <div class="video-card-meta">
+          <span class="badge">{{ video.type }}</span>
+          <span class="badge">{{ video.difficulty }}</span>
+        </div>
+        <div class="video-card-instructor">
+          {{ video.instructor }}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+<script>
+  // Simple filtering functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const videoCards = document.querySelectorAll('.video-card');
+
+    // Set up button click handlers
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Get filter value
+        const filterValue = this.getAttribute('data-filter');
+
+        // Remove active class from all buttons in this group
+        const filterGroup = this.closest('.filter-buttons');
+        filterGroup.querySelectorAll('.filter-button').forEach(btn => {
+          btn.classList.remove('active');
+        });
+
+        // Add active class to clicked button
+        this.classList.add('active');
+
+        // Apply filters - get all active filters
+        const activeFilters = {
+          type: null,
+          difficulty: null,
+          duration: null
+        };
+
+        document.querySelectorAll('.filter-button.active').forEach(activeBtn => {
+          const filter = activeBtn.getAttribute('data-filter');
+          const filterGroupTitle = activeBtn.closest('.filter-group').querySelector('h3').textContent;
+
+          if (filter !== 'all') {
+            if (filterGroupTitle.includes('Type')) {
+              activeFilters.type = filter;
+            } else if (filterGroupTitle.includes('Difficulty')) {
+              activeFilters.difficulty = filter;
+            } else if (filterGroupTitle.includes('Duration')) {
+              activeFilters.duration = filter;
+            }
+          }
+        });
+
+        // Apply combined filters
+        videoCards.forEach(card => {
+          let shouldShow = true;
+
+          // Check type filter
+          if (activeFilters.type && !card.classList.contains(activeFilters.type)) {
+            shouldShow = false;
+          }
+
+          // Check difficulty filter
+          if (shouldShow && activeFilters.difficulty && !card.classList.contains(activeFilters.difficulty)) {
+            shouldShow = false;
+          }
+
+          // Check duration filter
+          if (shouldShow && activeFilters.duration && !card.classList.contains(activeFilters.duration)) {
+            shouldShow = false;
+          }
+
+          // Show/hide card
+          card.style.display = shouldShow ? 'flex' : 'none';
+        });
+      });
+    });
+  });
+</script>

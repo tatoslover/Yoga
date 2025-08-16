@@ -1,0 +1,31 @@
+[build]
+command = "npm run build"
+publish = "_site"
+
+# For redirects and headers
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
+# Force HTTPS
+[[headers]]
+for = "/*"
+[headers.values]
+Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+X-Content-Type-Options = "nosniff"
+X-Frame-Options = "DENY"
+Content-Security-Policy = "default-src 'self' https://www.youtube.com https://img.youtube.com https://i.ytimg.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.youtube.com https://s.ytimg.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://img.youtube.com https://i.ytimg.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self'; object-src 'none'; frame-src https://www.youtube.com; worker-src 'self'; manifest-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none';"
+
+# Environment variables
+[build.environment]
+NODE_VERSION = "16.14.0"
+NPM_VERSION = "8.5.0"
+
+# Dev command for netlify dev
+[dev]
+command = "npm start"
+port = 8888
+targetPort = 8080
+publish = "_site"
+autoLaunch = false

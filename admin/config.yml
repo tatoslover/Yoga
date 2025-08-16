@@ -1,0 +1,108 @@
+# NetlifyCMS Configuration
+backend:
+  name: git-gateway
+  branch: main # Branch to update
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+# When using the local proxy server port
+local_backend: true
+
+# Media and public folders
+media_folder: "assets/uploads" # Where media files will be stored
+public_folder: "/assets/uploads" # The src attribute for uploaded media
+
+# Enable editorial workflow (optional)
+# This adds an interface for drafting, reviewing, and approving posts
+publish_mode: editorial_workflow
+
+# Collections - defines the content types
+collections:
+  - name: "videos"
+    label: "Videos"
+    folder: "_data/videos" # Store individual files in a folder
+    create: true # Allow users to create new documents
+    format: "json"
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "YouTube ID", name: "id", widget: "string", hint: "The YouTube video ID (e.g., dQw4w9WgXcQ)" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "URL Slug", name: "slug", widget: "string", hint: "Used for the URL, e.g. 'morning-yoga-flow'" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Duration", name: "duration", widget: "string", hint: "Format as MM:SS (e.g., 30:00)" }
+      - {
+          label: "Type",
+          name: "type",
+          widget: "select",
+          options: ["Vinyasa", "Hatha", "Yin", "Power", "Restorative"],
+          hint: "The yoga style"
+        }
+      - {
+          label: "Difficulty",
+          name: "difficulty",
+          widget: "select",
+          options: ["Beginner", "Intermediate", "Advanced", "All Levels"],
+          hint: "The difficulty level"
+        }
+      - { label: "Instructor", name: "instructor", widget: "string" }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          hint: "Add related keywords (e.g., morning, energizing)",
+          default: []
+        }
+      - {
+          label: "Featured",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          hint: "Show on homepage featured section"
+        }
+
+  - name: "settings"
+    label: "Settings"
+    editor:
+      preview: false
+    files:
+      - name: "site"
+        label: "Site Settings"
+        file: "_data/site.json"
+        description: "General site settings"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Site Description", name: "description", widget: "text" }
+          - { label: "Site URL", name: "url", widget: "string" }
+          - label: "Author"
+            name: "author"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+          - label: "Navigation Items"
+            name: "navItems"
+            widget: "list"
+            fields:
+              - { label: "Text", name: "text", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - { label: "Footer Text", name: "footerText", widget: "string" }
+          - label: "Social Media"
+            name: "socialMedia"
+            widget: "object"
+            fields:
+              - { label: "GitHub URL", name: "github", widget: "string", required: false }
+              - { label: "Twitter URL", name: "twitter", widget: "string", required: false }
+          - label: "Yoga Types"
+            name: "yogaTypes"
+            widget: "list"
+            default: ["Vinyasa", "Hatha", "Yin", "Power", "Restorative"]
+          - label: "Difficulty Levels"
+            name: "difficultyLevels"
+            widget: "list"
+            default: ["Beginner", "Intermediate", "Advanced", "All Levels"]

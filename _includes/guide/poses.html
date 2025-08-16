@@ -1,0 +1,75 @@
+{% if target == "standing" %}
+  <div class="poses-description">
+    <p>Standing poses form the foundation of yoga practice. They build strength, improve balance, and enhance focus.</p>
+    <div class="poses-list">
+      <div class="pose-item">
+        <h4>Mountain Pose (Tadasana)</h4>
+        <p>The foundation of all standing poses, teaching proper alignment and stability.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Warrior I (Virabhadrasana I)</h4>
+        <p>A powerful standing pose that builds strength and stamina while opening the chest.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Triangle Pose (Trikonasana)</h4>
+        <p>An elegant pose that stretches and strengthens the entire body while improving balance.</p>
+      </div>
+    </div>
+  </div>
+{% elif target == "seated" %}
+  <div class="poses-description">
+    <p>Seated poses improve flexibility, especially in the hips and spine, and cultivate a sense of groundedness.</p>
+    <div class="poses-list">
+      <div class="pose-item">
+        <h4>Easy Pose (Sukhasana)</h4>
+        <p>A simple cross-legged position that provides a stable base for breathing and meditation.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Staff Pose (Dandasana)</h4>
+        <p>The foundation for all seated forward bends, teaching proper spinal alignment.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Seated Forward Fold (Paschimottanasana)</h4>
+        <p>A deep forward bend that stretches the entire back of the body from heels to head.</p>
+      </div>
+    </div>
+  </div>
+{% elif target == "backbends" %}
+  <div class="poses-description">
+    <p>Backbends open the chest and shoulders, increase spinal mobility, and counteract the effects of sitting.</p>
+    <div class="poses-list">
+      <div class="pose-item">
+        <h4>Cobra Pose (Bhujangasana)</h4>
+        <p>A gentle backbend that strengthens the spine and opens the chest and shoulders.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Bridge Pose (Setu Bandhasana)</h4>
+        <p>A gentle backbend that strengthens the back, glutes, and hamstrings while opening the chest.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Camel Pose (Ustrasana)</h4>
+        <p>A deep backbend that opens the entire front of the body while strengthening the back.</p>
+      </div>
+    </div>
+  </div>
+{% elif target == "inversions" %}
+  <div class="poses-description">
+    <p>Inversions reverse the effects of gravity, bringing fresh blood flow to the brain and offering a new perspective.</p>
+    <div class="poses-list">
+      <div class="pose-item">
+        <h4>Downward-Facing Dog (Adho Mukha Svanasana)</h4>
+        <p>A mild inversion that creates length in the spine while strengthening the arms and legs.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Legs-Up-The-Wall (Viparita Karani)</h4>
+        <p>A gentle, restorative inversion that relieves tired legs and calms the nervous system.</p>
+      </div>
+      <div class="pose-item">
+        <h4>Shoulder Stand (Sarvangasana)</h4>
+        <p>Often called the "queen of asanas," this inversion brings numerous benefits to the entire body.</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<!-- Data will be dynamically updated from scraped sources -->

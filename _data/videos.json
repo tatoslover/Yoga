@@ -1,0 +1,57 @@
+[
+  {
+    "id": "hJbRpHZr_d0",
+    "title": "30 Min Morning Yoga Flow",
+    "slug": "morning-yoga-flow",
+    "description": "Start your day with this energizing yoga flow that will wake up your body and mind. This practice focuses on gentle stretching, building heat, and setting intentions for the day ahead.",
+    "duration": "30:00",
+    "type": "Vinyasa",
+    "difficulty": "Intermediate",
+    "instructor": "Yoga With Adriene",
+    "tags": ["morning", "energizing", "flow"]
+  },
+  {
+    "id": "GLy2rYHwUqY",
+    "title": "Yoga For Beginners - 20 Minute Home Yoga Workout",
+    "slug": "beginners-home-yoga",
+    "description": "Perfect for complete beginners, this gentle session introduces fundamental yoga poses and breathing techniques. Focus on proper alignment and building a strong foundation for your practice.",
+    "duration": "20:00",
+    "type": "Hatha",
+    "difficulty": "Beginner",
+    "instructor": "Yoga With Adriene",
+    "tags": ["beginner", "gentle", "foundation"]
+  },
+  {
+    "id": "4PgIfOOHwH8",
+    "title": "Deep Stretch Yoga For Flexibility",
+    "slug": "deep-stretch-flexibility",
+    "description": "This deep stretching session targets all major muscle groups to increase overall flexibility. Hold poses longer to release tension and create space in your body.",
+    "duration": "45:00",
+    "type": "Yin",
+    "difficulty": "All Levels",
+    "instructor": "Yoga By Kassandra",
+    "tags": ["stretching", "flexibility", "relaxation"]
+  },
+  {
+    "id": "oBu-pQG6sTY",
+    "title": "Power Yoga For Strength",
+    "slug": "power-yoga-strength",
+    "description": "Build strength and endurance with this challenging power yoga session. Focuses on core engagement, arm balances, and flowing sequences that build heat and muscle tone.",
+    "duration": "40:00",
+    "type": "Power",
+    "difficulty": "Advanced",
+    "instructor": "Fightmaster Yoga",
+    "tags": ["strength", "power", "core"]
+  },
+  {
+    "id": "0o0kEhsb22c",
+    "title": "Bedtime Yoga For Better Sleep",
+    "slug": "bedtime-yoga-sleep",
+    "description": "Wind down with this gentle bedtime yoga routine designed to release tension and prepare your body for restful sleep. Features calming poses and breathing techniques.",
+    "duration": "15:00",
+    "type": "Restorative",
+    "difficulty": "Beginner",
+    "instructor": "Yoga With Adriene",
+    "tags": ["evening", "relaxation", "sleep"]
+  }
+]

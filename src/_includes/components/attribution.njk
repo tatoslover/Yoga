@@ -1,6 +1,6 @@
 <div class="content-attribution">
   <h4>Content Sources</h4>
-  <p class="last-updated">Last updated: {{ "now" | date("MMMM D, YYYY") }}</p>
+  <p class="last-updated">Last updated: {{ "now" | date }}</p>
 
   {% if sources and sources.length > 0 %}
     <ul class="sources-list">
@@ -9,14 +9,14 @@
           <li>
             <a href="{{ source.url }}" target="_blank" rel="noopener">{{ source.name }}</a>
             {% if source.fetchDate %}
-              <span class="source-date">(Retrieved: {{ source.fetchDate | date("MMMM D, YYYY") }})</span>
+              <span class="source-date">(Retrieved: {{ source.fetchDate }})</span>
             {% endif %}
           </li>
         {% else %}
           <li>
             {{ source.name }}
             {% if source.fetchDate %}
-              <span class="source-date">(Retrieved: {{ source.fetchDate | date("MMMM D, YYYY") }})</span>
+              <span class="source-date">(Retrieved: {{ source.fetchDate }})</span>
             {% endif %}
           </li>
         {% endif %}

@@ -41,6 +41,17 @@ module.exports = function (eleventyConfig) {
     return new Date().getFullYear();
   });
 
+  // Date formatting filter
+  eleventyConfig.addFilter("date", function(date) {
+    if (!date) return "";
+    const d = new Date(date);
+    return d.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  });
+
   // Add slugify filter (built into 11ty)
   eleventyConfig.addFilter("slug", function (str) {
     if (!str) return "";

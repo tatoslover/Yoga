@@ -1,0 +1,21 @@
+{
+  "lastUpdated": "2025-08-17T02:36:42.552Z",
+  "sources": {
+    "benefits": [
+      {
+        "name": "Harvard Health - Yoga Benefits",
+        "url": "https://www.health.harvard.edu/staying-healthy/yoga-benefits-beyond-the-mat",
+        "fetchDate": 1692289458000,
+        "authority": 10,
+        "license": "Content used for educational purposes with attribution"
+      },
+      {
+        "name": "Johns Hopkins Medicine - Yoga Benefits",
+        "url": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/9-benefits-of-yoga",
+        "fetchDate": 1692289458000,
+        "authority": 9,
+        "license": "Content used for educational purposes with attribution"
+      }
+    ]
+  }
+}

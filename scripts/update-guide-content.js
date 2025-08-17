@@ -14,7 +14,7 @@ const cheerio = require('cheerio');
 
 // Configuration
 const SCRAPED_DIR = path.join(__dirname, '../src/_data/scraped');
-const GUIDE_TEMPLATE = path.join(__dirname, '../src/content/guide/template.html');
+const GUIDE_TEMPLATE = path.join(__dirname, '../src/content/guide/index.njk');
 const GUIDE_INCLUDES_DIR = path.join(__dirname, '../src/_includes/guide');
 const SECTIONS = ['yogaTypes', 'poses', 'benefits', 'tips'];
 const MIN_CONTENT_PER_SECTION = 3; // Minimum items per section
@@ -35,6 +35,12 @@ async function updateGuideContent() {
     lastUpdated: new Date().toISOString(),
     sources: {}
   };
+
+  // Create data directory if it doesn't exist
+  const dataDir = path.join(__dirname, '../src/_data/scraped');
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
 
   for (const section of SECTIONS) {
     const filePath = path.join(SCRAPED_DIR, `${section}.json`);
@@ -658,6 +664,13 @@ function generateYogaTipsContent(sources) {
 
 // Update the guide template to include the generated content
 function updateGuideTemplate() {
+  console.log(`Updating guide template: ${GUIDE_TEMPLATE}`);
+
+  // Skip if template doesn't exist
+  if (!fs.existsSync(GUIDE_TEMPLATE)) {
+    console.log(`Guide template not found: ${GUIDE_TEMPLATE}`);
+    return;
+  }
   if (!fs.existsSync(GUIDE_TEMPLATE)) {
     console.error(`Guide template not found: ${GUIDE_TEMPLATE}`);
     return;

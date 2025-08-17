@@ -19,7 +19,7 @@ const cheerio = require('cheerio');
 const axios = require('axios');
 
 // Configuration
-const OUTPUT_DIR = path.join(__dirname, '../_data/scraped');
+const OUTPUT_DIR = path.join(__dirname, '../src/_data/scraped');
 const CACHE_DIR = path.join(__dirname, '../_cache');
 
 // Ensure output directories exist

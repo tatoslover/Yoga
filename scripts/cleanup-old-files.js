@@ -6,6 +6,11 @@
  *
  * IMPORTANT: Only run this script AFTER verifying that the site
  * builds and functions correctly with the new structure.
+ *
+ * USAGE:
+ *   npm run cleanup:dry    - Show what would be deleted without deleting
+ *   npm run cleanup        - Run the cleanup with confirmation prompt
+ *   npm run cleanup -- --force  - Run without confirmation prompt
  */
 
 const fs = require('fs');
@@ -29,6 +34,14 @@ const DIRECTORIES_TO_REMOVE = [
   'videos'
 ];
 
+// Essential directories that should never be deleted
+const ESSENTIAL_DIRECTORIES = [
+  'src',
+  'scripts',
+  'node_modules',
+  '_site'
+];
+
 // Files to remove (excluding essential project files)
 const FILES_TO_REMOVE = [
   '404.njk',
@@ -41,6 +54,15 @@ function checkBuildIsWorking() {
   try {
     console.log('🔍 Checking if the build works with the new structure...');
     execSync('npm run build', { stdio: 'inherit' });
+
+    // Verify that key output files exist
+    const outputIndex = path.join(process.cwd(), '_site', 'index.html');
+    if (!fs.existsSync(outputIndex)) {
+      console.error('❌ Build completed but index.html was not generated!');
+      console.error('   Fix build issues before running this script.');
+      return false;
+    }
+
     return true;
   } catch (error) {
     console.error('❌ Build failed! Aborting cleanup to prevent data loss.');
@@ -74,8 +96,20 @@ function removeFile(filePath) {
 function removeDirectory(dirPath) {
   const fullPath = path.join(process.cwd(), dirPath);
 
+  // Safety check - never delete essential directories
+  if (ESSENTIAL_DIRECTORIES.includes(dirPath)) {
+    console.error(`   ⚠️ SAFETY CHECK: Refusing to delete essential directory: ${dirPath}`);
+    return;
+  }
+
   if (!fs.existsSync(fullPath)) {
     console.log(`   Skipping ${dirPath} - directory not found`);
+    return;
+  }
+
+  // Make sure we're not trying to delete the root directory
+  if (fullPath === process.cwd() || fullPath === path.resolve(process.cwd(), '..')) {
+    console.error(`   ⚠️ SAFETY CHECK: Refusing to delete root or parent directory: ${dirPath}`);
     return;
   }
 
@@ -115,7 +149,11 @@ function cleanup() {
     console.log('   The script will remove files that have been moved to the src directory.');
     console.log('   Make sure you have committed your changes to git before proceeding.');
     console.log('\n   Run with --dry-run to see what would be deleted without actually deleting.');
-    console.log('   Run with --force to skip this prompt.\n');
+    console.log('   Run with --force to skip this prompt.');
+    console.log('\n   IMPORTANT: Always use npm scripts to run this tool:');
+    console.log('   - npm run cleanup:dry');
+    console.log('   - npm run cleanup');
+    console.log('   - npm run cleanup -- --force\n');
 
     const readline = require('readline').createInterface({
       input: process.stdin,

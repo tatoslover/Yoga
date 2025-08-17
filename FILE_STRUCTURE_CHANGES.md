@@ -82,7 +82,7 @@ mat-and-mind/
 
 ## Cleanup Process
 
-A cleanup script has been created to remove the original files after confirming the new structure works correctly:
+A cleanup script has been created to remove the original files after confirming the new structure works correctly. The script must be run using npm commands, not directly:
 
 ```bash
 # Dry run (shows what would be deleted without actually deleting)
@@ -90,16 +90,30 @@ npm run cleanup:dry
 
 # Actual cleanup (permanently deletes original files)
 npm run cleanup
+
+# Skip confirmation prompt (use with caution)
+npm run cleanup -- --force
 ```
 
-**Important**: Only run the cleanup script after thoroughly testing that the site builds and functions correctly with the new structure.
+**Important Notes**:
+- Only run the cleanup script after thoroughly testing that the site builds and functions correctly
+- Always use the npm commands shown above, do not try to run the JS file directly
+- The dry run is recommended before performing the actual cleanup
+- The script will prompt for confirmation unless you use the --force flag
 
 ## How to Merge These Changes
 
 1. Review the changes in the `file-structure-optimization` branch
-2. Test the build to ensure everything works correctly: `npm run build`
+2. Test the build to ensure everything works correctly: `npm run build` and `npm start`
 3. Merge the branch into main: `git checkout main && git merge file-structure-optimization`
-4. After confirming everything works, run the cleanup script: `npm run cleanup`
+4. After confirming everything works, run the cleanup process:
+   ```bash
+   # First run a dry run to see what will be deleted
+   npm run cleanup:dry
+   
+   # Then run the actual cleanup
+   npm run cleanup
+   ```
 5. Commit the cleanup changes: `git add -A && git commit -m "Remove original files after structure optimization"`
 
 ## Rollback Plan

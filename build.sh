@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Peaceful Yoga Build Script
+# Mat & Mind Build Script
 
 # Set error handling
 set -e
@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 
 # Header
 echo -e "${GREEN}=======================================${NC}"
-echo -e "${GREEN}  Peaceful Yoga - Build Script        ${NC}"
+echo -e "${GREEN}  Mat & Mind - Build Script           ${NC}"
 echo -e "${GREEN}=======================================${NC}"
 
 # Check if Node.js is installed

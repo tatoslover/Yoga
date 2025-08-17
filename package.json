@@ -1,7 +1,7 @@
 {
-  "name": "peaceful-yoga-videos",
+  "name": "mat-and-mind",
   "version": "1.0.0",
-  "description": "A distraction-free yoga video collection website",
+  "description": "A distraction-free yoga practice website",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
@@ -11,7 +11,9 @@
     "themes": "node scripts/manage-themes.js",
     "scrape": "node scripts/scrape-yoga-info.js",
     "update-guide": "node scripts/update-guide-content.js",
-    "refresh-guide": "npm run scrape && npm run update-guide"
+    "refresh-guide": "npm run scrape && npm run update-guide",
+    "cleanup": "node scripts/cleanup-old-files.js",
+    "cleanup:dry": "node scripts/cleanup-old-files.js --dry-run"
   },
   "keywords": [
     "yoga",

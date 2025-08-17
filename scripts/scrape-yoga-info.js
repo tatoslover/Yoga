@@ -343,6 +343,7 @@ async function scrapeSource(browser, source) {
       // If browser is not available and axios failed, throw the error
       throw new Error(`Failed to fetch content with axios and no browser is available: ${error.message}`);
     }
+  }
 
     // Save to cache and update metadata
     try {

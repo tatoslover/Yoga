@@ -13,10 +13,12 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 // Configuration
-const SCRAPED_DIR = path.join(__dirname, '../_data/scraped');
-const GUIDE_TEMPLATE = path.join(__dirname, '../guide/index.njk');
-const GUIDE_INCLUDES_DIR = path.join(__dirname, '../_includes/guide');
-const SECTIONS = ['types', 'poses', 'benefits', 'tips'];
+const SCRAPED_DIR = path.join(__dirname, '../src/_data/scraped');
+const GUIDE_TEMPLATE = path.join(__dirname, '../src/content/guide/template.html');
+const GUIDE_INCLUDES_DIR = path.join(__dirname, '../src/_includes/guide');
+const SECTIONS = ['yogaTypes', 'poses', 'benefits', 'tips'];
+const MIN_CONTENT_PER_SECTION = 3; // Minimum items per section
+const USE_MOCK_DATA = process.env.USE_MOCK_DATA === 'true' || false;
 
 // Ensure guide includes directory exists
 if (!fs.existsSync(GUIDE_INCLUDES_DIR)) {
@@ -36,8 +38,9 @@ async function updateGuideContent() {
 
   for (const section of SECTIONS) {
     const filePath = path.join(SCRAPED_DIR, `${section}.json`);
+    const mockFilePath = path.join(SCRAPED_DIR, `mock-${section}.json`);
 
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync(filePath) && !USE_MOCK_DATA) {
       try {
         const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
@@ -51,6 +54,35 @@ async function updateGuideContent() {
         console.log(`✓ Loaded ${section} data from ${filePath} (${scrapedData[section].length} items from ${processedData.sources.length} sources)`);
       } catch (error) {
         console.error(`✗ Error loading ${section} data:`, error.message);
+        // Try to load mock data as fallback
+        if (fs.existsSync(mockFilePath)) {
+          console.log(`  Attempting to load mock data for ${section}...`);
+          try {
+            const mockData = JSON.parse(fs.readFileSync(mockFilePath, 'utf8'));
+            const processedMockData = processSectionData(section, mockData);
+            scrapedData[section] = processedMockData.data;
+            metadata.sources[section] = processedMockData.sources;
+            console.log(`✓ Loaded mock data for ${section} as fallback`);
+          } catch (mockError) {
+            console.error(`✗ Error loading mock data:`, mockError.message);
+            scrapedData[section] = [];
+          }
+        } else {
+          scrapedData[section] = [];
+        }
+      }
+    } else if (fs.existsSync(mockFilePath) && (USE_MOCK_DATA || !fs.existsSync(filePath))) {
+      // Use mock data if requested or if real data doesn't exist
+      console.log(`Using mock data for ${section}${USE_MOCK_DATA ? ' (forced)' : ' (fallback)'}`);
+      try {
+        const mockData = JSON.parse(fs.readFileSync(mockFilePath, 'utf8'));
+        const processedMockData = processSectionData(section, mockData);
+        scrapedData[section] = processedMockData.data;
+        metadata.sources[section] = processedMockData.sources;
+        console.log(`✓ Loaded mock data for ${section}`);
+      } catch (mockError) {
+        console.error(`✗ Error loading mock data:`, mockError.message);
+        scrapedData[section] = [];
       }
     } else {
       console.log(`✗ No data file found for ${section}`);

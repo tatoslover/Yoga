@@ -14,6 +14,8 @@
     "refresh-guide": "npm run scrape && npm run update-guide",
     "refresh-content": "bash scripts/refresh-content.sh",
     "refresh-content:cache": "bash scripts/refresh-content.sh --use-cache",
+    "refresh-content:http": "bash scripts/refresh-content.sh --http-only",
+    "refresh-content:cache-http": "bash scripts/refresh-content.sh --use-cache --http-only",
     "cleanup": "node scripts/cleanup-old-files.js",
     "cleanup:dry": "node scripts/cleanup-old-files.js --dry-run"
   },
@@ -29,11 +31,11 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "axios": "^1.6.0",
-    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
     "clean-css": "^5.3.2",
     "html-minifier-terser": "^7.2.0",
-    "puppeteer": "^21.3.8"
+    "puppeteer": "^21.11.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

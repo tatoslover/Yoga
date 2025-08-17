@@ -24,11 +24,16 @@ mkdir -p _cache
 
 # Parse command-line arguments
 USE_CACHE=false
+HTTP_ONLY=false
 for arg in "$@"
 do
     case $arg in
         --use-cache)
         USE_CACHE=true
+        shift
+        ;;
+        --http-only)
+        HTTP_ONLY=true
         shift
         ;;
         *)
@@ -39,14 +44,26 @@ done
 
 echo -e "\n${BLUE}Content Refresh Options:${NC}"
 echo -e "Use cache: ${USE_CACHE}"
+echo -e "HTTP-only mode: ${HTTP_ONLY}"
 
 # Step 1: Scrape content from trusted sources
 echo -e "\n${YELLOW}Step 1: Scraping content from trusted yoga sources...${NC}"
+
+# Set up command
+SCRAPE_CMD="node scripts/scrape-yoga-info.js"
+
+# Add options
 if [ "$USE_CACHE" = true ] ; then
-    USE_CACHE=true node scripts/scrape-yoga-info.js
-else
-    node scripts/scrape-yoga-info.js
+    SCRAPE_CMD="USE_CACHE=true $SCRAPE_CMD"
 fi
+
+if [ "$HTTP_ONLY" = true ] ; then
+    SCRAPE_CMD="$SCRAPE_CMD --http-only"
+    echo -e "${BLUE}Running in HTTP-only mode (no browser)${NC}"
+fi
+
+# Execute scraping command
+eval $SCRAPE_CMD
 
 # Check if scraping was successful
 if [ $? -ne 0 ]; then
@@ -81,3 +98,7 @@ echo -e "${GREEN}=============================================${NC}"
 echo -e "The site has been updated with fresh content from trusted sources."
 echo -e "\nTo preview the updated site, run: ${YELLOW}npm start${NC}"
 echo -e "To commit and push changes, use git."
+echo -e "\n${BLUE}Troubleshooting Tips:${NC}"
+echo -e "- If browser launch fails, try HTTP-only mode: ${YELLOW}npm run refresh-content -- --http-only${NC}"
+echo -e "- For persistent browser issues, try: ${YELLOW}npm install puppeteer@latest${NC}"
+echo -e "- If scraping fails for specific sources, check the source websites in your browser"

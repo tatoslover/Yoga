@@ -31,6 +31,14 @@ if (!fs.existsSync(CACHE_DIR)) {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 }
 
+// Configuration options
+const CONFIG = {
+  usePuppeteer: false, // Set to false to use only axios for HTTP requests
+  puppeteerRetries: 2,  // Number of times to retry puppeteer launch
+  logLevel: 'info',     // 'debug', 'info', 'warn', 'error'
+  userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+};
+
 // Sources to scrape (add reputable yoga websites here)
 // Each source has an authority score (1-10) used for conflict resolution
 const SOURCES = {
@@ -158,11 +166,42 @@ const QUALITY_THRESHOLDS = {
 async function scrapeYogaInfo() {
   console.log('Starting yoga information scraper...');
 
-  // Launch browser for puppeteer
-  const browser = await puppeteer.launch({
-    headless: 'new', // Use new headless mode
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  // Browser instance (will be set if puppeteer is used)
+  let browser = null;
+
+  // Only try to launch browser if configured to use puppeteer
+  if (CONFIG.usePuppeteer || process.env.FORCE_PUPPETEER === 'true') {
+    console.log('Attempting to launch headless browser...');
+
+    // Try multiple times to launch the browser
+    for (let attempt = 1; attempt <= CONFIG.puppeteerRetries; attempt++) {
+      try {
+        browser = await puppeteer.launch({
+          headless: 'new', // Use new headless mode
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--disable-gpu'
+          ]
+        });
+        console.log('Browser launched successfully');
+        break;
+      } catch (error) {
+        console.error(`Browser launch attempt ${attempt} failed:`, error.message);
+
+        if (attempt === CONFIG.puppeteerRetries) {
+          console.warn('All browser launch attempts failed. Will use HTTP requests only.');
+        } else {
+          // Wait before retrying
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+    }
+  } else {
+    console.log('Running in HTTP-only mode (no browser)');
+  }
 
   try {
     // Process each category
@@ -201,8 +240,11 @@ async function scrapeYogaInfo() {
       }
     }
   } finally {
-    // Close the browser
-    await browser.close();
+    // Close the browser if it was launched
+    if (browser) {
+      await browser.close();
+      console.log('Browser closed');
+    }
   }
 
   console.log('\nScraping completed!');
@@ -241,7 +283,7 @@ async function scrapeSource(browser, source) {
       // Try with axios first (faster)
       const response = await axios.get(source.url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+          'User-Agent': CONFIG.userAgent,
           'Accept': 'text/html,application/xhtml+xml,application/xml',
           'Accept-Language': 'en-US,en;q=0.9'
         },
@@ -249,11 +291,12 @@ async function scrapeSource(browser, source) {
       });
       content = response.data;
     } catch (error) {
-      console.log(`  Failed with axios, trying puppeteer: ${error.message}`);
+      // If browser is available, try with puppeteer
+      if (browser) {
+        console.log(`  Failed with axios, trying puppeteer: ${error.message}`);
 
-      // If axios fails, try with puppeteer (better for JavaScript-heavy sites)
-      const page = await browser.newPage();
-      await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
+        const page = await browser.newPage();
+        await page.setUserAgent(CONFIG.userAgent);
 
       // Set timeout
       await page.setDefaultNavigationTimeout(40000);
@@ -296,6 +339,9 @@ async function scrapeSource(browser, source) {
       } finally {
         await page.close();
       }
+    } else {
+      // If browser is not available and axios failed, throw the error
+      throw new Error(`Failed to fetch content with axios and no browser is available: ${error.message}`);
     }
 
     // Save to cache and update metadata
@@ -1038,8 +1084,33 @@ function processEkhartYogaTips($, element) {
   return tips;
 }
 
+// Process command line arguments
+process.argv.forEach(arg => {
+  if (arg === '--use-puppeteer') {
+    CONFIG.usePuppeteer = true;
+    console.log('Puppeteer usage enabled via command line argument');
+  } else if (arg === '--http-only') {
+    CONFIG.usePuppeteer = false;
+    console.log('HTTP-only mode enabled via command line argument');
+  }
+});
+
+// Check environment variables
+if (process.env.USE_PUPPETEER === 'true') {
+  CONFIG.usePuppeteer = true;
+  console.log('Puppeteer usage enabled via environment variable');
+} else if (process.env.USE_PUPPETEER === 'false') {
+  CONFIG.usePuppeteer = false;
+  console.log('Puppeteer usage disabled via environment variable');
+}
+
 // Run the scraper
 scrapeYogaInfo().catch(error => {
   console.error('Error in scraper:', error);
+  console.log('\nTroubleshooting tips:');
+  console.log('- Try running with HTTP only: npm run refresh-content -- --http-only');
+  console.log('- For MacOS users: you may need to grant permissions to the browser');
+  console.log('- Check your firewall settings');
+  console.log('- Ensure you have sufficient disk space');
   process.exit(1);
 });

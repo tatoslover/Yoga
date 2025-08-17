@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Yoga Guide
-description: "Explore different styles and levels of yoga to find your perfect practice"
+description: &quot;Explore different styles and levels of yoga to find your perfect practice&quot;
 permalink: /guide/
 eleventyComputed:
   pageClass: &quot;guide-page&quot;
@@ -45,14 +45,14 @@ eleventyComputed:
           <div class="guide-content-box" id="types-{{ type | slug }}-content">
             <h3>{{ type }}</h3>
             <div class="yoga-type-content">
-              {% include "guide/types.html" %}
+              {% include &quot;guide/types.html&quot; %}
               <!-- Video links removed to focus on informational content -->
             </div>
           </div>
         {% endfor %}
 
         <!-- Content attribution -->
-        {% include "components/attribution.njk" %}
+        {% include &quot;components/attribution.njk&quot; %}
       </div>
     </div>
 
@@ -217,7 +217,7 @@ eleventyComputed:
       <div class="guide-content-container" id="poses-container">
         <div class="guide-content-box" id="poses-standing-content">
           <h3>Standing Poses</h3>
-          {% include "guide/levels.html" %}
+          {% include &quot;guide/levels.html&quot; %}
         </div>
 
         <div class="guide-content-box" id="poses-seated-content">

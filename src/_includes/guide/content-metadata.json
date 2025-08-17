@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2025-08-17T02:39:25.525Z",
+  "lastUpdated": "2025-08-17T02:43:06.297Z",
   "sources": {
     "benefits": [
       {
@@ -14,6 +14,22 @@
         "url": "https://www.hopkinsmedicine.org/health/wellness-and-prevention/9-benefits-of-yoga",
         "fetchDate": 1692289458000,
         "authority": 9,
+        "license": "Content used for educational purposes with attribution"
+      }
+    ],
+    "tips": [
+      {
+        "name": "Yoga Journal - Practice Tips",
+        "url": "https://www.yogajournal.com/practice/",
+        "fetchDate": 1692289458000,
+        "authority": 9,
+        "license": "Content used for educational purposes with attribution"
+      },
+      {
+        "name": "Yoga With Adriene - Practice Tips",
+        "url": "https://yogawithadriene.com/category/yoga-tips/",
+        "fetchDate": 1692289458000,
+        "authority": 7,
         "license": "Content used for educational purposes with attribution"
       }
     ]

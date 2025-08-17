@@ -17,6 +17,12 @@ const SCRAPED_DIR = path.join(__dirname, '../src/_data/scraped');
 const GUIDE_TEMPLATE = path.join(__dirname, '../src/content/guide/index.njk');
 const GUIDE_INCLUDES_DIR = path.join(__dirname, '../src/_includes/guide');
 const SECTIONS = ['yogaTypes', 'poses', 'benefits', 'tips'];
+const TEMPLATE_SECTIONS = {
+  'yogaTypes': 'types',
+  'poses': 'poses',
+  'benefits': 'benefits',
+  'tips': 'tips'
+};
 const MIN_CONTENT_PER_SECTION = 3; // Minimum items per section
 const USE_MOCK_DATA = process.env.USE_MOCK_DATA === 'true' || false;
 
@@ -671,10 +677,6 @@ function updateGuideTemplate() {
     console.log(`Guide template not found: ${GUIDE_TEMPLATE}`);
     return;
   }
-  if (!fs.existsSync(GUIDE_TEMPLATE)) {
-    console.error(`Guide template not found: ${GUIDE_TEMPLATE}`);
-    return;
-  }
 
   try {
     // Read the guide template
@@ -690,7 +692,10 @@ function updateGuideTemplate() {
     };
 
     for (const [dataSection, htmlClass] of Object.entries(sectionMapping)) {
-      const includePath = path.join(GUIDE_INCLUDES_DIR, `${dataSection}.html`);
+      // Convert from template section name to data section name
+      const actualDataSection = Object.entries(TEMPLATE_SECTIONS)
+        .find(([_, templateName]) => templateName === dataSection)?.[0] || dataSection;
+      const includePath = path.join(GUIDE_INCLUDES_DIR, `${actualDataSection}.html`);
 
       if (fs.existsSync(includePath)) {
         // Find the section and update it with an include statement

@@ -1,19 +1,19 @@
 ---
 layout: base.njk
 title: Yoga Guide
-description: Explore different styles and levels of yoga to find your perfect practice
+description: "Explore different styles and levels of yoga to find your perfect practice"
 permalink: /guide/
 eleventyComputed:
-  pageClass: "guide-page"
+  pageClass: &quot;guide-page&quot;
   sources:
-    - name: "Yoga Journal"
-      url: "https://www.yogajournal.com/"
-    - name: "Yoga Alliance"
-      url: "https://www.yogaalliance.org/"
-    - name: "Harvard Health"
-      url: "https://www.health.harvard.edu/"
-    - name: "Johns Hopkins Medicine"
-      url: "https://www.hopkinsmedicine.org/"
+    - name: &quot;Yoga Journal&quot;
+      url: &quot;https://www.yogajournal.com/&quot;
+    - name: &quot;Yoga Alliance&quot;
+      url: &quot;https://www.yogaalliance.org/&quot;
+    - name: &quot;Harvard Health&quot;
+      url: &quot;https://www.health.harvard.edu/&quot;
+    - name: &quot;Johns Hopkins Medicine&quot;
+      url: &quot;https://www.hopkinsmedicine.org/&quot;
 ---
 
 <!-- Empty page header -->
@@ -45,14 +45,14 @@ eleventyComputed:
           <div class="guide-content-box" id="types-{{ type | slug }}-content">
             <h3>{{ type }}</h3>
             <div class="yoga-type-content">
-              {% include &quot;guide/types.html&quot; %}
+              {% include "guide/types.html" %}
               <!-- Video links removed to focus on informational content -->
             </div>
           </div>
         {% endfor %}
 
         <!-- Content attribution -->
-        {% include &quot;components/attribution.njk&quot; %}
+        {% include "components/attribution.njk" %}
       </div>
     </div>
 
@@ -217,7 +217,7 @@ eleventyComputed:
       <div class="guide-content-container" id="poses-container">
         <div class="guide-content-box" id="poses-standing-content">
           <h3>Standing Poses</h3>
-          {% include &quot;guide/poses.html&quot; %}
+          {% include "guide/levels.html" %}
         </div>
 
         <div class="guide-content-box" id="poses-seated-content">

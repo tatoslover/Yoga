@@ -1,25 +1,17 @@
 <div class="content-attribution">
   <h4>Content Sources</h4>
-  <p class="last-updated">Last updated: {{ "now" | date }}</p>
+  <p class="last-updated">Last updated: {{ page.date }}</p>
 
   {% if sources and sources.length > 0 %}
     <ul class="sources-list">
       {% for source in sources %}
-        {% if source.url %}
-          <li>
+        <li>
+          {% if source.url %}
             <a href="{{ source.url }}" target="_blank" rel="noopener">{{ source.name }}</a>
-            {% if source.fetchDate %}
-              <span class="source-date">(Retrieved: {{ source.fetchDate }})</span>
-            {% endif %}
-          </li>
-        {% else %}
-          <li>
+          {% else %}
             {{ source.name }}
-            {% if source.fetchDate %}
-              <span class="source-date">(Retrieved: {{ source.fetchDate }})</span>
-            {% endif %}
-          </li>
-        {% endif %}
+          {% endif %}
+        </li>
       {% endfor %}
     </ul>
   {% else %}
@@ -56,12 +48,6 @@
 
   .sources-list li {
     margin-bottom: 0.5rem;
-  }
-
-  .source-date {
-    font-style: italic;
-    opacity: 0.8;
-    margin-left: 0.5rem;
   }
 
   .attribution-notice {

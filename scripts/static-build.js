@@ -233,11 +233,11 @@ const GUIDE_HTML = `<section class="page-header">
         this.classList.add('active');
 
         // Hide all content boxes for this section
-        const contentBoxes = document.querySelectorAll(`#${section}-container .guide-content-box`);
+        const contentBoxes = document.querySelectorAll('#' + section + '-container .guide-content-box');
         contentBoxes.forEach(box => box.classList.remove('active'));
 
         // Show the target content box
-        const targetBox = document.getElementById(`${section}-${target}-content`);
+        const targetBox = document.getElementById(section + '-' + target + '-content');
         if (targetBox) {
           targetBox.classList.add('active');
         }
@@ -326,13 +326,13 @@ function extractContentFromTemplate(templatePath, targetSection) {
     const content = fs.readFileSync(templatePath, 'utf8');
 
     if (targetSection === 'physical' || targetSection === 'mental' || targetSection === 'lifestyle') {
-      const regex = new RegExp(`{% if target == "${targetSection}" %}([\\s\\S]*?){% endif %}`, 'g');
+      const regex = new RegExp('{% if target == "' + targetSection + '" %}([\\s\\S]*?){% endif %}', 'g');
       const match = regex.exec(content);
       return match ? match[1].trim() : '';
     }
 
     if (targetSection === 'beginners' || targetSection === 'practice' || targetSection === 'props') {
-      const regex = new RegExp(`{% if target == "${targetSection}" %}([\\s\\S]*?){% endif %}`, 'g');
+      const regex = new RegExp('{% if target == "' + targetSection + '" %}([\\s\\S]*?){% endif %}', 'g');
       const match = regex.exec(content);
       return match ? match[1].trim() : '';
     }
@@ -431,13 +431,13 @@ async function runStaticBuild() {
   // Insert benefits content
   for (const section of ['physical', 'mental', 'lifestyle']) {
     const content = extractContentFromTemplate(path.join(INCLUDES_DIR, 'guide/benefits.html'), section);
-    guidePage = guidePage.replace(`{{benefits-${section}}}`, content || `<p>Content for ${section} benefits is being updated.</p>`);
+    guidePage = guidePage.replace('{{benefits-' + section + '}}', content || '<p>Content for ' + section + ' benefits is being updated.</p>');
   }
 
   // Insert tips content
   for (const section of ['beginners', 'practice', 'props']) {
     const content = extractContentFromTemplate(path.join(INCLUDES_DIR, 'guide/tips.html'), section);
-    guidePage = guidePage.replace(`{{tips-${section}}}`, content || `<p>Content for ${section} tips is being updated.</p>`);
+    guidePage = guidePage.replace('{{tips-' + section + '}}', content || '<p>Content for ' + section + ' tips is being updated.</p>');
   }
 
   // Insert attribution

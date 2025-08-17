@@ -32,19 +32,36 @@ if (!fs.existsSync(CACHE_DIR)) {
 }
 
 // Sources to scrape (add reputable yoga websites here)
+// Each source has an authority score (1-10) used for conflict resolution
 const SOURCES = {
   yogaTypes: [
     {
       name: 'Yoga Journal - Types of Yoga',
       url: 'https://www.yogajournal.com/yoga-101/types-of-yoga/',
       selector: '.entry-content',
-      processor: processYogaJournalTypes
+      processor: processYogaJournalTypes,
+      authority: 9
     },
     {
       name: 'Yoga Alliance - Styles',
       url: 'https://www.yogaalliance.org/About_Yoga/Yoga_Styles',
       selector: '.content-body',
-      processor: processYogaAllianceStyles
+      processor: processYogaAllianceStyles,
+      authority: 10
+    },
+    {
+      name: 'DoYogaWithMe - Styles',
+      url: 'https://www.doyogawithme.com/types-of-yoga',
+      selector: '.main-content',
+      processor: processDoYogaWithMeStyles,
+      authority: 7
+    },
+    {
+      name: 'Yoga Basics - Styles',
+      url: 'https://www.yogabasics.com/learn/yoga-styles/',
+      selector: '.entry-content',
+      processor: processYogaBasicsStyles,
+      authority: 8
     }
   ],
   poses: [
@@ -52,7 +69,22 @@ const SOURCES = {
       name: 'Yoga Journal - Poses',
       url: 'https://www.yogajournal.com/poses/',
       selector: '.category-poses',
-      processor: processYogaJournalPoses
+      processor: processYogaJournalPoses,
+      authority: 9
+    },
+    {
+      name: 'Pocket Yoga - Pose Dictionary',
+      url: 'https://www.pocketyoga.com/pose/',
+      selector: '.pose-table',
+      processor: processPocketYogaPoses,
+      authority: 7
+    },
+    {
+      name: 'DoYogaWithMe - Pose Guide',
+      url: 'https://www.doyogawithme.com/yoga-poses',
+      selector: '.view-content',
+      processor: processDoYogaWithMePoses,
+      authority: 8
     }
   ],
   benefits: [
@@ -60,7 +92,22 @@ const SOURCES = {
       name: 'Harvard Health - Yoga Benefits',
       url: 'https://www.health.harvard.edu/staying-healthy/yoga-benefits-beyond-the-mat',
       selector: '.article-body',
-      processor: processHarvardHealthBenefits
+      processor: processHarvardHealthBenefits,
+      authority: 10
+    },
+    {
+      name: 'Johns Hopkins Medicine - Yoga Benefits',
+      url: 'https://www.hopkinsmedicine.org/health/wellness-and-prevention/9-benefits-of-yoga',
+      selector: '.content-container',
+      processor: processJohnsHopkinsBenefits,
+      authority: 9
+    },
+    {
+      name: 'Medical News Today - Yoga Benefits',
+      url: 'https://www.medicalnewstoday.com/articles/yoga-benefits',
+      selector: '.article-body',
+      processor: processMedicalNewsTodayBenefits,
+      authority: 8
     }
   ],
   tips: [
@@ -68,9 +115,43 @@ const SOURCES = {
       name: 'Yoga International - Practice Tips',
       url: 'https://yogainternational.com/ecourse/yoga-for-beginners-6-week-series/',
       selector: '.course-description',
-      processor: processYogaInternationalTips
+      processor: processYogaInternationalTips,
+      authority: 8
+    },
+    {
+      name: 'Yoga Journal - Practice Tips',
+      url: 'https://www.yogajournal.com/practice/',
+      selector: '.entry-content',
+      processor: processYogaJournalTips,
+      authority: 9
+    },
+    {
+      name: 'Yoga With Adriene - Practice Tips',
+      url: 'https://yogawithadriene.com/category/yoga-tips/',
+      selector: '.entry-content',
+      processor: processYogaWithAdrieneTips,
+      authority: 7
+    },
+    {
+      name: 'Ekhart Yoga - Beginners Guide',
+      url: 'https://www.ekhartyoga.com/articles/practice/yoga-for-beginners',
+      selector: '.article__content',
+      processor: processEkhartYogaTips,
+      authority: 8
     }
   ]
+};
+
+// Content quality thresholds
+const QUALITY_THRESHOLDS = {
+  minimumDescriptionLength: 100,
+  minimumTitleLength: 3,
+  requiredFields: {
+    yogaTypes: ['name', 'description'],
+    poses: ['name', 'description', 'category'],
+    benefits: [],
+    tips: []
+  }
 };
 
 // Main function to run the scraper
@@ -130,20 +211,41 @@ async function scrapeYogaInfo() {
 // Function to scrape a single source
 async function scrapeSource(browser, source) {
   const cacheFile = path.join(CACHE_DIR, `${sanitizeFilename(source.name)}.html`);
+  const metadataFile = path.join(CACHE_DIR, `${sanitizeFilename(source.name)}.meta.json`);
   let content;
+  let metadata = { lastFetched: null, success: false };
 
-  // Check if we should use cached data (for development/testing)
-  if (fs.existsSync(cacheFile) && process.env.USE_CACHE === 'true') {
-    console.log(`  Using cached data for ${source.name}`);
+  // Check if metadata exists
+  if (fs.existsSync(metadataFile)) {
+    try {
+      metadata = JSON.parse(fs.readFileSync(metadataFile, 'utf8'));
+    } catch (e) {
+      console.log(`  Error reading metadata: ${e.message}`);
+    }
+  }
+
+  const cacheAge = metadata.lastFetched ? (Date.now() - metadata.lastFetched) / (1000 * 60 * 60 * 24) : null;
+  const shouldUseCache = fs.existsSync(cacheFile) &&
+                         process.env.USE_CACHE === 'true' &&
+                         cacheAge !== null &&
+                         cacheAge < 7; // Use cache if less than 7 days old
+
+  if (shouldUseCache) {
+    console.log(`  Using cached data for ${source.name} (${cacheAge.toFixed(1)} days old)`);
     content = fs.readFileSync(cacheFile, 'utf8');
   } else {
     // Fetch fresh data
+    console.log(`  Fetching fresh data for ${source.name}`);
+
     try {
       // Try with axios first (faster)
       const response = await axios.get(source.url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-        }
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+          'Accept': 'text/html,application/xhtml+xml,application/xml',
+          'Accept-Language': 'en-US,en;q=0.9'
+        },
+        timeout: 20000
       });
       content = response.data;
     } catch (error) {
@@ -153,7 +255,15 @@ async function scrapeSource(browser, source) {
       const page = await browser.newPage();
       await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
 
+      // Set timeout
+      await page.setDefaultNavigationTimeout(40000);
+
       try {
+        // Add cookie consent handling for common cookie banners
+        page.on('dialog', async dialog => {
+          await dialog.dismiss();
+        });
+
         await page.goto(source.url, {
           waitUntil: 'networkidle2',
           timeout: 30000
@@ -164,14 +274,43 @@ async function scrapeSource(browser, source) {
           await page.waitForSelector(source.waitForSelector, { timeout: 5000 }).catch(() => {});
         }
 
+        // Handle cookie consent popups and overlays (common patterns)
+        const cookieSelectors = [
+          '.cookie-banner button', '#cookie-consent button',
+          '[data-action="accept-cookies"]', '.consent-banner .accept',
+          '.gdpr-banner .accept', '.cookie-notice .accept'
+        ];
+
+        for (const selector of cookieSelectors) {
+          try {
+            if (await page.$(selector) !== null) {
+              await page.click(selector).catch(() => {});
+              await page.waitForTimeout(500);
+            }
+          } catch (e) {
+            // Ignore errors
+          }
+        }
+
         content = await page.content();
       } finally {
         await page.close();
       }
     }
 
-    // Save to cache
-    fs.writeFileSync(cacheFile, content);
+    // Save to cache and update metadata
+    try {
+      fs.writeFileSync(cacheFile, content);
+      metadata = {
+        lastFetched: Date.now(),
+        url: source.url,
+        success: true,
+        contentLength: content.length
+      };
+      fs.writeFileSync(metadataFile, JSON.stringify(metadata, null, 2));
+    } catch (e) {
+      console.error(`  Error saving cache: ${e.message}`);
+    }
   }
 
   // Process the content with Cheerio
@@ -184,7 +323,53 @@ async function scrapeSource(browser, source) {
   }
 
   // Process the scraped content using the source-specific processor
-  return source.processor($, targetElement);
+  const processedData = source.processor($, targetElement);
+
+  // Validate the processed data
+  const validatedData = validateContent(processedData, source);
+
+  return {
+    data: validatedData,
+    metadata: {
+      source: source.name,
+      url: source.url,
+      fetchDate: metadata.lastFetched,
+      authority: source.authority || 5,
+      license: "Content used for educational purposes with attribution"
+    }
+  };
+}
+
+// Validate content quality
+function validateContent(data, source) {
+  if (!data) return null;
+
+  // Different validation for different content types
+  const category = Object.keys(SOURCES).find(key =>
+    SOURCES[key].some(s => s.name === source.name)
+  );
+
+  if (!category) return data;
+
+  // Apply category-specific validation
+  if (Array.isArray(data)) {
+    return data.filter(item => {
+      // Check required fields
+      if (QUALITY_THRESHOLDS.requiredFields[category]) {
+        for (const field of QUALITY_THRESHOLDS.requiredFields[category]) {
+          if (!item[field]) return false;
+        }
+      }
+
+      // Check content length for text fields
+      if (item.name && item.name.length < QUALITY_THRESHOLDS.minimumTitleLength) return false;
+      if (item.description && item.description.length < QUALITY_THRESHOLDS.minimumDescriptionLength) return false;
+
+      return true;
+    });
+  }
+
+  return data;
 }
 
 // Process functions for different sources
@@ -390,7 +575,9 @@ function processYogaInternationalTips($, element) {
 function extractBenefits(text) {
   const benefitWords = [
     'improve', 'increase', 'enhance', 'strengthen', 'boost',
-    'benefit', 'help', 'reduce', 'relieve', 'lower', 'calm'
+    'benefit', 'help', 'reduce', 'relieve', 'lower', 'calm',
+    'support', 'promote', 'develop', 'facilitate', 'build',
+    'maintain', 'encourage', 'stimulate', 'balance', 'optimize'
   ];
 
   const benefits = [];
@@ -399,8 +586,17 @@ function extractBenefits(text) {
   sentences.forEach(sentence => {
     for (const word of benefitWords) {
       if (sentence.toLowerCase().includes(word)) {
-        benefits.push(sentence.trim() + '.');
-        break;
+        // Remove marketing language and clean the sentence
+        let cleanSentence = sentence.trim()
+          .replace(/in our opinion|we believe|we think|studies suggest/gi, '')
+          .replace(/\byou\b/gi, 'practitioners')
+          .replace(/\bwe\b/gi, 'yoga teachers')
+          .trim();
+
+        if (cleanSentence.length > 10) {
+          benefits.push(cleanSentence + (cleanSentence.endsWith('.') ? '' : '.'));
+          break;
+        }
       }
     }
   });
@@ -462,6 +658,384 @@ function determinePoseCategory(title, description) {
 
 function sanitizeFilename(name) {
   return name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+}
+
+// New processors for added sources
+function processDoYogaWithMeStyles($, element) {
+  const yogaStyles = [];
+
+  // Process DoYogaWithMe's style listings
+  element.find('.yoga-style, article').each((index, styleElement) => {
+    const styleEl = $(styleElement);
+
+    const title = styleEl.find('h2, h3, .title').first().text().trim();
+    let description = '';
+
+    styleEl.find('p, .description').each((i, p) => {
+      const text = $(p).text().trim();
+      if (text) description += text + ' ';
+    });
+
+    if (title && description) {
+      yogaStyles.push({
+        name: title,
+        description: description.trim(),
+        benefits: extractBenefits(description),
+        suitable_for: extractSuitableFor(description)
+      });
+    }
+  });
+
+  return yogaStyles;
+}
+
+function processYogaBasicsStyles($, element) {
+  const yogaStyles = [];
+
+  // Find style sections
+  element.find('.entry-content > div, .yoga-style').each((index, styleSection) => {
+    const section = $(styleSection);
+    const title = section.find('h2, h3, h4').first().text().trim();
+
+    if (!title || title.length < 3) return;
+
+    let description = '';
+    section.find('p').each((i, p) => {
+      description += $(p).text().trim() + ' ';
+    });
+
+    if (title && description) {
+      yogaStyles.push({
+        name: title,
+        description: description.trim(),
+        benefits: extractBenefits(description),
+        suitable_for: extractSuitableFor(description)
+      });
+    }
+  });
+
+  return yogaStyles;
+}
+
+function processPocketYogaPoses($, element) {
+  const poses = [];
+
+  // Process pose listings
+  element.find('tr, .pose-item').each((index, poseElement) => {
+    const poseEl = $(poseElement);
+
+    const title = poseEl.find('a, .pose-name').first().text().trim();
+    const url = poseEl.find('a').first().attr('href');
+
+    // Skip header rows or empty elements
+    if (!title || title.length < 3 || title.toLowerCase() === 'name') return;
+
+    // Extract description from linked page if available
+    let description = poseEl.find('.pose-description, p').text().trim();
+
+    // Extract difficulty
+    let difficulty = poseEl.find('.difficulty, .level').text().trim();
+    if (!difficulty) {
+      // Try to infer difficulty from class or text
+      if (poseEl.hasClass('beginner') || poseEl.text().includes('beginner')) {
+        difficulty = 'Beginner';
+      } else if (poseEl.hasClass('intermediate') || poseEl.text().includes('intermediate')) {
+        difficulty = 'Intermediate';
+      } else if (poseEl.hasClass('advanced') || poseEl.text().includes('advanced')) {
+        difficulty = 'Advanced';
+      }
+    }
+
+    // Extract image
+    let imageUrl = '';
+    const img = poseEl.find('img').first();
+    if (img.length) {
+      imageUrl = img.attr('src') || img.attr('data-src') || '';
+    }
+
+    if (title) {
+      poses.push({
+        name: title,
+        description: description || `${title} is a yoga pose that offers numerous benefits for practitioners.`,
+        url: url,
+        image_url: imageUrl,
+        difficulty: difficulty || 'All Levels',
+        benefits: extractBenefits(description),
+        category: determinePoseCategory(title, description)
+      });
+    }
+  });
+
+  return poses;
+}
+
+function processDoYogaWithMePoses($, element) {
+  const poses = [];
+
+  // Process pose listings
+  element.find('.views-row, .pose-item').each((index, poseElement) => {
+    const poseEl = $(poseElement);
+
+    const title = poseEl.find('h2, h3, .pose-title').first().text().trim();
+    let description = '';
+
+    poseEl.find('p, .field-content').each((i, p) => {
+      const text = $(p).text().trim();
+      if (text) description += text + ' ';
+    });
+
+    // Extract image
+    let imageUrl = '';
+    const img = poseEl.find('img').first();
+    if (img.length) {
+      imageUrl = img.attr('src') || img.attr('data-src') || '';
+    }
+
+    // Determine difficulty level
+    let difficulty = poseEl.find('.difficulty, .level').text().trim();
+
+    if (title) {
+      poses.push({
+        name: title,
+        description: description.trim(),
+        image_url: imageUrl,
+        difficulty: difficulty || 'All Levels',
+        benefits: extractBenefits(description),
+        category: determinePoseCategory(title, description)
+      });
+    }
+  });
+
+  return poses;
+}
+
+function processJohnsHopkinsBenefits($, element) {
+  const benefits = {
+    physical: [],
+    mental: [],
+    general: []
+  };
+
+  // Look for benefit headers and descriptions
+  element.find('h2, h3').each((index, heading) => {
+    const title = $(heading).text().trim();
+
+    if (!title || title.length < 3) return;
+
+    let description = '';
+    let currentEl = $(heading).next();
+
+    while (currentEl.length && !currentEl.is('h2, h3')) {
+      if (currentEl.is('p, li')) {
+        const text = currentEl.text().trim();
+        if (text) description += text + ' ';
+      }
+      currentEl = currentEl.next();
+    }
+
+    if (description) {
+      const benefit = {
+        title: title,
+        description: description.trim()
+      };
+
+      // Categorize based on content
+      if (title.match(/mind|stress|anxiety|depress|mood|focus|relax|calm|mental/i) ||
+          description.match(/mind|stress|anxiety|depress|mood|focus|relax|calm|mental/i)) {
+        benefits.mental.push(benefit);
+      } else if (title.match(/body|muscle|strength|flexib|heart|blood|pressure|pain|posture|balance|bone/i) ||
+                 description.match(/body|muscle|strength|flexib|heart|blood|pressure|pain|posture|balance|bone/i)) {
+        benefits.physical.push(benefit);
+      } else {
+        benefits.general.push(benefit);
+      }
+    }
+  });
+
+  return benefits;
+}
+
+function processMedicalNewsTodayBenefits($, element) {
+  const benefits = {
+    physical: [],
+    mental: [],
+    general: []
+  };
+
+  // Process each section with benefits
+  element.find('h2, h3').each((index, heading) => {
+    const title = $(heading).text().trim();
+
+    // Skip non-benefit sections
+    if (!title || title.length < 3 ||
+        title.match(/reference|source|conclusion|summary|about|author/i)) {
+      return;
+    }
+
+    let description = '';
+    let currentEl = $(heading).next();
+
+    while (currentEl.length && !currentEl.is('h2, h3')) {
+      if (currentEl.is('p, li')) {
+        const text = currentEl.text().trim();
+        if (text) description += text + ' ';
+      }
+      currentEl = currentEl.next();
+    }
+
+    if (description) {
+      const benefit = {
+        title: title,
+        description: description.trim()
+      };
+
+      // Categorize
+      if (title.match(/mind|stress|anxiety|depress|mood|focus|relax|calm|mental|emotional|psychological/i) ||
+          description.match(/mind|stress|anxiety|depress|mood|focus|relax|calm|mental|emotional|psychological/i)) {
+        benefits.mental.push(benefit);
+      } else if (title.match(/body|muscle|strength|flexib|heart|blood|pressure|pain|posture|balance|bone|weight|physical|fitness/i) ||
+                 description.match(/body|muscle|strength|flexib|heart|blood|pressure|pain|posture|balance|bone|weight|physical|fitness/i)) {
+        benefits.physical.push(benefit);
+      } else {
+        benefits.general.push(benefit);
+      }
+    }
+  });
+
+  return benefits;
+}
+
+function processYogaJournalTips($, element) {
+  const tips = {
+    beginners: [],
+    practice: [],
+    props: []
+  };
+
+  // Find tip sections
+  element.find('h2, h3, h4').each((index, heading) => {
+    const title = $(heading).text().trim();
+
+    if (!title || title.length < 3) return;
+
+    let content = '';
+    let currentEl = $(heading).next();
+
+    while (currentEl.length && !currentEl.is('h2, h3, h4')) {
+      if (currentEl.is('p, li')) {
+        const text = currentEl.text().trim();
+        if (text) content += text + ' ';
+      }
+      currentEl = currentEl.next();
+    }
+
+    if (content) {
+      const tip = {
+        title: title,
+        content: content.trim()
+      };
+
+      // Categorize tips
+      if (title.match(/beginner|start|new to yoga|first time|basic/i) ||
+          content.match(/beginner|start|new to yoga|first time|basic/i)) {
+        tips.beginners.push(tip);
+      } else if (title.match(/prop|block|strap|blanket|bolster|chair|wall/i) ||
+                content.match(/prop|block|strap|blanket|bolster|chair|wall/i)) {
+        tips.props.push(tip);
+      } else {
+        tips.practice.push(tip);
+      }
+    }
+  });
+
+  return tips;
+}
+
+function processYogaWithAdrieneTips($, element) {
+  const tips = {
+    beginners: [],
+    practice: [],
+    props: []
+  };
+
+  // Process blog posts or articles
+  element.find('article, .post').each((index, article) => {
+    const articleEl = $(article);
+    const title = articleEl.find('h2, h3, .entry-title').first().text().trim();
+
+    if (!title || title.length < 3) return;
+
+    let content = '';
+    articleEl.find('p, .entry-content p').each((i, p) => {
+      content += $(p).text().trim() + ' ';
+    });
+
+    if (content) {
+      const tip = {
+        title: title,
+        content: content.trim()
+      };
+
+      // Categorize
+      if (title.match(/beginner|start|new to yoga|first time|basic/i) ||
+          content.match(/beginner|start|new to yoga|first time|basic/i)) {
+        tips.beginners.push(tip);
+      } else if (title.match(/prop|block|strap|blanket|bolster|chair|wall/i) ||
+                content.match(/prop|block|strap|blanket|bolster|chair|wall/i)) {
+        tips.props.push(tip);
+      } else {
+        tips.practice.push(tip);
+      }
+    }
+  });
+
+  return tips;
+}
+
+function processEkhartYogaTips($, element) {
+  const tips = {
+    beginners: [],
+    practice: [],
+    props: []
+  };
+
+  // Process content sections
+  element.find('h2, h3, h4').each((index, heading) => {
+    const title = $(heading).text().trim();
+
+    if (!title || title.length < 3) return;
+
+    let content = '';
+    let currentEl = $(heading).next();
+
+    while (currentEl.length && !currentEl.is('h2, h3, h4')) {
+      if (currentEl.is('p, li')) {
+        const text = currentEl.text().trim();
+        if (text) content += text + ' ';
+      }
+      currentEl = currentEl.next();
+    }
+
+    if (content) {
+      const tip = {
+        title: title,
+        content: content.trim()
+      };
+
+      // Categorize
+      if (title.match(/beginner|start|new|first|basic/i) ||
+          content.match(/beginner|start|new to yoga|first time|basic/i)) {
+        tips.beginners.push(tip);
+      } else if (title.match(/prop|block|strap|blanket|bolster|chair|wall/i) ||
+                content.match(/prop|block|strap|blanket|bolster|chair|wall/i)) {
+        tips.props.push(tip);
+      } else {
+        tips.practice.push(tip);
+      }
+    }
+  });
+
+  return tips;
 }
 
 // Run the scraper

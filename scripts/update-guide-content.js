@@ -29,6 +29,10 @@ async function updateGuideContent() {
 
   // Read all the scraped data
   const scrapedData = {};
+  const metadata = {
+    lastUpdated: new Date().toISOString(),
+    sources: {}
+  };
 
   for (const section of SECTIONS) {
     const filePath = path.join(SCRAPED_DIR, `${section}.json`);
@@ -36,8 +40,15 @@ async function updateGuideContent() {
     if (fs.existsSync(filePath)) {
       try {
         const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-        scrapedData[section] = data;
-        console.log(`✓ Loaded ${section} data from ${filePath}`);
+
+        // Process and merge data from multiple sources
+        const processedData = processSectionData(section, data);
+        scrapedData[section] = processedData.data;
+
+        // Track sources for attribution
+        metadata.sources[section] = processedData.sources;
+
+        console.log(`✓ Loaded ${section} data from ${filePath} (${scrapedData[section].length} items from ${processedData.sources.length} sources)`);
       } catch (error) {
         console.error(`✗ Error loading ${section} data:`, error.message);
       }
@@ -51,9 +62,22 @@ async function updateGuideContent() {
   for (const section of SECTIONS) {
     if (scrapedData[section] && scrapedData[section].length > 0) {
       try {
-        const content = generateSectionContent(section, scrapedData[section]);
+        // Check if we have enough content
+        if (scrapedData[section].length < MIN_CONTENT_PER_SECTION) {
+          console.log(`⚠ Warning: Only ${scrapedData[section].length} items for ${section} (minimum ${MIN_CONTENT_PER_SECTION})`);
+        }
+
+        const content = generateSectionContent(section, scrapedData[section], metadata.sources[section]);
         const outputPath = path.join(GUIDE_INCLUDES_DIR, `${section}.html`);
+
+        // Save content
         fs.writeFileSync(outputPath, content);
+
+        // Save a separate attribution file
+        const attributionPath = path.join(GUIDE_INCLUDES_DIR, `${section}-attribution.html`);
+        const attribution = generateAttributionHTML(section, metadata.sources[section]);
+        fs.writeFileSync(attributionPath, attribution);
+
         console.log(`✓ Generated content for ${section} -> ${outputPath}`);
       } catch (error) {
         console.error(`✗ Error generating content for ${section}:`, error.message);
@@ -63,6 +87,10 @@ async function updateGuideContent() {
     }
   }
 
+  // Save metadata
+  const metadataPath = path.join(GUIDE_INCLUDES_DIR, 'content-metadata.json');
+  fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
+
   // Update the main guide template to include the generated content
   updateGuideTemplate();
 
@@ -70,21 +98,163 @@ async function updateGuideContent() {
 }
 
 // Generate HTML content for a specific section
-function generateSectionContent(section, data) {
-  console.log(`Generating content for ${section} from ${data.length} source(s)...`);
+// Process and merge data from multiple sources
+function processSectionData(section, data) {
+  const mergedData = [];
+  const sources = [];
 
+  // Extract source information for attribution
+  data.forEach(sourceData => {
+    if (sourceData.source && sourceData.data) {
+      // Add source metadata
+      sources.push({
+        name: sourceData.source,
+        url: sourceData.data.metadata?.url || '',
+        fetchDate: sourceData.data.metadata?.fetchDate || null,
+        authority: sourceData.data.metadata?.authority || 5,
+        license: sourceData.data.metadata?.license || "Content used for educational purposes with attribution"
+      });
+
+      // Extract the actual data
+      if (Array.isArray(sourceData.data.data)) {
+        // Process array data (like poses, yoga types)
+        sourceData.data.data.forEach(item => {
+          // Add source attribution to each item
+          item._source = sourceData.source;
+          item._sourceAuthority = sourceData.data.metadata?.authority || 5;
+          mergedData.push(item);
+        });
+      } else if (typeof sourceData.data.data === 'object') {
+        // Process object data (like benefits, tips)
+        const dataObj = sourceData.data.data;
+
+        // Handle each category within the object
+        Object.keys(dataObj).forEach(category => {
+          if (Array.isArray(dataObj[category])) {
+            dataObj[category].forEach(item => {
+              // Add source and category info
+              item._source = sourceData.source;
+              item._category = category;
+              item._sourceAuthority = sourceData.data.metadata?.authority || 5;
+              mergedData.push(item);
+            });
+          }
+        });
+      }
+    }
+  });
+
+  // Remove duplicates and sort by authority
+  const uniqueData = removeDuplicates(section, mergedData);
+
+  return {
+    data: uniqueData,
+    sources: sources
+  };
+}
+
+// Remove duplicate content based on section-specific rules
+function removeDuplicates(section, data) {
   switch (section) {
-    case 'types':
-      return generateYogaTypesContent(data);
+    case 'yogaTypes':
+      // Group by name, prioritize higher authority sources
+      return deduplicateByField(data, 'name');
+
     case 'poses':
-      return generateYogaPosesContent(data);
+      // Group by name, prioritize higher authority sources
+      return deduplicateByField(data, 'name');
+
     case 'benefits':
-      return generateYogaBenefitsContent(data);
+      // Group by title
+      return deduplicateByField(data, 'title');
+
     case 'tips':
-      return generateYogaTipsContent(data);
+      // Group by title
+      return deduplicateByField(data, 'title');
+
+    default:
+      return data;
+  }
+}
+
+// Generic deduplication function that prioritizes higher authority
+function deduplicateByField(data, field) {
+  const groups = {};
+
+  // Group items by the specified field
+  data.forEach(item => {
+    if (!item[field]) return;
+
+    const key = item[field].toLowerCase().trim();
+
+    if (!groups[key]) {
+      groups[key] = [];
+    }
+
+    groups[key].push(item);
+  });
+
+  // For each group, select the item with highest authority
+  const result = [];
+  Object.values(groups).forEach(group => {
+    // Sort by authority (highest first)
+    group.sort((a, b) => (b._sourceAuthority || 0) - (a._sourceAuthority || 0));
+
+    // Take the highest authority item
+    result.push(group[0]);
+  });
+
+  return result;
+}
+
+function generateSectionContent(section, data, sources) {
+  // Add attribution comment
+  let content = `<!-- Content from ${sources.length} source(s): ${sources.map(s => s.name).join(', ')} -->\n`;
+  content += `<!-- Last updated: ${new Date().toISOString()} -->\n\n`;
+
+  // Generate section-specific content
+  switch (section) {
+    case 'yogaTypes':
+      content += generateYogaTypesContent(data);
+      break;
+    case 'poses':
+      content += generateYogaPosesContent(data);
+      break;
+    case 'benefits':
+      content += generateYogaBenefitsContent(data);
+      break;
+    case 'tips':
+      content += generateYogaTipsContent(data);
+      break;
     default:
       throw new Error(`Unknown section: ${section}`);
   }
+
+  return content;
+}
+
+// Generate HTML for content attribution
+function generateAttributionHTML(section, sources) {
+  let html = `<div class="content-attribution">\n`;
+  html += `  <h4>Content Sources</h4>\n`;
+  html += `  <p class="last-updated">Last updated: ${new Date().toLocaleDateString()}</p>\n`;
+  html += `  <ul class="sources-list">\n`;
+
+  sources.forEach(source => {
+    const date = source.fetchDate ? new Date(source.fetchDate).toLocaleDateString() : 'Unknown date';
+
+    if (source.url) {
+      html += `    <li><a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.name)}</a> (Retrieved: ${date})</li>\n`;
+    } else {
+      html += `    <li>${escapeHtml(source.name)} (Retrieved: ${date})</li>\n`;
+    }
+  });
+
+  html += `  </ul>\n`;
+  html += `  <p class="attribution-notice">Content used for educational purposes with attribution to original sources.</p>\n`;
+  html += `</div>`;
+
+  return html;
 }
 
 // Generate content for yoga types

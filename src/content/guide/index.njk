@@ -5,6 +5,12 @@ description: Explore different styles and levels of yoga to find your perfect pr
 permalink: /guide/
 eleventyComputed:
   pageClass: "guide-page"
+  sources: [
+    { "name": "Yoga Journal", "url": "https://www.yogajournal.com/" },
+    { "name": "Yoga Alliance", "url": "https://www.yogaalliance.org/" },
+    { "name": "Harvard Health", "url": "https://www.health.harvard.edu/" },
+    { "name": "Johns Hopkins Medicine", "url": "https://www.hopkinsmedicine.org/" }
+  ]
 ---
 
 <!-- Empty page header -->
@@ -41,6 +47,9 @@ eleventyComputed:
             </div>
           </div>
         {% endfor %}
+
+        <!-- Content attribution -->
+        {% include "components/attribution.njk" %}
       </div>
     </div>
 

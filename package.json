@@ -1,7 +1,7 @@
 {
   "name": "mat-and-mind",
   "version": "1.0.0",
-  "description": "A distraction-free yoga practice website",
+  "description": "A distraction-free yoga practice website with trustworthy content",
   "main": "index.js",
   "scripts": {
     "start": "eleventy --serve",
@@ -12,6 +12,8 @@
     "scrape": "node scripts/scrape-yoga-info.js",
     "update-guide": "node scripts/update-guide-content.js",
     "refresh-guide": "npm run scrape && npm run update-guide",
+    "refresh-content": "bash scripts/refresh-content.sh",
+    "refresh-content:cache": "bash scripts/refresh-content.sh --use-cache",
     "cleanup": "node scripts/cleanup-old-files.js",
     "cleanup:dry": "node scripts/cleanup-old-files.js --dry-run"
   },
@@ -20,7 +22,8 @@
     "videos",
     "11ty",
     "youtube",
-    "mindfulness"
+    "mindfulness",
+    "trusted-content"
   ],
   "author": "",
   "license": "MIT",

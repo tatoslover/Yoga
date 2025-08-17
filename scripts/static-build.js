@@ -226,7 +226,7 @@ const GUIDE_HTML = `<section class="page-header">
         const target = this.getAttribute('data-target');
 
         // Remove active class from all buttons in this section
-        const sectionButtons = document.querySelectorAll(`.guide-selector-btn[data-section="${section}"]`);
+        const sectionButtons = document.querySelectorAll('.guide-selector-btn[data-section="' + section + '"]');
         sectionButtons.forEach(btn => btn.classList.remove('active'));
 
         // Add active class to clicked button
@@ -246,7 +246,7 @@ const GUIDE_HTML = `<section class="page-header">
 
     // Activate the first button in each section
     sections.forEach(section => {
-      const firstButton = document.querySelector(`.guide-selector-btn[data-section="${section}"]`);
+      const firstButton = document.querySelector('.guide-selector-btn[data-section="' + section + '"]');
       if (firstButton) {
         firstButton.classList.add('active');
       }

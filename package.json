@@ -17,6 +17,7 @@
     "refresh-content:http": "bash scripts/refresh-content.sh --http-only",
     "refresh-content:cache-http": "bash scripts/refresh-content.sh --use-cache --http-only",
     "generate-static": "node scripts/generate-static-content.js",
+    "static-build": "node scripts/static-build.js",
     "cleanup": "node scripts/cleanup-old-files.js",
     "cleanup:dry": "node scripts/cleanup-old-files.js --dry-run"
   },

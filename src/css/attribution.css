@@ -1,0 +1,183 @@
+/*
+ * Attribution Styles
+ * Styles for content attribution elements and trusted sources components
+ */
+
+/* Source Attribution Container */
+.source-attribution-container {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border, #ddd);
+}
+
+.source-attribution-box {
+  background-color: var(--color-surface-alt, #f9f9f9);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.source-attribution-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary, #333);
+  font-weight: 600;
+}
+
+.source-attribution-box p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #555);
+}
+
+/* Content Attribution Component */
+.content-attribution {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.content-attribution h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary, #333);
+}
+
+.content-attribution .last-updated {
+  font-style: italic;
+  color: var(--color-text-tertiary, #777);
+  margin-bottom: 0.75rem;
+}
+
+.content-attribution .sources-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.content-attribution .sources-list li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.content-attribution .sources-list li:before {
+  content: "•";
+  color: var(--color-primary, #4caf50);
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.content-attribution .sources-list a {
+  color: var(--color-primary, #4caf50);
+  text-decoration: none;
+}
+
+.content-attribution .sources-list a:hover {
+  text-decoration: underline;
+}
+
+.content-attribution .attribution-notice {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.content-attribution .citation {
+  font-style: italic;
+  color: var(--color-text-tertiary, #777);
+  border-left: 3px solid var(--color-border, #ddd);
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+.content-disclaimer {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.content-disclaimer p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Trusted Sources Banner */
+.trusted-sources-banner {
+  margin: 0 0 3rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Theme-specific attribute styles */
+[data-theme="zen"] .source-attribution-box {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme="zen"] .content-attribution .sources-list li:before {
+  color: #65746b;
+}
+
+[data-theme="zen"] .content-attribution .sources-list a {
+  color: #65746b;
+  border-bottom: 1px dotted #65746b;
+}
+
+[data-theme="zen"] .trusted-sources-banner {
+  border-left-color: #65746b;
+}
+
+[data-theme="zen"] .trusted-icon {
+  color: #65746b;
+}
+
+[data-theme="sunset"] .source-attribution-box {
+  background-color: rgba(246, 178, 107, 0.05);
+}
+
+[data-theme="sunset"] .content-attribution .sources-list li:before {
+  color: #e2725b;
+}
+
+[data-theme="sunset"] .content-attribution .sources-list a {
+  color: #e2725b;
+}
+
+[data-theme="sunset"] .trusted-sources-banner {
+  border-left-color: #e2725b;
+}
+
+[data-theme="sunset"] .trusted-icon {
+  color: #e2725b;
+}
+
+[data-theme="ocean"] .source-attribution-box {
+  background-color: rgba(70, 130, 180, 0.05);
+}
+
+[data-theme="ocean"] .content-attribution .sources-list li:before {
+  color: #4682b4;
+}
+
+[data-theme="ocean"] .content-attribution .sources-list a {
+  color: #4682b4;
+}
+
+[data-theme="ocean"] .trusted-sources-banner {
+  border-left-color: #4682b4;
+}
+
+[data-theme="ocean"] .trusted-icon {
+  color: #4682b4;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .source-attribution-box {
+    padding: 1rem;
+  }
+
+  .content-attribution .sources-list li {
+    margin-bottom: 0.75rem;
+  }
+}

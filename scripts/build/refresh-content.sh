@@ -18,7 +18,7 @@ echo -e "${GREEN}=============================================${NC}"
 echo -e "${GREEN}  Mat & Mind - Content Refresh Workflow     ${NC}"
 echo -e "${GREEN}=============================================${NC}"
 
-# Create directories if they don't exist
+# Create required directories if they don't exist
 mkdir -p src/_data/scraped
 mkdir -p _cache
 
@@ -50,7 +50,7 @@ echo -e "HTTP-only mode: ${HTTP_ONLY}"
 echo -e "\n${YELLOW}Step 1: Scraping content from trusted yoga sources...${NC}"
 
 # Set up command
-SCRAPE_CMD="node scripts/scrape-yoga-info.js"
+SCRAPE_CMD="node scripts/scraping/scrape-yoga-info.js"
 
 # Add options
 if [ "$USE_CACHE" = true ] ; then
@@ -73,7 +73,7 @@ fi
 
 # Step 2: Process scraped data and update guide content
 echo -e "\n${YELLOW}Step 2: Processing scraped data and updating guide content...${NC}"
-node scripts/update-guide-content.js
+node scripts/content/update-guide-content.js
 
 # Check if content update was successful
 if [ $? -ne 0 ]; then

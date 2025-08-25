@@ -1,19 +1,19 @@
 ---
 layout: base.njk
 title: Yoga Guide
-description: &quot;Explore different styles and levels of yoga to find your perfect practice&quot;
+description: "Explore different styles and levels of yoga to find your perfect practice"
 permalink: /guide/
 eleventyComputed:
-  pageClass: &quot;guide-page&quot;
+  pageClass: "guide-page"
   sources:
-    - name: &quot;Yoga Journal&quot;
-      url: &quot;https://www.yogajournal.com/&quot;
-    - name: &quot;Yoga Alliance&quot;
-      url: &quot;https://www.yogaalliance.org/&quot;
-    - name: &quot;Harvard Health&quot;
-      url: &quot;https://www.health.harvard.edu/&quot;
-    - name: &quot;Johns Hopkins Medicine&quot;
-      url: &quot;https://www.hopkinsmedicine.org/&quot;
+    - name: "Yoga Journal"
+      url: "https://www.yogajournal.com/"
+    - name: "Yoga Alliance"
+      url: "https://www.yogaalliance.org/"
+    - name: "Harvard Health"
+      url: "https://www.health.harvard.edu/"
+    - name: "Johns Hopkins Medicine"
+      url: "https://www.hopkinsmedicine.org/"
 ---
 
 <!-- Empty page header -->
@@ -22,6 +22,8 @@ eleventyComputed:
 
 <section class="guide-container">
   <div class="container">
+
+    <!-- Trusted Sources Banner has been moved to About page -->
 
     <!-- Yoga Types Section -->
     <div class="guide-section">
@@ -45,14 +47,13 @@ eleventyComputed:
           <div class="guide-content-box" id="types-{{ type | slug }}-content">
             <h3>{{ type }}</h3>
             <div class="yoga-type-content">
-              {% include &quot;guide/types.html&quot; %}
+              {% include "guide/types.html" %}
               <!-- Video links removed to focus on informational content -->
             </div>
           </div>
         {% endfor %}
 
-        <!-- Content attribution -->
-        {% include &quot;components/attribution.njk&quot; %}
+        <!-- Content attribution has been moved to About page -->
       </div>
     </div>
 
@@ -78,7 +79,7 @@ eleventyComputed:
           <div class="guide-content-box" id="levels-{{ level | slug }}-content">
             <h3>{{ level }}</h3>
             <div class="level-content">
-              {% if level == &quot;Beginner&quot; %}
+              {% if level == "Beginner" %}
                 <div class="level-description">
                   <p>Perfect for those just starting their yoga journey. These classes focus on basic postures, proper alignment, and building a foundation for your practice.</p>
 
@@ -104,7 +105,7 @@ eleventyComputed:
                     </div>
                   </div>
                 </div>
-              {% elif level == &quot;Intermediate&quot; %}
+              {% elif level == "Intermediate" %}
                 <div class="level-description">
                   <p>For practitioners with some yoga experience. These classes introduce more complex poses, transitions, and longer holds to deepen your practice.</p>
 
@@ -130,7 +131,7 @@ eleventyComputed:
                     </div>
                   </div>
                 </div>
-              {% elif level == &quot;Advanced&quot; %}
+              {% elif level == "Advanced" %}
                 <div class="level-description">
                   <p>Challenging practices for experienced yogis. These classes include advanced postures, complex sequences, and require greater strength and flexibility.</p>
 
@@ -217,22 +218,22 @@ eleventyComputed:
       <div class="guide-content-container" id="poses-container">
         <div class="guide-content-box" id="poses-standing-content">
           <h3>Standing Poses</h3>
-          {% include &quot;guide/levels.html&quot; %}
+          {% include "guide/levels.html" %}
         </div>
 
         <div class="guide-content-box" id="poses-seated-content">
           <h3>Seated Poses</h3>
-          {% include &quot;guide/poses.html&quot; %}
+          {% include "guide/poses.html" %}
         </div>
 
         <div class="guide-content-box" id="poses-backbends-content">
           <h3>Backbends</h3>
-          {% include &quot;guide/poses.html&quot; %}
+          {% include "guide/poses.html" %}
         </div>
 
         <div class="guide-content-box" id="poses-inversions-content">
           <h3>Inversions</h3>
-          {% include &quot;guide/poses.html&quot; %}
+          {% include "guide/poses.html" %}
         </div>
       </div>
       <div class="section-footer">
@@ -264,17 +265,17 @@ eleventyComputed:
       <div class="guide-content-container" id="tips-container">
         <div class="guide-content-box" id="tips-beginners-content">
           <h3>For Beginners</h3>
-          {% include &quot;guide/tips.html&quot; %}
+          {% include "guide/tips.html" %}
         </div>
 
         <div class="guide-content-box" id="tips-mindful-content">
           <h3>Mindful Practice</h3>
-          {% include &quot;guide/tips.html&quot; %}
+          {% include "guide/tips.html" %}
         </div>
 
         <div class="guide-content-box" id="tips-props-content">
           <h3>Using Props</h3>
-          {% include &quot;guide/tips.html&quot; %}
+          {% include "guide/tips.html" %}
         </div>
       </div>
     </div>
@@ -283,7 +284,7 @@ eleventyComputed:
     <div class="guide-section">
       <div class="guide-section-header">
         <h2>Yoga Benefits</h2>
-        <p>Discover how yoga can transform your physical, mental, and overall wellbeing</p>
+        <p>Discover how yoga can transform your physical, mental, and overall wellbeing, based on research from Harvard Health</p>
       </div>
 
       <div class="guide-selector">
@@ -303,18 +304,23 @@ eleventyComputed:
       <div class="guide-content-container" id="benefits-container">
         <div class="guide-content-box" id="benefits-physical-content">
           <h3>Physical Benefits</h3>
-          {% include &quot;guide/benefits.html&quot; %}
+          {% set target = "physical" %}
+          {% include "guide/benefits.html" %}
         </div>
 
         <div class="guide-content-box" id="benefits-mental-content">
           <h3>Mental Benefits</h3>
-          {% include &quot;guide/benefits.html&quot; %}
+          {% set target = "mental" %}
+          {% include "guide/benefits.html" %}
         </div>
 
         <div class="guide-content-box" id="benefits-lifestyle-content">
           <h3>Lifestyle Benefits</h3>
-          {% include &quot;guide/benefits.html&quot; %}
+          {% set target = "lifestyle" %}
+          {% include "guide/benefits.html" %}
         </div>
+
+        <!-- Source attribution has been moved to About page -->
       </div>
     </div>
 
@@ -322,54 +328,54 @@ eleventyComputed:
 </section>
 
 <script>
-  document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
+  document.addEventListener('DOMContentLoaded', function() {
     // Get all selector buttons
-    const selectorButtons = document.querySelectorAll(&apos;.guide-selector-btn&apos;);
+    const selectorButtons = document.querySelectorAll('.guide-selector-btn');
 
     // Initialize all content boxes as hidden (not active)
-    const sections = [&apos;types&apos;, &apos;levels&apos;, &apos;poses&apos;, &apos;tips&apos;, &apos;benefits&apos;];
+    const sections = ['types', 'levels', 'poses', 'tips', 'benefits'];
 
-    sections.forEach(section =&gt; {
-      const container = document.getElementById(`&#x24;{section}-container`);
+    sections.forEach(section => {
+      const container = document.getElementById(`${section}-container`);
       if (container) {
-        const contentBoxes = container.querySelectorAll(&apos;.guide-content-box&apos;);
+        const contentBoxes = container.querySelectorAll('.guide-content-box');
         // Ensure all content boxes start as hidden (not active)
-        contentBoxes.forEach(box =&gt; {
-          box.classList.remove(&apos;active&apos;);
+        contentBoxes.forEach(box => {
+          box.classList.remove('active');
         });
       }
     });
 
     // Add click event to each button
-    selectorButtons.forEach(button =&gt; {
-      button.addEventListener(&apos;click&apos;, function() {
-        const section = this.getAttribute(&apos;data-section&apos;);
-        const targetId = this.getAttribute(&apos;data-target&apos;);
-        const container = document.getElementById(`&#x24;{section}-container`);
-        const targetContent = document.getElementById(`&#x24;{section}-&#x24;{targetId}-content`);
+    selectorButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const section = this.getAttribute('data-section');
+        const targetId = this.getAttribute('data-target');
+        const container = document.getElementById(`${section}-container`);
+        const targetContent = document.getElementById(`${section}-${targetId}-content`);
 
         // If this button is already active, deactivate it and hide content
-        if (this.classList.contains(&apos;active&apos;)) {
-          this.classList.remove(&apos;active&apos;);
-          targetContent.classList.remove(&apos;active&apos;);
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+          targetContent.classList.remove('active');
           return;
         }
 
         // Get all buttons and content boxes for this section
-        const sectionButtons = document.querySelectorAll(`[data-section=&quot;&#x24;{section}&quot;]`);
-        const contentBoxes = container.querySelectorAll(&apos;.guide-content-box&apos;);
+        const sectionButtons = document.querySelectorAll(`[data-section="${section}"]`);
+        const contentBoxes = container.querySelectorAll('.guide-content-box');
 
         // Remove active class from all buttons and content boxes in this section
-        sectionButtons.forEach(btn =&gt; btn.classList.remove(&apos;active&apos;));
-        contentBoxes.forEach(box =&gt; box.classList.remove(&apos;active&apos;));
+        sectionButtons.forEach(btn => btn.classList.remove('active'));
+        contentBoxes.forEach(box => box.classList.remove('active'));
 
         // Add active class to clicked button and its content
-        this.classList.add(&apos;active&apos;);
-        targetContent.classList.add(&apos;active&apos;);
+        this.classList.add('active');
+        targetContent.classList.add('active');
 
         // Scroll to content box smoothly
-        setTimeout(() =&gt; {
-          targetContent.scrollIntoView({ behavior: &apos;smooth&apos;, block: &apos;center&apos; });
+        setTimeout(() => {
+          targetContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }, 100);
       });
     });
@@ -378,32 +384,20 @@ eleventyComputed:
 
 <script>
   // Apply theme to guide page
-  document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
-    const storedTheme = localStorage.getItem(&apos;mat-and-mind-theme&apos;) || &apos;forrest&apos;;
+  document.addEventListener('DOMContentLoaded', function() {
+    const storedTheme = localStorage.getItem('mat-and-mind-theme') || 'forrest';
 
-    if (!document.body.hasAttribute(&apos;data-theme&apos;)) {
-      document.body.setAttribute(&apos;data-theme&apos;, storedTheme);
+    if (!document.body.hasAttribute('data-theme')) {
+      document.body.setAttribute('data-theme', storedTheme);
     }
 
-    document.addEventListener(&apos;themeChanged&apos;, function(e) {
-      document.body.setAttribute(&apos;data-theme&apos;, e.detail.theme);
+    document.addEventListener('themeChanged', function(e) {
+      document.body.setAttribute('data-theme', e.detail.theme);
     });
   });
 </script>
 
-<script>
-  // Add data source attribution at the bottom of the page
-  document.addEventListener(&apos;DOMContentLoaded&apos;, function() {
-    // Add data attribution to the footer
-    const footer = document.querySelector(&apos;.site-footer&apos;);
-    if (footer) {
-      const attribution = document.createElement(&apos;div&apos;);
-      attribution.className = &apos;data-attribution&apos;;
-      attribution.innerHTML = &apos;<p>Yoga information sourced from reputable yoga resources.</p>&apos;;
-      footer.querySelector(&apos;.container&apos;).appendChild(attribution);
-    }
-  });
-</script>
+<!-- Footer attribution script removed as attribution has been moved to About page -->
 
 <style>
   .guide-container {

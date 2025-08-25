@@ -69,6 +69,30 @@ permalink: /about/
       </p>
     </div>
 
+    <div class="about-section trusted-info-section">
+      <h2>Trusted Information</h2>
+      <div class="trusted-info-content">
+        <p>
+          Mat & Mind is committed to providing accurate yoga information from respected sources including Harvard Health, Yoga Journal, and other authoritative publications.
+        </p>
+        <div class="trusted-sources-list">
+          <h3>Our trusted sources include:</h3>
+          <ul>
+            <li><a href="https://www.health.harvard.edu/" target="_blank" rel="noopener">Harvard Health</a></li>
+            <li><a href="https://www.yogajournal.com/" target="_blank" rel="noopener">Yoga Journal</a></li>
+            <li><a href="https://www.yogaalliance.org/" target="_blank" rel="noopener">Yoga Alliance</a></li>
+            <li><a href="https://www.hopkinsmedicine.org/" target="_blank" rel="noopener">Johns Hopkins Medicine</a></li>
+          </ul>
+        </div>
+        <div class="content-disclaimer">
+          <p>
+            <strong>Disclaimer:</strong> This content is provided for informational purposes only and is not intended as medical advice.
+            Always consult with a qualified healthcare provider before beginning any new exercise program.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <div id="credits" class="about-section">
       <h2>Theme Gallery</h2>
       <p>
@@ -173,6 +197,35 @@ permalink: /about/
 </script>
 
 <style>
+  .trusted-info-section .trusted-info-content {
+    background-color: rgba(10, 10, 15, 0.6);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    text-align: left;
+  }
+
+  .trusted-info-section .trusted-sources-list {
+    margin-top: var(--spacing-md);
+  }
+
+  .trusted-info-section .trusted-sources-list h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary-light);
+    font-size: 1.1rem;
+  }
+
+  .trusted-info-section .content-disclaimer {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .trusted-info-section .content-disclaimer p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+  }
+
   .credits-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

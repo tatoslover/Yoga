@@ -1,0 +1,121 @@
+{#
+  Trusted Sources Banner Component
+
+  This component displays a prominent banner indicating that the site uses trusted sources
+  for its content, emphasizing our commitment to accuracy and reliability.
+
+  Usage:
+  {% include "components/trusted-sources-banner.njk" %}
+#}
+
+<div class="trusted-sources-banner">
+  <div class="trusted-sources-content">
+    <div class="trusted-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path fill="none" d="M0 0h24v24H0z"/>
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-.997-4L6.76 11.757l1.414-1.414 2.829 2.829 5.656-5.657 1.415 1.414L11.003 16z" fill="currentColor"/>
+      </svg>
+    </div>
+    <div class="trusted-text">
+      <h4>Trusted Information</h4>
+      <p>Mat & Mind is committed to providing accurate yoga information from respected sources including Harvard Health, Yoga Journal, and other authoritative publications.</p>
+    </div>
+  </div>
+  <div class="sources-list-compact">
+    <span>Our trusted sources include:</span>
+    <ul>
+      <li><a href="https://www.health.harvard.edu/" target="_blank" rel="noopener">Harvard Health</a></li>
+      <li><a href="https://www.yogajournal.com/" target="_blank" rel="noopener">Yoga Journal</a></li>
+      <li><a href="https://www.yogaalliance.org/" target="_blank" rel="noopener">Yoga Alliance</a></li>
+      <li><a href="https://www.hopkinsmedicine.org/" target="_blank" rel="noopener">Johns Hopkins Medicine</a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .trusted-sources-banner {
+    background-color: var(--color-surface-accent, #f5f5f5);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--color-primary, #4caf50);
+  }
+
+  .trusted-sources-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .trusted-icon {
+    color: var(--color-primary, #4caf50);
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .trusted-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .trusted-text h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--color-text-primary, #333);
+  }
+
+  .trusted-text p {
+    margin: 0;
+    color: var(--color-text-secondary, #555);
+    line-height: 1.5;
+  }
+
+  .sources-list-compact {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary, #555);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .sources-list-compact span {
+    font-weight: 500;
+  }
+
+  .sources-list-compact ul {
+    display: inline-flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+    gap: 0.75rem;
+  }
+
+  .sources-list-compact li {
+    display: inline;
+  }
+
+  .sources-list-compact a {
+    color: var(--color-primary, #4caf50);
+    text-decoration: none;
+  }
+
+  .sources-list-compact a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .trusted-sources-content {
+      flex-direction: column;
+    }
+
+    .sources-list-compact ul {
+      display: block;
+      margin: 0.5rem 0 0 0;
+    }
+
+    .sources-list-compact li {
+      margin-bottom: 0.25rem;
+    }
+  }
+</style>

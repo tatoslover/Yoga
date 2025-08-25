@@ -1,0 +1,59 @@
+<div class="content-attribution">
+  <h4>Content Sources</h4>
+  <p class="last-updated">Last updated: {{ page.date }}</p>
+
+  {% if sources and sources.length > 0 %}
+    <ul class="sources-list">
+      {% for source in sources %}
+        <li>
+          {% if source.url %}
+            <a href="{{ source.url }}" target="_blank" rel="noopener">{{ source.name }}</a>
+          {% else %}
+            {{ source.name }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Content is being updated with information from trusted yoga sources.</p>
+  {% endif %}
+
+  <p class="attribution-notice">Content used for educational purposes with attribution to original sources.</p>
+</div>
+
+<style>
+  .content-attribution {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background-color: rgba(15, 15, 30, 0.5);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+  }
+
+  .content-attribution h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--color-secondary-light);
+  }
+
+  .last-updated {
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .sources-list {
+    padding-left: 1.5rem;
+  }
+
+  .sources-list li {
+    margin-bottom: 0.5rem;
+  }
+
+  .attribution-notice {
+    font-style: italic;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 0.75rem;
+    margin-top: 1rem;
+  }
+</style>

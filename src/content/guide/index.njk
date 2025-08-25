@@ -1,10 +1,19 @@
 ---
 layout: base.njk
 title: Yoga Guide
-description: Explore different styles and levels of yoga to find your perfect practice
+description: "Explore different styles and levels of yoga to find your perfect practice"
 permalink: /guide/
 eleventyComputed:
   pageClass: "guide-page"
+  sources:
+    - name: "Yoga Journal"
+      url: "https://www.yogajournal.com/"
+    - name: "Yoga Alliance"
+      url: "https://www.yogaalliance.org/"
+    - name: "Harvard Health"
+      url: "https://www.health.harvard.edu/"
+    - name: "Johns Hopkins Medicine"
+      url: "https://www.hopkinsmedicine.org/"
 ---
 
 <!-- Empty page header -->
@@ -13,6 +22,8 @@ eleventyComputed:
 
 <section class="guide-container">
   <div class="container">
+
+    <!-- Trusted Sources Banner has been moved to About page -->
 
     <!-- Yoga Types Section -->
     <div class="guide-section">
@@ -41,6 +52,8 @@ eleventyComputed:
             </div>
           </div>
         {% endfor %}
+
+        <!-- Content attribution has been moved to About page -->
       </div>
     </div>
 
@@ -205,7 +218,7 @@ eleventyComputed:
       <div class="guide-content-container" id="poses-container">
         <div class="guide-content-box" id="poses-standing-content">
           <h3>Standing Poses</h3>
-          {% include "guide/poses.html" %}
+          {% include "guide/levels.html" %}
         </div>
 
         <div class="guide-content-box" id="poses-seated-content">
@@ -271,7 +284,7 @@ eleventyComputed:
     <div class="guide-section">
       <div class="guide-section-header">
         <h2>Yoga Benefits</h2>
-        <p>Discover how yoga can transform your physical, mental, and overall wellbeing</p>
+        <p>Discover how yoga can transform your physical, mental, and overall wellbeing, based on research from Harvard Health</p>
       </div>
 
       <div class="guide-selector">
@@ -291,18 +304,23 @@ eleventyComputed:
       <div class="guide-content-container" id="benefits-container">
         <div class="guide-content-box" id="benefits-physical-content">
           <h3>Physical Benefits</h3>
+          {% set target = "physical" %}
           {% include "guide/benefits.html" %}
         </div>
 
         <div class="guide-content-box" id="benefits-mental-content">
           <h3>Mental Benefits</h3>
+          {% set target = "mental" %}
           {% include "guide/benefits.html" %}
         </div>
 
         <div class="guide-content-box" id="benefits-lifestyle-content">
           <h3>Lifestyle Benefits</h3>
+          {% set target = "lifestyle" %}
           {% include "guide/benefits.html" %}
         </div>
+
+        <!-- Source attribution has been moved to About page -->
       </div>
     </div>
 
@@ -379,19 +397,7 @@ eleventyComputed:
   });
 </script>
 
-<script>
-  // Add data source attribution at the bottom of the page
-  document.addEventListener('DOMContentLoaded', function() {
-    // Add data attribution to the footer
-    const footer = document.querySelector('.site-footer');
-    if (footer) {
-      const attribution = document.createElement('div');
-      attribution.className = 'data-attribution';
-      attribution.innerHTML = '<p>Yoga information sourced from reputable yoga resources.</p>';
-      footer.querySelector('.container').appendChild(attribution);
-    }
-  });
-</script>
+<!-- Footer attribution script removed as attribution has been moved to About page -->
 
 <style>
   .guide-container {
@@ -420,32 +426,32 @@ eleventyComputed:
   }
 
   /* Apply theme-specific styles */
-  [data-theme="forrest"] .guide-section {
+  [data-theme=&quot;forrest&quot;] .guide-section {
     background-color: rgba(10, 18, 10, 0.98);
     border: 1px solid rgba(42, 58, 42, 0.2);
   }
 
-  [data-theme="ocean"] .guide-section {
+  [data-theme=&quot;ocean&quot;] .guide-section {
     background-color: rgba(5, 14, 20, 0.98);
     border: 1px solid rgba(19, 47, 72, 0.2);
   }
 
-  [data-theme="beach"] .guide-section {
+  [data-theme=&quot;beach&quot;] .guide-section {
     background-color: rgba(15, 15, 20, 0.98);
     border: 1px solid rgba(60, 50, 45, 0.2);
   }
 
-  [data-theme="water"] .guide-section {
+  [data-theme=&quot;water&quot;] .guide-section {
     background-color: rgba(5, 15, 25, 0.98);
     border: 1px solid rgba(20, 50, 60, 0.2);
   }
 
-  [data-theme="lights"] .guide-section {
+  [data-theme=&quot;lights&quot;] .guide-section {
     background-color: rgba(10, 10, 15, 0.98);
     border: 1px solid rgba(50, 50, 70, 0.2);
   }
 
-  [data-theme="mountain"] .guide-section {
+  [data-theme=&quot;mountain&quot;] .guide-section {
     background-color: rgba(12, 12, 14, 0.98);
     border: 1px solid rgba(40, 40, 45, 0.2);
   }
@@ -512,7 +518,7 @@ eleventyComputed:
   }
 
   .guide-selector-btn.active::after {
-    content: "";
+    content: &quot;&quot;;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -523,51 +529,51 @@ eleventyComputed:
   }
 
   /* Theme-specific selector buttons */
-  [data-theme="forrest"] .guide-selector-btn.active {
+  [data-theme=&quot;forrest&quot;] .guide-selector-btn.active {
     border-color: #4d8d4a;
   }
 
-  [data-theme="forrest"] .guide-selector-btn.active::after {
+  [data-theme=&quot;forrest&quot;] .guide-selector-btn.active::after {
     background-color: #4d8d4a;
   }
 
-  [data-theme="ocean"] .guide-selector-btn.active {
+  [data-theme=&quot;ocean&quot;] .guide-selector-btn.active {
     border-color: #2bc4bd;
   }
 
-  [data-theme="ocean"] .guide-selector-btn.active::after {
+  [data-theme=&quot;ocean&quot;] .guide-selector-btn.active::after {
     background-color: #2bc4bd;
   }
 
-  [data-theme="beach"] .guide-selector-btn.active {
+  [data-theme=&quot;beach&quot;] .guide-selector-btn.active {
     border-color: #e9c46a;
   }
 
-  [data-theme="beach"] .guide-selector-btn.active::after {
+  [data-theme=&quot;beach&quot;] .guide-selector-btn.active::after {
     background-color: #e9c46a;
   }
 
-  [data-theme="water"] .guide-selector-btn.active {
+  [data-theme=&quot;water&quot;] .guide-selector-btn.active {
     border-color: #64b5f6;
   }
 
-  [data-theme="water"] .guide-selector-btn.active::after {
+  [data-theme=&quot;water&quot;] .guide-selector-btn.active::after {
     background-color: #64b5f6;
   }
 
-  [data-theme="lights"] .guide-selector-btn.active {
+  [data-theme=&quot;lights&quot;] .guide-selector-btn.active {
     border-color: #81c784;
   }
 
-  [data-theme="lights"] .guide-selector-btn.active::after {
+  [data-theme=&quot;lights&quot;] .guide-selector-btn.active::after {
     background-color: #81c784;
   }
 
-  [data-theme="mountain"] .guide-selector-btn.active {
+  [data-theme=&quot;mountain&quot;] .guide-selector-btn.active {
     border-color: #ce93d8;
   }
 
-  [data-theme="mountain"] .guide-selector-btn.active::after {
+  [data-theme=&quot;mountain&quot;] .guide-selector-btn.active::after {
     background-color: #ce93d8;
   }
 
@@ -618,32 +624,32 @@ eleventyComputed:
   }
 
   /* Theme-specific content boxes */
-  [data-theme="forrest"] .guide-content-box {
+  [data-theme=&quot;forrest&quot;] .guide-content-box {
     background-color: rgba(8, 16, 8, 0.98);
     border: 1px solid rgba(42, 58, 42, 0.1);
   }
 
-  [data-theme="ocean"] .guide-content-box {
+  [data-theme=&quot;ocean&quot;] .guide-content-box {
     background-color: rgba(4, 12, 18, 0.98);
     border: 1px solid rgba(19, 47, 72, 0.1);
   }
 
-  [data-theme="beach"] .guide-content-box {
+  [data-theme=&quot;beach&quot;] .guide-content-box {
     background-color: rgba(12, 12, 16, 0.98);
     border: 1px solid rgba(60, 50, 45, 0.1);
   }
 
-  [data-theme="water"] .guide-content-box {
+  [data-theme=&quot;water&quot;] .guide-content-box {
     background-color: rgba(4, 12, 20, 0.98);
     border: 1px solid rgba(20, 50, 60, 0.1);
   }
 
-  [data-theme="lights"] .guide-content-box {
+  [data-theme=&quot;lights&quot;] .guide-content-box {
     background-color: rgba(8, 8, 12, 0.98);
     border: 1px solid rgba(50, 50, 70, 0.1);
   }
 
-  [data-theme="mountain"] .guide-content-box {
+  [data-theme=&quot;mountain&quot;] .guide-content-box {
     background-color: rgba(10, 10, 12, 0.98);
     border: 1px solid rgba(40, 40, 45, 0.1);
   }
@@ -666,7 +672,7 @@ eleventyComputed:
   }
 
   .guide-content-box h3::after {
-    content: "";
+    content: &quot;&quot;;
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -679,51 +685,51 @@ eleventyComputed:
   }
 
   /* Theme-specific headings */
-  [data-theme="forrest"] .guide-content-box h3 {
+  [data-theme=&quot;forrest&quot;] .guide-content-box h3 {
     color: #4d8d4a;
   }
 
-  [data-theme="forrest"] .guide-content-box h3::after {
+  [data-theme=&quot;forrest&quot;] .guide-content-box h3::after {
     background-color: #4d8d4a;
   }
 
-  [data-theme="ocean"] .guide-content-box h3 {
+  [data-theme=&quot;ocean&quot;] .guide-content-box h3 {
     color: #2bc4bd;
   }
 
-  [data-theme="ocean"] .guide-content-box h3::after {
+  [data-theme=&quot;ocean&quot;] .guide-content-box h3::after {
     background-color: #2bc4bd;
   }
 
-  [data-theme="beach"] .guide-content-box h3 {
+  [data-theme=&quot;beach&quot;] .guide-content-box h3 {
     color: #e9c46a;
   }
 
-  [data-theme="beach"] .guide-content-box h3::after {
+  [data-theme=&quot;beach&quot;] .guide-content-box h3::after {
     background-color: #e9c46a;
   }
 
-  [data-theme="water"] .guide-content-box h3 {
+  [data-theme=&quot;water&quot;] .guide-content-box h3 {
     color: #64b5f6;
   }
 
-  [data-theme="water"] .guide-content-box h3::after {
+  [data-theme=&quot;water&quot;] .guide-content-box h3::after {
     background-color: #64b5f6;
   }
 
-  [data-theme="lights"] .guide-content-box h3 {
+  [data-theme=&quot;lights&quot;] .guide-content-box h3 {
     color: #81c784;
   }
 
-  [data-theme="lights"] .guide-content-box h3::after {
+  [data-theme=&quot;lights&quot;] .guide-content-box h3::after {
     background-color: #81c784;
   }
 
-  [data-theme="mountain"] .guide-content-box h3 {
+  [data-theme=&quot;mountain&quot;] .guide-content-box h3 {
     color: #ce93d8;
   }
 
-  [data-theme="mountain"] .guide-content-box h3::after {
+  [data-theme=&quot;mountain&quot;] .guide-content-box h3::after {
     background-color: #ce93d8;
   }
 
@@ -746,27 +752,27 @@ eleventyComputed:
   }
 
   /* Theme-specific section headings */
-  [data-theme="forrest"] .content-section h4 {
+  [data-theme=&quot;forrest&quot;] .content-section h4 {
     color: #4d8d4a;
   }
 
-  [data-theme="ocean"] .content-section h4 {
+  [data-theme=&quot;ocean&quot;] .content-section h4 {
     color: #2bc4bd;
   }
 
-  [data-theme="beach"] .content-section h4 {
+  [data-theme=&quot;beach&quot;] .content-section h4 {
     color: #e9c46a;
   }
 
-  [data-theme="water"] .content-section h4 {
+  [data-theme=&quot;water&quot;] .content-section h4 {
     color: #64b5f6;
   }
 
-  [data-theme="lights"] .content-section h4 {
+  [data-theme=&quot;lights&quot;] .content-section h4 {
     color: #81c784;
   }
 
-  [data-theme="mountain"] .content-section h4 {
+  [data-theme=&quot;mountain&quot;] .content-section h4 {
     color: #ce93d8;
   }
 
@@ -819,51 +825,51 @@ eleventyComputed:
   }
 
   /* Theme-specific cards */
-  [data-theme="forrest"] .level-detail-item:hover {
+  [data-theme=&quot;forrest&quot;] .level-detail-item:hover {
     border-color: #4d8d4a;
   }
 
-  [data-theme="forrest"] .level-detail-item h4 {
+  [data-theme=&quot;forrest&quot;] .level-detail-item h4 {
     color: #4d8d4a;
   }
 
-  [data-theme="ocean"] .level-detail-item:hover {
+  [data-theme=&quot;ocean&quot;] .level-detail-item:hover {
     border-color: #2bc4bd;
   }
 
-  [data-theme="ocean"] .level-detail-item h4 {
+  [data-theme=&quot;ocean&quot;] .level-detail-item h4 {
     color: #2bc4bd;
   }
 
-  [data-theme="beach"] .level-detail-item:hover {
+  [data-theme=&quot;beach&quot;] .level-detail-item:hover {
     border-color: #e9c46a;
   }
 
-  [data-theme="beach"] .level-detail-item h4 {
+  [data-theme=&quot;beach&quot;] .level-detail-item h4 {
     color: #e9c46a;
   }
 
-  [data-theme="water"] .level-detail-item:hover {
+  [data-theme=&quot;water&quot;] .level-detail-item:hover {
     border-color: #64b5f6;
   }
 
-  [data-theme="water"] .level-detail-item h4 {
+  [data-theme=&quot;water&quot;] .level-detail-item h4 {
     color: #64b5f6;
   }
 
-  [data-theme="lights"] .level-detail-item:hover {
+  [data-theme=&quot;lights&quot;] .level-detail-item:hover {
     border-color: #81c784;
   }
 
-  [data-theme="lights"] .level-detail-item h4 {
+  [data-theme=&quot;lights&quot;] .level-detail-item h4 {
     color: #81c784;
   }
 
-  [data-theme="mountain"] .level-detail-item:hover {
+  [data-theme=&quot;mountain&quot;] .level-detail-item:hover {
     border-color: #ce93d8;
   }
 
-  [data-theme="mountain"] .level-detail-item h4 {
+  [data-theme=&quot;mountain&quot;] .level-detail-item h4 {
     color: #ce93d8;
   }
 
@@ -1067,3 +1073,4 @@ eleventyComputed:
       grid-template-columns: 1fr;
     }
   }
+</style>

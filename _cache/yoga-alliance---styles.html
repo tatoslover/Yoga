@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+    <html id="ie6" lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+    <html id="ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+    <html id="ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
+<html  lang="en-US">
+<!--<![endif]-->
+<head id="Head"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"275c719ec1","applicationID":"13277606","transactionName":"MVVQNhZVVxYHAkwIDAgfczE0G10AAABNDRdIUUESHA==","queueTime":0,"applicationTime":232,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={xpid:"VQcDU1NUDxABV1NVAAcHUA==",licenseKey:"275c719ec1",applicationID:"13277606"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(27),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(28),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(28),a=t(27);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(24),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(27),s=t(28),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(29);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(26),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],24:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(t)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],25:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],26:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],27:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],28:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],29:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(27),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!O++){var t=S.info=NREUM.info,e=m.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+S.offset],null,"api"),s("timing",["load",n]);var r=m.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=p+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===m.readyState&&o()}function o(){s("mark",["domContent",a()+S.offset],null,"api")}var a=t(22),s=t("handle"),c=t(27),f=t("ee"),u=t(25),d=t(17),l=t(19),p=d.getConfiguration("ssl")===!1?"http":"https",h=window,m=h.document,v="addEventListener",w="attachEvent",g=h.XMLHttpRequest,y=g&&g.prototype,x=!1;NREUM.o={ST:setTimeout,SI:h.setImmediate,CT:clearTimeout,XHR:g,REQ:h.Request,EV:h.Event,PR:h.Promise,MO:h.MutationObserver};var b=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1216.min.js"},R=g&&y&&y[v]&&!/CriOS/.test(navigator.userAgent),S=e.exports={offset:a.getLastTimestamp(),now:a,origin:b,features:{},xhrWrappable:R,userAgent:u,disabled:x};if(!x){t(16),t(23),m[v]?(m[v]("DOMContentLoaded",o,l(!1)),h[v]("load",r,l(!1))):(m[w]("onreadystatechange",i),h[w]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var O=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(28),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta name="REVISIT-AFTER" content="1 DAYS" />
+<meta name="RATING" content="GENERAL" />
+<meta name="RESOURCE-TYPE" content="DOCUMENT" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '384129686863701');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=384129686863701&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>
+window.addEventListener("load", (event) => {
+  var is_iphone = navigator.userAgent.toLowerCase().indexOf("iphone");
+  var has_hashtag = window.location.href.indexOf("#");
+
+  if (is_iphone > -1 && has_hashtag < 0) {
+    setTimeout(function () {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }, 500);
+  }
+});
+
+
+  function showNotice() {
+    var elm = document.createElement("div");
+    elm.setAttribute("id", "Notice");
+
+    var openingTextNode = document.createTextNode(
+      "Due to the Amazon Web Services (AWS) outage, our phone lines are currently down. If you need assistance or support, please email "
+    );
+
+    var linkNode0 = document.createElement("a");
+    var linkTextNode0 = document.createTextNode("info@yogaalliance.org.");
+    linkNode0.appendChild(linkTextNode0);
+    linkNode0.title = "Email info@yogaalliance.org";
+    linkNode0.target = "_blank";
+    linkNode0.href = "mailto:info@yogaalliance.org";
+
+    // var linkNode1 = document.createElement("a");
+    // var linkTextNode1 = document.createTextNode("Social Justice Resource");
+    // linkNode1.appendChild(linkTextNode1);
+    // linkNode1.title = "Social Justice Resource";
+    // linkNode1.target = "_blank";
+    // linkNode1.href = "https://yourya.org/anti-racism-resources/";
+
+    var breakNode = document.createElement("br");
+    // var middleTextNode = document.createTextNode(
+    //   " reflecting on the events at the U.S. Capitol. Visit our "
+    // );
+
+    var closingTextNode = document.createTextNode(
+      "Please note, response times may be noticeably longer as we are receiving a higher than normal email volume. We apologize for any inconvenience."
+    );
+
+    elm.appendChild(openingTextNode);
+    elm.appendChild(linkNode0);
+    // elm.appendChild(middleTextNode);
+    elm.appendChild(breakNode);
+    // elm.appendChild(linkNode1);
+    elm.appendChild(closingTextNode);
+
+    var body = document.getElementById("Body");
+
+    body.prepend(elm);
+  }
+  //setTimeout(showNotice, 3000);
+</script>
+<style>
+  #Notice {
+    background-color: #fada5e;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "ProximaNova-SemiBold", Arial, Helvetica, sans-serif;
+  }
+  #Notice a,
+  #Notice a:visited,
+  #Notice a:active,
+  #Notice a:focus {
+    /* color: white !important; */
+    text-decoration: underline !important;
+  }
+  #Notice a:hover {
+    /* color: white; */
+    text-decoration: underline !important;
+  }
+
+  #yas-header {
+    /*min-height: 190px !important;*/
+  }
+
+  .video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    height: auto !important;
+  }
+
+  .video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: "";
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 1110px) {
+    .ya-footer-content .ya-column-two {
+      width: 320px !important;
+      margin-left: 20px;
+    }
+  }
+
+  @media (min-width: 1110px) {
+    .block.newsletter p {
+      display: inline-block;
+      max-width: 180px;
+    }
+    .block.newsletter .btn-footer {
+      float: right;
+    }
+  }
+
+  .block .ya-icon,
+  .block .media-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+  .block h4 {
+    margin: 0;
+    color: white;
+  }
+  .block a,
+  .block a:active,
+  .block a:link,
+  .block a:visited {
+    color: white;
+    font-size: 12px;
+  }
+  .block h5 {
+    margin: 0;
+    color: white;
+  }
+  .block h5 a {
+    font-size: 16px !important;
+  }
+  .block p {
+    color: white;
+    font-size: 12px;
+  }
+  .block .btn-footer {
+    display: inline-block;
+    padding: 3px 16px 1px 16px;
+    background-color: white;
+    border-radius: 3px;
+    color: #b4341d !important;
+  }
+  @media (min-width: 1110px) {
+    .block {
+      padding-left: 40px;
+    }
+
+    .block .ya-icon,
+    .block .media-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .block .media-icon,
+    .block .help-icon {
+      top: -4px;
+    }
+  }
+</style><title>
+	 About Yoga | Yoga Alliance
+</title><meta id="MetaDescription" name="description" content="Learn about yoga, learn how to find the right teacher or school, get tips on improving your YA member profile, and find videos and past YA articles." /><meta id="MetaKeywords" name="keywords" content="Yoga, yoga community, news, RYT, Registered Yoga Teacher, RYS, Registered Yoga School, Social Credentialing, benefits, types of yoga, styles of yoga, benefits of yoga, business, Training, management, Yoga, marketing, Profile, account, find a teacher, find a school, resume, biography, bio, teaching hours, Education &amp; Training, Legal &amp; Financial services, partnership, Business of Yoga Conference, conference, education, video, business development" /><meta id="MetaRobots" name="robots" content="INDEX, FOLLOW" /><link href="/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/_default/admin.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/skin.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Containers/Yoga/container.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/portal.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/DNNStandard/StandardMenu.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/pages/optin-form.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/pages/fee-calculator.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/components/header.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/screen.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/pages/header-footer.css?cdv=497" type="text/css" rel="stylesheet"/><link href="/Portals/0/Skins/YogaV2/css/pages/responsive.css?cdv=497" type="text/css" rel="stylesheet"/><script src="https://code.jquery.com/jquery-3.5.1.min.js?cdv=497" type="text/javascript"></script><script src="https://code.jquery.com/jquery-migrate-3.2.0.min.js?cdv=497" type="text/javascript"></script><script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js?cdv=497" type="text/javascript"></script><script type="text/javascript">
+	if (typeof jQuery == 'undefined') {document.write('<script src="/Resources/libraries/jQuery/03_05_01/jquery.js" type="text/javascript"></' + 'script>');}
+</script><link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" /><link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" /><link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" /><link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" /><link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png" /><link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" /><link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" /><link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" /><link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196" /><link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160" /><link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" /><link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" /><link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" /><meta name="msapplication-TileColor" content="#da532c" /><meta name="msapplication-TileImage" content="/mstile-144x144.png" /><link rel="stylesheet" type="text/css" href="/Portals/0/Skins/YogaV2/css/app.common.css?version=20244622456" /><link rel="stylesheet" type="text/css" href="/Portals/0/Skins/YogaV2/css/app.common.css?version=20244622456" /></head>
+<body id="Body">
+    <div id="DivGoogleTagManager">
+            <script>
+                dataLayer = [];
+            </script>
+        <!-- Google Tag Manager  -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PK39WX"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PK39WX');</script>
+        <!-- End Google Tag Manager -->
+    </div>
+    <form method="post" action="/Learn/Article_What_Is_Yoga/Yoga_Styles" id="Form" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="_iocs_" id="_iocs_" value="[17307959-ce67-4a75-88a4-7400d64617c5]:[1]" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="BiAPktaSu9b2j9vHMdSaBUpQjEZ9K2sOe138XiknvOepyy8mrMqrNwcSprz2V1FZfVngf6CkMLhIUpQA0Yr0AZ4/rWIJrH7UPZBWkw==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form'];
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV1ZZXERyYgzPaAYQM8toJDi3ubXdQG0W7Rgz_EkQpArelb1XYA1&amp;t=638628063619783110" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3IrtfaMHdqeUdy5BvdWM5SK35bjsZyUDhwC0mmSzQKXDTtj_njT7DicXlLM6uvjpqGW0ulqluW3h6lyjl5yITAhadqUkY1ux4bduSNlR67nV1fNWqJuAsIAn7ieojg2&amp;t=2a9d95e3" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=dwY9oWetJoJLFNYuuy2TXwZMQs3F4pA3Uhl945NUFM0GhW8nMZX7Qp0hK15Vueag8rRwX-4OSGVeA2RqvA1hKG0ND5mb4uVtAOVO52b6t5j4YFApcY237lBpcTv0aTXs-jSGvu7KlZXlT80g0&amp;t=2a9d95e3" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+</div><script src="/js/dnn.js?cdv=497" type="text/javascript"></script><script src="/js/dnn.modalpopup.js?cdv=497" type="text/javascript"></script><script src="/Portals/0/Skins/YogaV2/js/imageMapResizer.min.js?cdv=497" type="text/javascript"></script><script src="/Portals/0/Skins/YogaV2/js/ya-components.js?cdv=497" type="text/javascript"></script><script src="/js/dnncore.js?cdv=497" type="text/javascript"></script><script src="/js/dnn.servicesframework.js?cdv=497" type="text/javascript"></script><script src="/Portals/0/Skins/YogaV2/DNNStandard/StandardMenu.js?cdv=497" type="text/javascript"></script><script src="/Portals/0/Skins/YogaV2/js/pages/fee-calculator.js?cdv=497" type="text/javascript"></script><script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', ['tdnn$userLogin$UpdatePanelLoginBox','dnn_userLogin_UpdatePanelLoginBox'], [], [], 90, '');
+//]]>
+</script>
+
+        
+        
+        <!--CDF(Css|/Portals/0/Skins/YogaV2/css/pages/fee-calculator.css?cdv=497|DnnPageHeaderProvider|200)--> 
+<!--CDF(Javascript|/Portals/0/Skins/YogaV2/js/pages/fee-calculator.js?cdv=497|DnnBodyProvider|110)-->
+<!--CDF(Javascript|/Portals/0/Skins/YogaV2/js/imageMapResizer.min.js?cdv=497|DnnBodyProvider|100)-->
+<!--CDF(Javascript|/Portals/0/Skins/YogaV2/js/ya-components.js?cdv=497|DnnBodyProvider|100)-->
+
+
+
+
+
+<!--CDF(Css|/Portals/0/Skins/YogaV2/css/pages/header-footer.css?cdv=497|DnnPageHeaderProvider|400)-->
+<!--CDF(Css|/Portals/0/Skins/YogaV2/css/pages/responsive.css?cdv=497|DnnPageHeaderProvider|400)-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+<!--[if lte IE 7]>
+    <script src="/Portals/0/Skins/YogaV2/fonts/icon-font/lte-ie7.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+    <style type="text/css">.radius, .shadow, .yas-sidemenubox, footer .yas-dnnrow{behavior:url(/Portals/0/Skins/YogaV2/js/pie.htc)}</style>
+    <script src="/Portals/0/Skins/YogaV2/js/html5shiv.js"></script> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/Portals/0/Skins/YogaV2/js/respond.src.js"></script>
+<![endif]-->  
+
+
+	
+
+
+
+
+
+
+<div id="yas-dnnwrapper">
+	        <div id="yas-header">
+       <header class="main-head top_menu_bar">  
+    <div class="container">
+<div class="mobile-top-menu">
+<ul class="navbar-nav on-for-mobile">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://blog.yogaalliance.org/"><img src="\Portals\0\Skins\YogaV2\Images\/blog_icon.svg" alt="">blog</a>
+                    </li>   
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://help.yogaalliance.org/s/" target="_blank"><img src="\Portals\0\Skins\YogaV2\Images\help_center.svg" alt="">help center</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Search_Results"><img src="\Portals\0\Skins\YogaV2\Images\search_bar.svg" alt="">search</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="\Portals\0\Skins\YogaV2\Images\directory_icon.svg" alt="">Directory
+                      </a>
+                      <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="/Directory?Type=Teacher">Teachers</a></li>
+                            <li><a class="nav-link" href="/Directory?Type=School">Schools</a></li>
+                            <li><a class="nav-link" href="/Directory?Type=YACEP">Continuing Ed</a></li>                   
+                      </ul>
+                    </li>
+                </ul> 
+ </div>
+      <nav class="navbar navbar-expand-lg navigation">
+          <div class="yas-logo">
+                        <a id="dnn_dnnLOGO_hypLogo" title="Yoga Alliance" aria-label="Yoga Alliance" href="https://r.yogaalliance.org/"><img id="dnn_dnnLOGO_imgLogo" src="/Portals/0/Logo.png?ver=T9INtCEaua_boqn9h5vmWQ%3d%3d" alt="Yoga Alliance" /></a>
+                    </div>
+          
+          <button class="navbar-toggler navbar-toggler-1 navbar-toggler-main  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <span class="stick"></span>
+          </button>
+
+          <div class="main_menu_wrapper ">
+             
+          <ul class="navbar-nav hide-on-mobile-new">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://blog.yogaalliance.org/"><img src="\Portals\0\Skins\YogaV2\Images\/blog_icon.svg" alt="">blog</a>
+                    </li>   
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://help.yogaalliance.org/s/" target="_blank"><img src="\Portals\0\Skins\YogaV2\Images\help_center.svg" alt="">help center</a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Search_Results"><img src="\Portals\0\Skins\YogaV2\Images\search_bar.svg" alt="">search</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="\Portals\0\Skins\YogaV2\Images\directory_icon.svg" alt="">Directory
+                      </a>
+                      <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="/Directory?Type=Teacher">Teachers</a></li>
+                            <li><a class="nav-link" href="/Directory?Type=School">Schools</a></li>
+                            <li><a class="nav-link" href="/Directory?Type=YACEP">Continuing Ed</a></li>                   
+                      </ul>
+                    </li>
+                </ul> 
+                 
+            <div class="get_user_button_box">
+                  
+
+<div class="ya-pane-2 is-not-logged" id="get_user_button_box1">
+    <div id="LoginContainer" class="row-fluid">
+    <div class="btns-wrapper">
+    
+        <div>
+        <div class="theme_button_login">
+        <a id="loginLink" class="theme_button_login" onclick="Ya.Auth.openPingAuthorizePageForModal(true);"><img src="\Portals\0\Skins\YogaV2\Images\login_user_icon.svg" alt="">
+                 Log In
+              </a>
+              <a href="https://r.yogaalliance.org/AccountSetup" id="dnn_userLogin_registerLink" class="theme_button_join" target="_blank">Join</a>
+        
+         
+        
+          
+          
+        </div>
+        
+        
+      </div>
+    
+    <div id="LoginBox" class="ya-loginbox hide">
+       
+        <div class="login-inner-box">
+
+            <div class="row-fluid">
+                <h2 id="HeaderTagLine">Welcome,<br />
+                    Please Sign In</h2>
+            </div>
+			<div id="dnn_userLogin_UpdatePanelLoginBox">
+	
+                      <div id="dvNotExistingEmailPopup" class="hidden alert alert-warning">
+                                    The email you entered is not associated with a Yoga Alliance account
+                                </div>
+                      <div id="dvNotExistingEmailStepsPopup" class="hidden ya-alert-box" style="padding: 10px 10px 5px 10px;">
+     <H5>Here are some steps you can take:</H5>
+     <p> 1. Make sure you typed your email correctly.</p>
+      <p>2. Did you recently update your email address? If so, use the new email address to log in.</p>
+      <p>3. Did you forget your email address?  <a href="../../EmailAccountRecovery" id="dnn_userLogin_btnforgotEmailForNotExistingEmail" class="ya-action" target="_blank">Click here</a> to recover your email address using your phone number.</p>
+      <p>4. Still having issues? <a href="https://help.yogaalliance.org/s/#contact-us" id="dnn_userLogin_btnHelp" class="ya-action" target="_blank">Click here</a> to contact someone on our team.</p>
+                                </div>
+                    <div onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;dnn_userLogin_btnLogin&#39;)">
+		
+                        <div class="row-fluid">
+                        
+                    </div>
+                    <div class="ya-login-form row-fluid">
+                        <div id="LoginForm">
+                            <label class="ya-label">Email</label>
+                            <input name="dnn$userLogin$txtLoginEmail" type="text" id="dnn_userLogin_txtLoginEmail" class="LoginEmail" />
+                            <label class="ya-label">Password</label>
+                            <input name="dnn$userLogin$txtLoginPassword" type="password" autocomplete="off" id="dnn_userLogin_txtLoginPassword" />
+                            <div class="ya-validation-message" id="dvModalLoginErrorMsg">
+                                <span id="dnn_userLogin_lblError" class="LoginError"></span>
+                            </div>
+
+                            <div class="ya-button-row text-center">
+                              <a onclick="return Ya.Auth.clickOnLoginTempButton();" id="dnn_userLogin_btnLogin" class="btn btn-warning" href="javascript:__doPostBack(&#39;dnn$userLogin$btnLogin&#39;,&#39;&#39;)">Log In</a>
+                            </div>
+                            <label class="checkbox" style="display: none;">
+                                <input id="dnn_userLogin_chkRememberMe" type="checkbox" name="dnn$userLogin$chkRememberMe" />
+                                Stay Signed In
+                            </label>
+                        </div>
+                    </div>
+                    
+	</div>		
+                    
+                
+</div>
+            <div class="row-fluid text-center">
+                Forgot your email address? <a id="dnn_userLogin_lnkForgotEmail" class="ya-action" href="/EmailAccountRecovery">Click here</a><br />
+               Forgot your password? <a id="dnn_userLogin_lnkForgotPassword" class="ya-action" href="https://r.yogaalliance.org/ResetPassword">Click here</a>
+            </div>
+        </div>
+                
+</div>
+    
+</div>
+        <a href="#" id="btnnavFadein"></a>
+</div>
+    
+</div>
+
+
+
+          </div>          
+          </div>
+      </nav>      
+      <button class="navbar-toggler navbar-toggler-1 collapsed" id="navoverlay" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"></button>       
+    </div>      
+  </header>  
+  <header class="main-head main_menu_bar">  
+  <div class="container main_container">
+      <nav id="yas-nav">
+        <div class="yas-dnnrow">
+
+            <div id="yas-dnnmenu" class="">
+                <div class="yas-pophead">
+                    <a href="#" id="btnnavFadeout">
+                        <span id="dnn_dnnTEXTBack_lblText" class="nostyle"></span>
+
+                    </a>
+                    <h4>
+                        <span id="dnn_dnnTEXTSiteMenu_lblText" class="nostyle"></span>
+
+                    </h4>
+                </div>
+                <!--SEO NOINDEX--><div id="SuperFish">
+  <ul class="yas-menustyle">
+    <li class="root first haschild child-1"><a href="https://yogaalliance.org/our-credentials/">Our Credentials</a><ul>
+        <li class="category first last child-1"><a href="https://yogaalliance.org/ethical-commitment/">The Ethical Commitment</a></li>
+      </ul>
+    </li>
+    <li class="root haschild child-2"><a href="https://yogaalliance.org/become-a-member">Become A Member</a><ul>
+        <li class="category first child-1"><a href="https://yogaalliance.org/rys-overview/">Schools</a></li>
+        <li class="category child-2"><a href="https://yogaalliance.org/ryt-overview/">Yoga Teachers</a></li>
+        <li class="category last child-3"><a href="https://yogaalliance.org/yacep-overview/">Continuing Education Providers</a></li>
+      </ul>
+    </li>
+    <li class="root haschild child-3"><a href="https://yogaalliance.org/member-benefits/">Member Benefits</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Member_Benefits/Member_Assistance_Program">Member Assistance Program</a></li>
+        <li class="category child-2"><a href="https://r.yogaalliance.org/Search_member_perks">Discounts</a></li>
+        <li class="category child-3"><a href="https://r.yogaalliance.org/Events/Upcoming_Events">Member Events</a></li>
+        <li class="category child-4"><a href="https://r.yogaalliance.org/Directory">Member Directory</a></li>
+        <li class="category child-5"><a href="https://r.yogaalliance.org/Member_Benefits/Business_Resource_Guide">Business Resource Guide</a></li>
+        <li class="category child-6"><a href="https://r.yogaalliance.org/Benefits/Advocacy">Advocacy</a></li>
+        <li class="category last child-7"><a href="https://r.yogaalliance.org/Credentialing">Credentials</a></li>
+      </ul>
+    </li>
+    <li class="root haschild child-4"><a href="https://r.yogaalliance.org/Events/Upcoming_Events">Events</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Events/Upcoming_Events">Upcoming Events</a></li>
+        <li class="category last child-2"><a href="https://r.yogaalliance.org/Events/Past_Events">Past Events</a></li>
+      </ul>
+    </li>
+    <li class="root yas-Current yas-Breadcrumb haschild child-5"><a href="https://r.yogaalliance.org/Learn">About Yoga</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Yoga_in_the_World">Yoga in the World</a></li>
+        <li class="category child-2"><a href="https://r.yogaalliance.org/2016YogaInAmericaStudy">2016 Yoga in America Study</a></li>
+        <li class="category child-3"><a href="https://r.yogaalliance.org/About_Yoga/Scientific_Research_on_Yoga">Scientific Research on Yoga</a></li>
+        <li class="category last child-4"><a href="https://r.yogaalliance.org/Learn/Article_Archive">Article Archive</a></li>
+      </ul>
+    </li>
+    <li class="root haschild child-6"><a href="https://r.yogaalliance.org/GetInvolved">Get Involved</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Become_a_Member/Member_Overview/Social_Credentialing">Social Credentialing</a></li>
+        <li class="category child-2"><a href="https://r.yogaalliance.org/Home/Media_Inquiries">Media Inquiries</a></li>
+        <li class="category child-3"><a href="https://r.yogaalliance.org/Get_Involved/Sexual_Misconduct_Resources">Sexual Misconduct Resources</a></li>
+        <li class="category last child-4"><a href="https://yourya.org/">COVID-19 Resources</a></li>
+      </ul>
+    </li>
+    <li class="root haschild child-7"><a href="https://yogaalliance.org/about-us/">About Us</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Strategic_Plan">Strategic Plan</a></li>
+        <li class="category child-2"><a href="https://r.yogaalliance.org/Portals/0/aboutus/Annual%20Report%202020-2021%20FINAL.pdf">Annual Report</a></li>
+        <li class="category child-3"><a href="https://r.yogaalliance.org/About_Us/Meet_the_Team">Meet the Team</a></li>
+        <li class="category child-4"><a href="https://r.yogaalliance.org/About_Us/Our_Boards">Boards of Directors</a></li>
+        <li class="category child-5"><a href="https://r.yogaalliance.org/About_YA/Our_People/OurCommittees">Committees</a></li>
+        <li class="category child-6"><a href="https://r.yogaalliance.org/About_Us/Our_History">History</a></li>
+        <li class="category child-7"><a href="https://yogaalliance.org/yoga-alliance-policies/">Policies</a></li>
+        <li class="category child-8"><a href="https://r.yogaalliance.org/About_Us/Financials">Financials</a></li>
+        <li class="category last child-9"><a href="https://r.yogaalliance.org/About_Us/Work_for_Us">Careers</a></li>
+      </ul>
+    </li>
+    <li class="root last haschild child-8"><a href="https://r.yogaalliance.org/foundation">Social Impact</a><ul>
+        <li class="category first child-1"><a href="https://r.yogaalliance.org/Donation">Donate</a></li>
+        <li class="category child-2"><a href="https://r.yogaalliance.org/Social_Impact/Teaching_for_Equity_Program">Teaching for Equity Program</a></li>
+        <li class="category child-3"><a href="https://r.yogaalliance.org/Foundation/Emergency_Relief_Fund">Emergency Relief Fund</a></li>
+        <li class="category child-4"><a href="https://r.yogaalliance.org/Social_Impact/Eka_Recovery_Fund">Eka Recovery Fund</a></li>
+        <li class="category child-5"><a href="https://r.yogaalliance.org/Social_Impact/Eka_Well-Being_Services">Eka Well-Being Services</a></li>
+        <li class="category last child-6"><a href="https://r.yogaalliance.org/Social_Impact/All_For_Yoga">All For Yoga</a></li>
+      </ul>
+    </li>
+  </ul>
+</div><!--END SEO-->
+            </div>
+        </div>
+    </nav>
+         
+    <button class="navbar-toggler navbar-toggler-2 collapsed" id="navoverlay" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>       
+  </div>      
+  </header>
+  </div>  
+ 
+    
+
+
+<script type="text/javascript" src="/DesktopModules/YA.Client/build/vendor.core.js?ver=20240507113545"></script>
+<script type="text/javascript" src="/DesktopModules/YA.Client/build/app.common.js?ver=20240507113545"></script>
+<!--CDF(Javascript|/DesktopModules/YA.Client/Scripts/auth.js?ver=3&cdv=497|DnnFormBottomProvider|100)-->
+
+<!-- app.common.css loaded from code behind to be in header of the page-->
+
+<!--CDF(Css|/Portals/0/Skins/YogaV2/css/pages/optin-form.css?cdv=497|DnnPageHeaderProvider|200)-->
+<!--CDF(Css|/Portals/0/Skins/YogaV2/css/components/header.css?cdv=497|DnnPageHeaderProvider|300)-->
+<!--CDF(Css|/Portals/0/Skins/YogaV2/css/screen.css?cdv=497|DnnPageHeaderProvider|300)-->
+
+<style>
+    #ya_word-highlight mark disabled {
+        padding: 3px;
+        border: 1px solid #d4d4d4;
+        background-color: #feff99 !important;
+    }
+
+    .rcViewSel,
+    .rcRow th {
+        display: none;
+    }
+    .modal {
+    z-index: 9999 !important;
+}
+</style>
+
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfLoggedInUserId" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfLoggedInUserId" value="-1" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfSessionTimeOutInMinutes" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfSessionTimeOutInMinutes" value="40" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfPingEnvironmentId" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfPingEnvironmentId" value="0e3390b9-6cfa-42ed-b2d2-22e8d2f55156" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfPingClientId" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfPingClientId" value="34be4715-f03a-4623-96c0-ff49693dce4b" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfPingAPI_URI" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfPingAPI_URI" value="https://api.pingone.com/v1" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfPingAUTH_URI" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfPingAUTH_URI" value="https://authprod.yogaalliance.org" />
+<input type="hidden" name="dnn$BrowserCompatibilityMessageId$CommonResourcesId$hfSignOffUrl" id="dnn_BrowserCompatibilityMessageId_CommonResourcesId_hfSignOffUrl" />
+
+
+<div id="ya-browser-test" class="hidden-phone" style="display:none; background-color: #FFFFBF; border-bottom: 1px solid gray;">
+		<div class="yas-dnnrow" style="padding: 20px 0">
+			<div id="ya-browser-test-links" class="row-fluid text-center">
+				<span style="font-size: 28px; color: black;"><strong>Important: </strong></span><span style="font-size: 16px; color:black;">You are using an out-of-date browser. To avoid problems using this site, please <a href="/SupportedBrowsers">update</a> your browser. <a href="/SupportedBrowsers" class="ya-action">Details...</a></span>	
+			</div>
+			<div id="ya-browser-test-nolinks" class="row-fluid text-center" style="display:none;">
+				<span style="font-size: 28px; color: black;"><strong>Important: </strong></span><span style="font-size: 16px; color:black;">You are using an out-of-date browser. To avoid problems using this site, please update your browser.</span>	
+			</div>
+		</div>
+</div>
+
+	<section id="yas-dnncontent" class="yas-Col12">
+		<div class="yas-dnnrow">
+			<div class="yas-marginlr ya-content-page" id="yas-main-content">
+
+				  <div class="row-fluid">
+				  
+				</div>
+	
+				<div class="row-fluid">
+				  
+				  
+				</div>
+	
+				<div class="row-fluid">
+				  <div id="dnn_ContentPane" class="span12"><div class="DnnModule DnnModule-DNN_HTML DnnModule-29284 DnnVersionableControl"><a name="29284"></a><div id="dnn_ctr29284_ContentPane"><!-- Start_Module_29284 --><div id="dnn_ctr29284_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr29284_HtmlModule_lblContent"></div>
+
+
+
+
+</div><!-- End_Module_29284 --></div>
+
+
+</div><div class="DnnModule DnnModule-DNN_HTML DnnModule-29282 DnnVersionableControl"><a name="29282"></a><div id="dnn_ctr29282_ContentPane"><!-- Start_Module_29282 --><div id="dnn_ctr29282_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr29282_HtmlModule_lblContent"></div>
+
+
+
+
+</div><!-- End_Module_29282 --></div>
+
+
+</div></div>
+				</div>
+				
+				<div class="row-fluid">
+				  
+				  
+				</div>
+	
+				<div class="row-fluid">
+				  
+				  
+				  
+				</div>
+	
+				<div class="row-fluid">
+				  
+				</div>
+	
+				<div class="row-fluid">
+				  
+				  
+				  
+				  
+				</div>
+
+				<div class="row-fluid">
+				  
+				</div>
+				
+				<div class="row-fluid">
+				  
+				  
+				  
+				</div>
+				
+				<div class="row-fluid">
+				  
+				  
+				</div>
+			  
+			   <div class="row-fluid">
+				  <div id="dnn_L9Pane" class="span9"><div class="DnnModule DnnModule-DNN_HTML DnnModule-1491 DnnVersionableControl"><a name="1491"></a><div id="dnn_ctr1491_ContentPane"><!-- Start_Module_1491 --><div id="dnn_ctr1491_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr1491_HtmlModule_lblContent"><h1>About Yoga</h1>
+<p>Yoga Alliance provides meaningful and affordable educational opportunities to equip our members with the tools and resources needed to improve their business practices, network with peers and utilize their Yoga Alliance membership to the fullest.
+</p>
+<table style="max-width: 800px;">
+<tbody>
+<tr>
+	<td style="padding-right: 15px; padding-bottom: 5px; vertical-align: top;"> <img alt="2016 Yoga in America Study" width="100px" height="100px" src="/portals/0/2016YIASCircle.jpg">
+	</td>
+	<td style="padding-right: 15px; padding-bottom: 20px; padding-top: 15px; vertical-align: top;">
+		<h3><a href="/2016YogaInAmericaStudy">2016 Yoga in America Study</a></h3>
+		<p>Discover the latest trends in the yoga community with the 2016 <a href="/2016YogaInAmericaStudy">Yoga in America Study</a> conducted by Yoga Journal and Yoga Alliance.
+		</p>
+	</td>
+</tr>
+<tr>
+	<td style="padding-right: 15px; padding-bottom: 5px; vertical-align: top;"> <img alt="Article Archive" width="100px" height="100px" src="/portals/0/learn/Stack-of-Newspapers.png">
+	</td>
+	<td style="padding-right: 15px; padding-bottom: 20px; padding-top: 15px; vertical-align: top;">
+		<h3><a href="/Learn/Article_Archive">Article Archive</a></h3>
+		<p>The article archive is the place to find original content released by Yoga Alliance since 2013. Topics include partnerships, advocacy, education, and community. <a href="/Learn/Article_Archive">Browse the archive</a>.
+		</p>
+	</td>
+</tr>
+<tr>
+	<td style="padding-right: 15px; padding-bottom: 5px; vertical-align: top;"> <img alt="Research Literacy of the Benefits of Yoga" style="min-width: 50px; max-width: 100px;" src="/portals/0/Benefits/YogaResearch.jpg">
+	</td>
+	<td style="padding-right: 15px; padding-bottom: 20px; padding-top: 15px; vertical-align: top;">
+		<h3><a href="/About_Yoga/Research_on_the_Benefits_of_Yoga">Scientific Research on Yoga</a></h3>
+		<p>The Index of <a href="/About_Yoga/Research_on_the_Benefits_of_Yoga">Yoga Research</a> is our helpful repository of peer-reviewed research about the benefits of yoga. We update the Index quarterly with new research.
+		</p>
+	</td>
+</tr>
+</tbody>
+</table></div>
+
+
+
+
+</div><!-- End_Module_1491 --></div>
+
+
+</div></div>
+				  <div id="dnn_R3Pane" class="span3"><div class="DnnModule DnnModule-DNN_HTML DnnModule-5912 DnnVersionableControl"><a name="5912"></a><div id="dnn_ctr5912_ContentPane"><!-- Start_Module_5912 --><div id="dnn_ctr5912_ModuleContent" class="DNNModuleContent ModDNNHTMLC">
+	<div id="dnn_ctr5912_HtmlModule_lblContent"><div class="Box-Round-Red-Bold">
+	<div style="text-align: center;">
+	</div>
+	<p style="text-align: center;" rel="text-align: center;"><img alt="" style="width: 55px; height: 55px; text-align: center;" src="/portals/0/img/YA-Flower.png"> 
+	</p>
+	<p style="text-align: center;"><strong>New to yoga?</strong>  Here are some resources to help get you started:
+	</p>
+	<ul>
+		<li><a href="/LearnAboutYoga/AboutYoga/Typesofyoga">Types of yoga</a></li>
+		<li><a href="/LearnAboutYoga/AboutYoga/Findingtherightyogateacher">Find the Right Teacher</a></li>
+		<li><a href="/LearnAboutYoga/AboutYoga/Becomingayogateacher">Becoming a Yoga Teacher</a></li>
+	</ul>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br></div>
+
+
+
+
+</div><!-- End_Module_5912 --></div>
+
+
+</div></div>
+				</div>
+				
+				<div class="row-fluid">
+				  
+				</div>
+				
+				<div class="row-fluid">
+				  
+				  
+				</div>
+				
+				<div class="row-fluid">
+				  
+				  
+				</div>
+				
+				<div class="row-fluid">
+				  
+				</div>
+				
+				
+			
+			</div>
+		</div>
+	</section>
+
+	        <div class="site_footer">
+    <footer class="container">
+    <div class="container">
+      <div class="footer_box_wrapper">
+        <div class="footer_box">
+          <h5>Directory</h5>
+          <ul>
+            <li><a href="/Directory?Type=School">Find a yoga teacher training</a></li>
+            <li><a href="/Directory?Type=Teacher">Find a yoga provider</a></li>
+            <li><a href="/Directory?Type=YACEP">Find Continuing Education</a></li>
+          </ul>
+        </div>
+        <div class="footer_box">
+          <h5>Help</h5>
+          <ul>
+            <li><a href="https://help.yogaalliance.org/s/">Help Center</a></li>   
+            <li><a href="/Search_Results">Search</a></li>
+            <li><a href="https://help.yogaalliance.org/s/contactsupport">Contact us</a></li>
+          </ul>
+        </div>
+        <div class="footer_box">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="/ManageSubscription?ref=menu">Newsletters</a></li>            
+            <li><a href="/Home/Media_Inquiries">Media Inquires</a></li>
+          </ul>
+        </div>
+        <div class="footer_box">
+          <h5>Follow Yoga Alliance</h5>
+          <ul class="social_media_box">
+            <li><a href="https://www.facebook.com/yogaalliance"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="http://instagram.com/yogaalliance"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/yoga-alliance"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+        <div class="footer_box footer_logo_box">
+          <div class="footer_site_logo">
+            <a href="/about"><img src="\Portals\0\Skins\YogaV2\Images\footer_logo-new.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer> <div class="copy_right">
+    <div class="container main_container">
+      <div class="copy_right_content">
+        <p>Yoga Alliance is a nonprofit 501(c)(6). Yoga Alliance Foundation is a nonprofit 501(c)(3). This website refers to the two organizations as "Yoga Alliance." Copyright 2024 Yoga Alliance. Yoga Alliance, the Yoga Alliance logo, RYS, RYT, and YACEP are registered marks with the USPTO and other jurisdictions.</p>
+        <div class="policy_maker">
+          <ul>
+            <li><a href="/AboutYA/OurPolicies/PrivacyPolicy">Privacy Policy</a></li>
+            <li><a href="/termsofusage">Terms of Use</a></li>
+          </ul>
+          <a href="https://sealserver.trustwave.com/cert.php?customerId=a4f8720ecf6f4b5d8fde956051730ebf&size=65x36&style=invert"><img src="\Portals\0\Skins\YogaV2\Images\trade_view-new.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<script type="text/javascript" >
+	$(function () {
+        $('map').imageMapResize();
+	});
+</script>
+        <input name="ScrollTop" type="hidden" id="ScrollTop" />
+        <input name="__dnnVariable" type="hidden" id="__dnnVariable" autocomplete="off" value="`{`trackLinks`:`false`,`__scdoff`:`1`,`sf_siteRoot`:`/`,`sf_tabId`:`1106`,`evoq_TabId`:`1106`,`evoq_PageLanguage`:`en-US`,`evoq_ContentItemId`:`-1`,`evoq_UrlReferrer`:`https://www.google.com/`,`evoq_UrlPath`:`https%3a%2f%2fr.yogaalliance.org%2fLearn%2fArticle_What_Is_Yoga%2fYoga_Styles`,`evoq_UrlQuery`:`%3fTabId%3d1106%26Article_What_Is_Yoga%3dYoga_Styles%26language%3den-US`,`evoq_ContentItemReferrer`:`-1`,`evoq_PersonalizedUrlReferrer`:`-1`,`evoq_DisableAnalytics`:`False`}" />
+        <input name="__RequestVerificationToken" type="hidden" value="gQpHeBv8nOAfmomXcL83nwjAcrlEu_DhSuGGtt6UG2HMkA-SZlGYpIf5avk4GqoUfyQS1w2" /><script src="/DesktopModules/YA.Client/Scripts/auth.js?ver=3&amp;cdv=497" type="text/javascript"></script>
+    </form>
+    <!--CDF(Javascript|/js/dnncore.js?cdv=497|DnnBodyProvider|100)--><!--CDF(Javascript|/js/dnn.modalpopup.js?cdv=497|DnnBodyProvider|50)--><!--CDF(Css|/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=497|DnnPageHeaderProvider|5)--><!--CDF(Css|/Portals/0/Skins/YogaV2/skin.css?cdv=497|DnnPageHeaderProvider|15)--><!--CDF(Css|/Portals/0/Containers/Yoga/container.css?cdv=497|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/0/Containers/Yoga/container.css?cdv=497|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/0/Containers/Yoga/container.css?cdv=497|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/0/Containers/Yoga/container.css?cdv=497|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/admin.css?cdv=497|DnnPageHeaderProvider|6)--><!--CDF(Css|/Portals/0/portal.css?cdv=497|DnnPageHeaderProvider|35)--><!--CDF(Javascript|/js/dnn.js?cdv=497|DnnBodyProvider|12)--><!--CDF(Javascript|/js/dnn.servicesframework.js?cdv=497|DnnBodyProvider|100)--><!--CDF(Css|/Portals/0/Skins/YogaV2/DNNStandard/StandardMenu.css?cdv=497|DnnPageHeaderProvider|100)--><!--CDF(Javascript|/Portals/0/Skins/YogaV2/DNNStandard/StandardMenu.js?cdv=497|DnnBodyProvider|100)--><!--CDF(Javascript|https://code.jquery.com/jquery-3.5.1.min.js?cdv=497|DnnPageHeaderProvider|5)--><!--CDF(Javascript|https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js?cdv=497|DnnPageHeaderProvider|10)--><!--CDF(Javascript|https://code.jquery.com/jquery-migrate-3.2.0.min.js?cdv=497|DnnPageHeaderProvider|6)-->
+    
+</body>
+</html>

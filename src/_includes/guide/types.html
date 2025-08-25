@@ -1,227 +1,24 @@
-{% if type == "Vinyasa" %}
+{% assign yoga_type_data = content.getContent('yogaTypes', type) %}
+
 <div class="content-section">
     <h4>Overview</h4>
-    <p>
-        [Placeholder for Vinyasa yoga overview - add your personal knowledge
-        here]
-    </p>
+    <p>{{ yoga_type_data.description }}</p>
 </div>
 
 <div class="content-section">
     <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Vinyasa yoga philosophy - add your personal knowledge
-        here]
-    </p>
+    <p>{{ yoga_type_data.philosophy }}</p>
 </div>
 
 <div class="content-section">
     <h4>Benefits</h4>
-    <p>
-        [Placeholder for Vinyasa yoga benefits - add your personal knowledge
-        here]
-    </p>
+    <p>{{ yoga_type_data.benefits }}</p>
 </div>
 
 <div class="content-section">
     <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Vinyasa yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% elif type == "Hatha" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Hatha yoga overview - add your personal knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Hatha yoga philosophy - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Hatha yoga benefits - add your personal knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Hatha yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% elif type == "Yin" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Yin yoga overview - add your personal knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Yin yoga philosophy - add your personal knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Yin yoga benefits - add your personal knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Yin yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% elif type == "Ashtanga" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Ashtanga yoga overview - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Ashtanga yoga philosophy - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Ashtanga yoga benefits - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Ashtanga yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% elif type == "Restorative" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Restorative yoga overview - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Restorative yoga philosophy - add your personal
-        knowledge here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Restorative yoga benefits - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Restorative yoga is suitable for - add your
-        personal knowledge here]
-    </p>
-</div>
-{% elif type == "Kundalini" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Kundalini yoga overview - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Kundalini yoga philosophy - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Kundalini yoga benefits - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Kundalini yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% elif type == "Iyengar" %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>
-        [Placeholder for Iyengar yoga overview - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Philosophy</h4>
-    <p>
-        [Placeholder for Iyengar yoga philosophy - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Benefits</h4>
-    <p>
-        [Placeholder for Iyengar yoga benefits - add your personal knowledge
-        here]
-    </p>
-</div>
-
-<div class="content-section">
-    <h4>Who It's For</h4>
-    <p>
-        [Placeholder for who Iyengar yoga is suitable for - add your personal
-        knowledge here]
-    </p>
-</div>
-{% else %}
-<div class="content-section">
-    <h4>Overview</h4>
-    <p>[Placeholder for this yoga style - add your personal knowledge here]</p>
+    <p>{{ yoga_type_data.suitableFor }}</p>
 </div>
 {% endif %}
 
-<!-- Personal knowledge and insights about yoga types -->
+<!-- Data from personal content files -->

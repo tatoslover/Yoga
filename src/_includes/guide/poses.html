@@ -1,187 +1,104 @@
 {% if target == "standing" %}
 <div class="poses-description">
     <p>
-        [Placeholder for standing poses introduction - add your personal
-        knowledge here]
+        Standing poses form the foundation of yoga practice, building strength,
+        stability, and focus.
     </p>
     <div class="poses-list">
+        {% assign standing_poses = content.getContent('poses', 'beginner') %} {%
+        for pose in standing_poses %}
         <div class="pose-item">
-            <h4>Mountain Pose (Tadasana)</h4>
-            <p>
-                [Placeholder for Mountain Pose description - add your personal
-                knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Warrior I (Virabhadrasana I)</h4>
-            <p>
-                [Placeholder for Warrior I description - add your personal
-                knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Triangle Pose (Trikonasana)</h4>
-            <p>
-                [Placeholder for Triangle Pose description - add your personal
-                knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% elif target == "seated" %}
 <div class="poses-description">
     <p>
-        [Placeholder for seated poses introduction - add your personal knowledge
-        here]
+        Seated poses improve flexibility in the hips and spine while cultivating
+        groundedness.
     </p>
     <div class="poses-list">
+        {% assign seated_poses = content.getContent('poses', 'intermediate') %}
+        {% for pose in seated_poses %}
         <div class="pose-item">
-            <h4>Easy Pose (Sukhasana)</h4>
-            <p>
-                [Placeholder for Easy Pose description - add your personal
-                knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Staff Pose (Dandasana)</h4>
-            <p>
-                [Placeholder for Staff Pose description - add your personal
-                knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Seated Forward Fold (Paschimottanasana)</h4>
-            <p>
-                [Placeholder for Seated Forward Fold description - add your
-                personal knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% elif target == "backbends" %}
 <div class="poses-description">
     <p>
-        [Placeholder for backbends introduction - add your personal knowledge
-        here]
+        Backbends open the chest and shoulders, increasing spinal mobility and
+        counteracting the effects of sitting.
     </p>
     <div class="poses-list">
+        {% assign backbend_poses = content.getContent('poses', 'intermediate')
+        %} {% for pose in backbend_poses %}
         <div class="pose-item">
-            <h4>Cobra Pose (Bhujangasana)</h4>
-            <p>
-                [Placeholder for Cobra Pose description - add your personal
-                knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Bridge Pose (Setu Bandhasana)</h4>
-            <p>
-                [Placeholder for Bridge Pose description - add your personal
-                knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Camel Pose (Ustrasana)</h4>
-            <p>
-                [Placeholder for Camel Pose description - add your personal
-                knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% elif target == "inversions" %}
 <div class="poses-description">
     <p>
-        [Placeholder for inversions introduction - add your personal knowledge
-        here]
+        Inversions reverse the effects of gravity, bringing fresh blood flow to
+        the brain and offering a new perspective.
     </p>
     <div class="poses-list">
+        {% assign inversion_poses = content.getContent('poses', 'advanced') %}
+        {% for pose in inversion_poses %}
         <div class="pose-item">
-            <h4>Downward-Facing Dog (Adho Mukha Svanasana)</h4>
-            <p>
-                [Placeholder for Downward-Facing Dog description - add your
-                personal knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Legs-Up-The-Wall (Viparita Karani)</h4>
-            <p>
-                [Placeholder for Legs-Up-The-Wall description - add your
-                personal knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Shoulder Stand (Sarvangasana)</h4>
-            <p>
-                [Placeholder for Shoulder Stand description - add your personal
-                knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% elif target == "twists" %}
 <div class="poses-description">
     <p>
-        [Placeholder for twists introduction - add your personal knowledge here]
+        Twists detoxify the body, improve spinal mobility, and strengthen the
+        core muscles.
     </p>
     <div class="poses-list">
+        {% assign twist_poses = content.getContent('poses', 'intermediate') %}
+        {% for pose in twist_poses %}
         <div class="pose-item">
-            <h4>Seated Twist (Ardha Matsyendrasana)</h4>
-            <p>
-                [Placeholder for Seated Twist description - add your personal
-                knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Supine Twist (Jathara Parivartanasana)</h4>
-            <p>
-                [Placeholder for Supine Twist description - add your personal
-                knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Revolved Triangle (Parivrtta Trikonasana)</h4>
-            <p>
-                [Placeholder for Revolved Triangle description - add your
-                personal knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% elif target == "balancing" %}
 <div class="poses-description">
     <p>
-        [Placeholder for balancing poses introduction - add your personal
-        knowledge here]
+        Balancing poses improve focus, stability, and body awareness while
+        strengthening the core.
     </p>
     <div class="poses-list">
+        {% assign balance_poses = content.getContent('poses', 'intermediate') %}
+        {% for pose in balance_poses %}
         <div class="pose-item">
-            <h4>Tree Pose (Vrksasana)</h4>
-            <p>
-                [Placeholder for Tree Pose description - add your personal
-                knowledge here]
-            </p>
+            <h4>{{ pose.name }}</h4>
+            <p>{{ pose.description }}</p>
         </div>
-        <div class="pose-item">
-            <h4>Eagle Pose (Garudasana)</h4>
-            <p>
-                [Placeholder for Eagle Pose description - add your personal
-                knowledge here]
-            </p>
-        </div>
-        <div class="pose-item">
-            <h4>Warrior III (Virabhadrasana III)</h4>
-            <p>
-                [Placeholder for Warrior III description - add your personal
-                knowledge here]
-            </p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% else %}
 <div class="poses-description">
     <p>
-        [Placeholder for general yoga poses introduction - add your personal
-        knowledge here]
+        Yoga poses (asanas) help improve flexibility, strength, balance, and
+        mental focus when practiced regularly.
     </p>
     <div class="poses-list">
         <div class="pose-item">
@@ -195,4 +112,4 @@
 </div>
 {% endif %}
 
-<!-- Personal knowledge and insights about yoga poses -->
+<!-- Data from personal content files -->

@@ -34,7 +34,7 @@ eleventyComputed:
 
       <div class="guide-selector">
         <div class="guide-selector-buttons">
-          {% for type in site.yogaTypes %}
+          {% for type in content.yogaTypes %}
             <button class="guide-selector-btn" data-section="types" data-target="{{ type | slug }}">
               <span>{{ type }}</span>
             </button>
@@ -200,17 +200,23 @@ eleventyComputed:
 
       <div class="guide-selector">
         <div class="guide-selector-buttons">
-          <button class="guide-selector-btn" data-section="poses" data-target="standing">
-            <span>Standing Poses</span>
+          <button class="guide-selector-btn active" data-section="poses" data-target="standing">
+            <span>Standing</span>
           </button>
           <button class="guide-selector-btn" data-section="poses" data-target="seated">
-            <span>Seated Poses</span>
+            <span>Seated</span>
           </button>
           <button class="guide-selector-btn" data-section="poses" data-target="backbends">
             <span>Backbends</span>
           </button>
           <button class="guide-selector-btn" data-section="poses" data-target="inversions">
             <span>Inversions</span>
+          </button>
+          <button class="guide-selector-btn" data-section="poses" data-target="twists">
+            <span>Twists</span>
+          </button>
+          <button class="guide-selector-btn" data-section="poses" data-target="balancing">
+            <span>Balancing</span>
           </button>
         </div>
       </div>
@@ -250,15 +256,11 @@ eleventyComputed:
 
       <div class="guide-selector">
         <div class="guide-selector-buttons">
-          <button class="guide-selector-btn" data-section="tips" data-target="beginners">
-            <span>For Beginners</span>
-          </button>
-          <button class="guide-selector-btn" data-section="tips" data-target="mindful">
-            <span>Mindful Practice</span>
-          </button>
-          <button class="guide-selector-btn" data-section="tips" data-target="props">
-            <span>Using Props</span>
-          </button>
+          {% for category in content.tipCategories %}
+            <button class="guide-selector-btn {% if forloop.first %}active{% endif %}" data-section="tips" data-target="{{ category | slug }}">
+              <span>{{ category | capitalize }}</span>
+            </button>
+          {% endfor %}
         </div>
       </div>
 
@@ -289,15 +291,11 @@ eleventyComputed:
 
       <div class="guide-selector">
         <div class="guide-selector-buttons">
-          <button class="guide-selector-btn" data-section="benefits" data-target="physical">
-            <span>Physical</span>
-          </button>
-          <button class="guide-selector-btn" data-section="benefits" data-target="mental">
-            <span>Mental</span>
-          </button>
-          <button class="guide-selector-btn" data-section="benefits" data-target="lifestyle">
-            <span>Lifestyle</span>
-          </button>
+          {% for category in content.benefitsCategories %}
+            <button class="guide-selector-btn {% if forloop.first %}active{% endif %}" data-section="benefits" data-target="{{ category | slug }}">
+              <span>{{ category | capitalize }}</span>
+            </button>
+          {% endfor %}
         </div>
       </div>
 

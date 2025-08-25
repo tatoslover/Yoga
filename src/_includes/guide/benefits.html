@@ -3,75 +3,33 @@
 
 {% if target == "physical" %}
 <div class="benefits-grid">
+    {% assign physical_benefits = content.getContent('benefits', 'physical') %}
+    {% for benefit in physical_benefits %}
     <div class="benefit-card">
-        <h4>Physical Benefit 1</h4>
-        <p>
-            [Placeholder for physical benefit 1 - add your personal knowledge
-            here]
-        </p>
+        <h4>Physical Benefit {{ forloop.index }}</h4>
+        <p>{{ benefit }}</p>
     </div>
-    <div class="benefit-card">
-        <h4>Physical Benefit 2</h4>
-        <p>
-            [Placeholder for physical benefit 2 - add your personal knowledge
-            here]
-        </p>
-    </div>
-    <div class="benefit-card">
-        <h4>Physical Benefit 3</h4>
-        <p>
-            [Placeholder for physical benefit 3 - add your personal knowledge
-            here]
-        </p>
-    </div>
+    {% endfor %}
 </div>
 {% endif %} {% if target == "mental" %}
 <div class="benefits-grid">
+    {% assign mental_benefits = content.getContent('benefits', 'mental') %} {%
+    for benefit in mental_benefits %}
     <div class="benefit-card">
-        <h4>Mental Benefit 1</h4>
-        <p>
-            [Placeholder for mental benefit 1 - add your personal knowledge
-            here]
-        </p>
+        <h4>Mental Benefit {{ forloop.index }}</h4>
+        <p>{{ benefit }}</p>
     </div>
-    <div class="benefit-card">
-        <h4>Mental Benefit 2</h4>
-        <p>
-            [Placeholder for mental benefit 2 - add your personal knowledge
-            here]
-        </p>
-    </div>
-    <div class="benefit-card">
-        <h4>Mental Benefit 3</h4>
-        <p>
-            [Placeholder for mental benefit 3 - add your personal knowledge
-            here]
-        </p>
-    </div>
+    {% endfor %}
 </div>
 {% endif %} {% if target == "spiritual" %}
 <div class="benefits-grid">
+    {% assign spiritual_benefits = content.getContent('benefits', 'spiritual')
+    %} {% for benefit in spiritual_benefits %}
     <div class="benefit-card">
-        <h4>Spiritual Benefit 1</h4>
-        <p>
-            [Placeholder for spiritual benefit 1 - add your personal knowledge
-            here]
-        </p>
+        <h4>Spiritual Benefit {{ forloop.index }}</h4>
+        <p>{{ benefit }}</p>
     </div>
-    <div class="benefit-card">
-        <h4>Spiritual Benefit 2</h4>
-        <p>
-            [Placeholder for spiritual benefit 2 - add your personal knowledge
-            here]
-        </p>
-    </div>
-    <div class="benefit-card">
-        <h4>Spiritual Benefit 3</h4>
-        <p>
-            [Placeholder for spiritual benefit 3 - add your personal knowledge
-            here]
-        </p>
-    </div>
+    {% endfor %}
 </div>
 {% endif %}
 

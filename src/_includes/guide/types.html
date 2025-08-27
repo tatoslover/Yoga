@@ -1,4 +1,4 @@
-{% assign yoga_type_data = content.getContent('yogaTypes', type) %}
+{% set yoga_type_data = content.getContent('yogaTypes', type) %}
 
 <div class="content-section">
     <h4>Overview</h4>
@@ -19,6 +19,5 @@
     <h4>Who It's For</h4>
     <p>{{ yoga_type_data.suitableFor }}</p>
 </div>
-{% endif %}
 
 <!-- Data from personal content files -->

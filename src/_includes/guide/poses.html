@@ -5,8 +5,8 @@
         stability, and focus.
     </p>
     <div class="poses-list">
-        {% assign standing_poses = content.getContent('poses', 'beginner') %} {%
-        for pose in standing_poses %}
+        {% set standing_poses = content.getContent('poses', 'beginner') %}
+        {% for pose in standing_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>
             <p>{{ pose.description }}</p>
@@ -21,7 +21,7 @@
         groundedness.
     </p>
     <div class="poses-list">
-        {% assign seated_poses = content.getContent('poses', 'intermediate') %}
+        {% set seated_poses = content.getContent('poses', 'intermediate') %}
         {% for pose in seated_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>
@@ -37,8 +37,8 @@
         counteracting the effects of sitting.
     </p>
     <div class="poses-list">
-        {% assign backbend_poses = content.getContent('poses', 'intermediate')
-        %} {% for pose in backbend_poses %}
+        {% set backbend_poses = content.getContent('poses', 'intermediate') %}
+        {% for pose in backbend_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>
             <p>{{ pose.description }}</p>
@@ -53,7 +53,7 @@
         the brain and offering a new perspective.
     </p>
     <div class="poses-list">
-        {% assign inversion_poses = content.getContent('poses', 'advanced') %}
+        {% set inversion_poses = content.getContent('poses', 'advanced') %}
         {% for pose in inversion_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>
@@ -69,7 +69,7 @@
         core muscles.
     </p>
     <div class="poses-list">
-        {% assign twist_poses = content.getContent('poses', 'intermediate') %}
+        {% set twist_poses = content.getContent('poses', 'intermediate') %}
         {% for pose in twist_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>
@@ -85,7 +85,7 @@
         strengthening the core.
     </p>
     <div class="poses-list">
-        {% assign balance_poses = content.getContent('poses', 'intermediate') %}
+        {% set balance_poses = content.getContent('poses', 'intermediate') %}
         {% for pose in balance_poses %}
         <div class="pose-item">
             <h4>{{ pose.name }}</h4>

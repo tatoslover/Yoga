@@ -3,17 +3,19 @@
 
 {% if target == "beginners" %}
 <div class="tips-grid">
-    {% assign beginner_tips = content.getContent('tips', 'beginners') %} {% for
-    tip in beginner_tips %}
+    {% set beginner_tips = content.getContent('tips', 'beginners') %}
+    {% for tip in beginner_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
         <p>{{ tip.content }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "intermediate" %}
+{% endif %}
+
+{% if target == "intermediate" %}
 <div class="tips-grid">
-    {% assign intermediate_tips = content.getContent('tips', 'intermediate') %}
+    {% set intermediate_tips = content.getContent('tips', 'intermediate') %}
     {% for tip in intermediate_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
@@ -21,40 +23,48 @@
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "advanced" %}
+{% endif %}
+
+{% if target == "advanced" %}
 <div class="tips-grid">
-    {% assign advanced_tips = content.getContent('tips', 'advanced') %} {% for
-    tip in advanced_tips %}
+    {% set advanced_tips = content.getContent('tips', 'advanced') %}
+    {% for tip in advanced_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
         <p>{{ tip.content }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "props" %}
+{% endif %}
+
+{% if target == "props" %}
 <div class="tips-grid">
-    {% assign props_tips = content.getContent('tips', 'props') %} {% for tip in
-    props_tips %}
+    {% set props_tips = content.getContent('tips', 'props') %}
+    {% for tip in props_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
         <p>{{ tip.content }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "mindful" %}
+{% endif %}
+
+{% if target == "mindful" %}
 <div class="tips-grid">
-    {% assign mindful_tips = content.getContent('tips', 'mindful') %} {% for tip
-    in mindful_tips %}
+    {% set mindful_tips = content.getContent('tips', 'mindful') %}
+    {% for tip in mindful_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
         <p>{{ tip.content }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "home" %}
+{% endif %}
+
+{% if target == "home" %}
 <div class="tips-grid">
-    {% assign home_tips = content.getContent('tips', 'home') %} {% for tip in
-    home_tips %}
+    {% set home_tips = content.getContent('tips', 'home') %}
+    {% for tip in home_tips %}
     <div class="tip-card">
         <h4>{{ tip.title }}</h4>
         <p>{{ tip.content }}</p>

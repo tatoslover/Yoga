@@ -3,30 +3,34 @@
 
 {% if target == "physical" %}
 <div class="benefits-grid">
-    {% assign physical_benefits = content.getContent('benefits', 'physical') %}
+    {% set physical_benefits = content.getContent('benefits', 'physical') %}
     {% for benefit in physical_benefits %}
     <div class="benefit-card">
-        <h4>Physical Benefit {{ forloop.index }}</h4>
+        <h4>Physical Benefit {{ loop.index }}</h4>
         <p>{{ benefit }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "mental" %}
+{% endif %}
+
+{% if target == "mental" %}
 <div class="benefits-grid">
-    {% assign mental_benefits = content.getContent('benefits', 'mental') %} {%
-    for benefit in mental_benefits %}
+    {% set mental_benefits = content.getContent('benefits', 'mental') %}
+    {% for benefit in mental_benefits %}
     <div class="benefit-card">
-        <h4>Mental Benefit {{ forloop.index }}</h4>
+        <h4>Mental Benefit {{ loop.index }}</h4>
         <p>{{ benefit }}</p>
     </div>
     {% endfor %}
 </div>
-{% endif %} {% if target == "spiritual" %}
+{% endif %}
+
+{% if target == "spiritual" %}
 <div class="benefits-grid">
-    {% assign spiritual_benefits = content.getContent('benefits', 'spiritual')
-    %} {% for benefit in spiritual_benefits %}
+    {% set spiritual_benefits = content.getContent('benefits', 'spiritual') %}
+    {% for benefit in spiritual_benefits %}
     <div class="benefit-card">
-        <h4>Spiritual Benefit {{ forloop.index }}</h4>
+        <h4>Spiritual Benefit {{ loop.index }}</h4>
         <p>{{ benefit }}</p>
     </div>
     {% endfor %}

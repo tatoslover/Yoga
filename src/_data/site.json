@@ -8,12 +8,12 @@
   },
   "navItems": [
     {
-      "text": "Home",
+      "text": "Videos",
       "url": "/"
     },
     {
-      "text": "Guide",
-      "url": "/guide/"
+      "text": "Resources",
+      "url": "/resources/"
     },
     {
       "text": "About",

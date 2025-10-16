@@ -26,10 +26,10 @@ module.exports = function (eleventyConfig) {
   */
 
   // Copy asset directories to the output
-  eleventyConfig.addPassthroughCopy({"src/assets": "assets"});
-  eleventyConfig.addPassthroughCopy({"src/css": "css"});
-  eleventyConfig.addPassthroughCopy({"src/js": "js"});
-  eleventyConfig.addPassthroughCopy({"src/admin": "admin"});
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/css": "css" });
+  eleventyConfig.addPassthroughCopy({ "src/js": "js" });
+  eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
 
   // Simple duration formatting
   eleventyConfig.addFilter("formatDuration", function (duration) {
@@ -42,14 +42,25 @@ module.exports = function (eleventyConfig) {
   });
 
   // Date formatting filter
-  eleventyConfig.addFilter("date", function(date) {
+  eleventyConfig.addFilter("date", function (date) {
     if (!date) return "";
     const d = new Date(date);
-    return d.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return d.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
+  });
+
+  // Unique filter for arrays
+  eleventyConfig.addFilter("unique", function (array) {
+    if (!array) return [];
+    return [...new Set(array)];
+  });
+
+  // JSON filter
+  eleventyConfig.addFilter("json", function (value) {
+    return JSON.stringify(value);
   });
 
   // Add slugify filter (built into 11ty)

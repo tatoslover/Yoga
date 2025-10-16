@@ -1,17 +1,59 @@
 ---
 layout: base.njk
-title: About
-description: Learn about Mat & Mind and view image credits
+title: About Mat & Mind
+description: Learn about our project, approach, and the sources that inform our content
 permalink: /about/
 ---
 
-<section class="page-header">
-</section>
+<div class="about-page">
+  <div class="about-header">
+    <h1>About Mat & Mind</h1>
+    <p class="about-intro">Learn more about our project, approach, and the sources that inform our content.</p>
+  </div>
 
-<section class="about-content">
-  <div class="container narrow-container">
-    <div class="about-section">
-      <h2>Our Purpose</h2>
+  <div class="category-cards">
+      <div class="category-card" id="card-purpose" data-category="purpose" onclick="toggleSection('purpose', this)">
+        <h2>Purpose</h2>
+        <div class="card-description">Learn about our mission and what makes us different</div>
+        <div class="card-icon">
+          <span class="icon-plus">+</span>
+          <span class="icon-minus" style="display: none;">−</span>
+        </div>
+      </div>
+
+      <div class="category-card" id="card-approach" data-category="approach" onclick="toggleSection('approach', this)">
+        <h2>Approach</h2>
+        <div class="card-description">How we create a mindful experience and the technology we use</div>
+        <div class="card-icon">
+          <span class="icon-plus">+</span>
+          <span class="icon-minus" style="display: none;">−</span>
+        </div>
+      </div>
+
+      <div class="category-card" id="card-trusted" data-category="trusted" onclick="toggleSection('trusted', this)">
+        <h2>Sources</h2>
+        <div class="card-description">Our trusted information sources and disclaimer</div>
+        <div class="card-icon">
+          <span class="icon-plus">+</span>
+          <span class="icon-minus" style="display: none;">−</span>
+        </div>
+      </div>
+
+      <div class="category-card" id="card-themes" data-category="themes" onclick="toggleSection('themes', this)">
+        <h2>Themes</h2>
+        <div class="card-description">Preview and learn about our beautiful backgrounds</div>
+        <div class="card-icon">
+          <span class="icon-plus">+</span>
+          <span class="icon-minus" style="display: none;">−</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="resource-section" id="purpose" style="display: none;">
+      <div class="section-header">
+        <h2>Purpose</h2>
+        <button class="close-section" aria-label="Close section" onclick="closeSection('purpose')">×</button>
+      </div>
       <p>
         Mat & Mind was created to provide a distraction-free environment for yoga practice.
         In today's digital world, even something as mindful as yoga can become entangled with
@@ -22,28 +64,15 @@ permalink: /about/
         that you can access without the temptations of a typical video platform. Practice
         with intention, not distraction.
       </p>
-    </div>
+    </section>
 
-    <div class="about-section">
-      <h2>Why Distraction-Free?</h2>
-      <p>
-        Traditional video platforms are designed to maximize watch time and engagement,
-        not mindfulness. Their recommendation algorithms and autoplay features can lead
-        to unhealthy usage patterns and take us away from our intended practice.
-      </p>
-      <p>
-        By creating a dedicated space for yoga videos with minimal distractions, we aim to:
-      </p>
-      <ul>
-        <li>Help you maintain focus during your practice</li>
-        <li>Eliminate the temptation to watch "just one more video"</li>
-        <li>Reduce screen time while still accessing quality instruction</li>
-        <li>Create a more mindful relationship with digital content</li>
-      </ul>
-    </div>
+    <!-- Why Distraction-Free section removed -->
 
-    <div class="about-section">
-      <h2>Our Approach</h2>
+    <section class="resource-section" id="approach" style="display: none;">
+      <div class="section-header">
+        <h2>Approach</h2>
+        <button class="close-section" aria-label="Close section" onclick="closeSection('approach')">×</button>
+      </div>
       <p>
         Mat & Mind takes several approaches to create a more mindful experience:
       </p>
@@ -54,10 +83,8 @@ permalink: /about/
         <li><strong>Useful Controls</strong>: Simple features like 15-second jumps that enhance practice</li>
         <li><strong>Cloud Storage</strong>: Access videos without downloading large files to your device</li>
       </ul>
-    </div>
 
-    <div class="about-section">
-      <h2>Technology</h2>
+      <h3>Technology</h3>
       <p>
         This site is built using <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty (Eleventy)</a>,
         a simple static site generator. The videos are embedded from YouTube but with parameters
@@ -67,10 +94,13 @@ permalink: /about/
         The project is open source and contributions are welcome. If you'd like to suggest
         videos or improvements, please visit our <a href="https://github.com/yourusername/mat-and-mind" target="_blank" rel="noopener">GitHub repository</a>.
       </p>
-    </div>
+    </section>
 
-    <div class="about-section trusted-info-section">
-      <h2>Trusted Information</h2>
+    <section class="resource-section trusted-info-section" id="trusted" style="display: none;">
+      <div class="section-header">
+        <h2>Sources</h2>
+        <button class="close-section" aria-label="Close section" onclick="closeSection('trusted')">×</button>
+      </div>
       <div class="trusted-info-content">
         <p>
           Mat & Mind is committed to providing accurate yoga information from respected sources including Harvard Health, Yoga Journal, and other authoritative publications.
@@ -91,10 +121,14 @@ permalink: /about/
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div id="credits" class="about-section">
-      <h2>Theme Gallery</h2>
+    <section class="resource-section" id="themes" style="display: none;">
+      <div class="section-header">
+        <h2>Themes</h2>
+        <button class="close-section" aria-label="Close section" onclick="closeSection('themes')">×</button>
+      </div>
+      <h3>Theme Gallery</h3>
       <p>
         The beautiful background images used across our site are sourced from talented photographers on Unsplash. You can change themes using the theme selector in the bottom right corner of any page.
       </p>
@@ -178,16 +212,85 @@ permalink: /about/
         <p>All Unsplash photos are free to use under the <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash License</a>. Other images used with permission.</p>
         <p>Select your favorite theme to enhance your practice experience.</p>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+</div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Add click handlers to theme buttons
-    // No theme buttons anymore
+  // Keep track of which section is currently open
+  let currentOpenSection = null;
 
-    // Highlight the card for the current theme
+  function closeSection(sectionId) {
+    // Get the section and hide it
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.style.display = 'none';
+
+      // Find the card for this section and reset its icon
+      const card = document.querySelector(`.category-card[data-category="${sectionId}"]`);
+      if (card) {
+        card.querySelector('.icon-plus').style.display = 'inline-block';
+        card.querySelector('.icon-minus').style.display = 'none';
+        card.classList.remove('active');
+      }
+
+      // Reset the current open section
+      currentOpenSection = null;
+
+      // Scroll back to category cards
+      document.querySelector('.category-cards').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+
+  function toggleSection(categoryId, cardElement) {
+    // First, reset all cards to inactive state
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.querySelector('.icon-plus').style.display = 'inline-block';
+      card.querySelector('.icon-minus').style.display = 'none';
+      card.classList.remove('active');
+    });
+
+    // Hide all sections
+    document.querySelectorAll('.resource-section').forEach(section => {
+      section.style.display = 'none';
+    });
+
+    // Is this the section that was already open?
+    if (currentOpenSection === categoryId) {
+      // We're closing the current section, don't open anything new
+      currentOpenSection = null;
+      return;
+    }
+
+    // Special handling for technology section removal
+    if (categoryId === 'technology') {
+      // Redirect to approach section instead
+      toggleSection('approach');
+      return;
+    }
+
+    // We're opening a new section
+    const section = document.getElementById(categoryId);
+    section.style.display = 'block';
+
+    // Show minus icon only on the clicked card
+    cardElement.querySelector('.icon-plus').style.display = 'none';
+    cardElement.querySelector('.icon-minus').style.display = 'inline-block';
+    cardElement.classList.add('active');
+
+    // Update the current open category
+    currentOpenSection = categoryId;
+
+    // Scroll to the section
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Highlight the card for the current theme in the theme gallery
     const currentTheme = localStorage.getItem('mat-and-mind-theme') || 'forrest';
     const currentCard = document.querySelector(`.credit-card[data-theme="${currentTheme}"]`);
     if (currentCard) {
@@ -197,6 +300,138 @@ permalink: /about/
 </script>
 
 <style>
+  /* About Page Styles */
+  .about-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .about-header {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+
+  .about-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  /* Category Cards */
+  .category-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xxl);
+  }
+
+  .category-card {
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+  }
+
+  .category-card:hover {
+    box-shadow: var(--box-shadow-md);
+    transform: translateY(-3px);
+  }
+
+  .category-card.active {
+    box-shadow: var(--box-shadow-md);
+    transform: translateY(-3px);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .category-card h2 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+  }
+
+  .card-description {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+  }
+
+  .card-icon {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+  }
+
+  .category-card:hover .card-icon {
+    opacity: 1;
+  }
+
+  /* Resource Sections */
+  .resource-section {
+    margin-bottom: var(--spacing-xxl);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    background: var(--color-background-alt);
+    box-shadow: var(--box-shadow-md);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .close-section {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .close-section:hover {
+    background: var(--color-border);
+    color: var(--color-primary);
+  }
+
   .trusted-info-section .trusted-info-content {
     background-color: rgba(10, 10, 15, 0.6);
     padding: var(--spacing-md);
@@ -322,8 +557,18 @@ permalink: /about/
     }
   }
 
+  @media (max-width: 768px) {
+    .category-cards {
+      grid-template-columns: 1fr;
+    }
+
+    .category-card {
+      min-height: 180px;
+    }
+  }
+
   @media (max-width: 480px) {
-    .credits-grid {
+    .credits-grid, .about-cards {
       grid-template-columns: 1fr;
     }
   }

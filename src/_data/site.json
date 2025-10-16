@@ -8,12 +8,12 @@
   },
   "navItems": [
     {
-      "text": "Home",
+      "text": "Videos",
       "url": "/"
     },
     {
-      "text": "Guide",
-      "url": "/guide/"
+      "text": "Resources",
+      "url": "/resources/"
     },
     {
       "text": "About",
@@ -25,6 +25,14 @@
   "socialMedia": {
     "github": "https://github.com/tatoslover/mat-and-mind"
   },
-  "yogaTypes": ["Vinyasa", "Hatha", "Yin", "Power", "Restorative"],
+  "yogaTypes": [
+    "Hatha",
+    "Vinyasa",
+    "Ashtanga",
+    "Iyengar",
+    "Kundalini",
+    "Restorative",
+    "Yin"
+  ],
   "difficultyLevels": ["Beginner", "Intermediate", "Advanced", "All Levels"]
 }

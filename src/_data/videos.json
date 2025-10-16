@@ -8,7 +8,8 @@
     "type": "Vinyasa",
     "difficulty": "Intermediate",
     "instructor": "Yoga With Adriene",
-    "tags": ["morning", "energizing", "flow"]
+    "tags": ["morning", "energizing", "flow"],
+    "thumbnail": "/assets/thumbnails/morning-flow.jpg"
   },
   {
     "id": "GLy2rYHwUqY",
@@ -19,7 +20,8 @@
     "type": "Hatha",
     "difficulty": "Beginner",
     "instructor": "Yoga With Adriene",
-    "tags": ["beginner", "gentle", "foundation"]
+    "tags": ["beginner", "gentle", "foundation"],
+    "thumbnail": "/assets/thumbnails/beginners-yoga.jpg"
   },
   {
     "id": "4PgIfOOHwH8",
@@ -30,7 +32,8 @@
     "type": "Yin",
     "difficulty": "All Levels",
     "instructor": "Yoga By Kassandra",
-    "tags": ["stretching", "flexibility", "relaxation"]
+    "tags": ["stretching", "flexibility", "relaxation"],
+    "thumbnail": "/assets/thumbnails/deep-stretch.jpg"
   },
   {
     "id": "oBu-pQG6sTY",
@@ -41,7 +44,8 @@
     "type": "Power",
     "difficulty": "Advanced",
     "instructor": "Fightmaster Yoga",
-    "tags": ["strength", "power", "core"]
+    "tags": ["strength", "power", "core"],
+    "thumbnail": "/assets/thumbnails/power-yoga.jpg"
   },
   {
     "id": "0o0kEhsb22c",
@@ -52,6 +56,67 @@
     "type": "Restorative",
     "difficulty": "Beginner",
     "instructor": "Yoga With Adriene",
-    "tags": ["evening", "relaxation", "sleep"]
+    "tags": ["evening", "relaxation", "sleep"],
+    "thumbnail": "/assets/thumbnails/bedtime-yoga.jpg"
+  },
+  {
+    "id": "NQzDFgnyYAo",
+    "title": "Yoga for Men | Episode 1",
+    "slug": "yoga-for-men-episode-1",
+    "description": "Join Flo for a yoga for men vinyasa practice that focuses on twists, standing poses, and upper body strength. This 30-minute session is designed specifically for men looking to build strength and flexibility in a balanced way.",
+    "duration": "30:00",
+    "type": "Vinyasa",
+    "difficulty": "Intermediate",
+    "instructor": "Breathe and Flow",
+    "tags": ["men", "strength", "flexibility"],
+    "thumbnail": "/assets/thumbnails/men-episode1.jpg"
+  },
+  {
+    "id": "Zg9Az19GnZI",
+    "title": "Yoga for Men | Episode 29",
+    "slug": "yoga-for-men-episode-29",
+    "description": "A dynamic 30-minute yoga session that creates space, stability, and strength in all directions. This practice is perfect for men wanting to improve their overall mobility and functional strength.",
+    "duration": "30:00",
+    "type": "Vinyasa",
+    "difficulty": "Intermediate",
+    "instructor": "Breathe and Flow",
+    "tags": ["men", "stability", "strength"],
+    "thumbnail": "/assets/thumbnails/men-episode29.jpg"
+  },
+  {
+    "id": "1jm5FVIICV0",
+    "title": "Yoga for Men | Episode 27",
+    "slug": "yoga-for-men-episode-27",
+    "description": "This flow is all about moving in every direction—building strength, creating space, and working on holistic control. No props needed for this full-body practice designed specifically with men's bodies in mind.",
+    "duration": "30:00",
+    "type": "Vinyasa",
+    "difficulty": "Intermediate",
+    "instructor": "Breathe and Flow",
+    "tags": ["men", "mobility", "control"],
+    "thumbnail": "/assets/thumbnails/men-episode27.jpg"
+  },
+  {
+    "id": "p1VMUvhHyJs",
+    "title": "Yoga for Men | Episode 24",
+    "slug": "yoga-for-men-episode-24",
+    "description": "A balanced yoga practice focusing on core strength, shoulder mobility, and hip flexibility. This session is ideal for athletes and men looking to complement their existing fitness routines with yoga.",
+    "duration": "30:00",
+    "type": "Vinyasa",
+    "difficulty": "Intermediate",
+    "instructor": "Breathe and Flow",
+    "tags": ["men", "core", "mobility"],
+    "thumbnail": "/assets/thumbnails/men-episode24.jpg"
+  },
+  {
+    "id": "osPoY-1Oz3k",
+    "title": "Yoga for Men | Episode 30",
+    "slug": "yoga-for-men-episode-30",
+    "description": "The latest installment in the popular Yoga for Men series. This practice builds on previous sessions with a focus on challenging poses that improve overall strength and balance while maintaining mobility.",
+    "duration": "30:00",
+    "type": "Power",
+    "difficulty": "Advanced",
+    "instructor": "Breathe and Flow",
+    "tags": ["men", "challenging", "balance"],
+    "thumbnail": "/assets/thumbnails/men-episode30.jpg"
   }
 ]

@@ -7,6 +7,8 @@
     <meta name="description" content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/themes.css">
+    <link rel="stylesheet" href="/css/attribution.css">
+    <link rel="stylesheet" href="/css/video-player.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -53,8 +55,23 @@
         </div>
     </footer>
 
+    <script src="/js/user-preferences.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/theme-switcher.js"></script>
 
+    <!-- Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

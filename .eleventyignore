@@ -1,0 +1,5 @@
+src/content/videos/
+src/content/videos_disabled/
+src/content/guide_disabled/
+node_modules/
+_site/

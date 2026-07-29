@@ -1,0 +1,519 @@
+/* Mat & Mind - Single Page Yoga Video Site */
+
+/* === Theme Variables === */
+:root {
+    --color-text: #e6e6e6;
+    --color-text-light: #b3b3b3;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --border-radius: 8px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --transition: all 0.3s ease;
+    --theme-transition:
+        background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+        opacity 0.3s ease;
+
+    /* Forest Theme - Default */
+    --forrest-bg: #0a120a;
+    --forrest-primary: #1a2e1a;
+    --forrest-secondary: #a0c1c1;
+    --forrest-secondary-ui: #a0c1c1;
+    --forrest-secondary-light: #c2dfdf;
+    --forrest-secondary-dark: #718f8f;
+    --forrest-image: url("assets/themes/forrest.jpg");
+    --forrest-animation: 20s;
+
+    /* Ocean Theme */
+    --ocean-bg: #050e14;
+    --ocean-primary: #0a2a3b;
+    --ocean-secondary: #2bc4bd;
+    --ocean-secondary-ui: #2bc4bd;
+    --ocean-secondary-light: #45e6de;
+    --ocean-secondary-dark: #1b8d88;
+    --ocean-image: url("assets/themes/ocean.jpg");
+    --ocean-animation: 30s;
+
+    /* Beach Theme */
+    --beach-bg: #1a120c;
+    --beach-primary: #382114;
+    --beach-secondary: #b68e5d;
+    --beach-secondary-ui: #b68e5d;
+    --beach-secondary-light: #d4aa76;
+    --beach-secondary-dark: #96714a;
+    --beach-image: url("assets/themes/beach.jpg");
+    --beach-animation: 60s;
+
+    /* Water Theme */
+    --water-bg: #081428;
+    --water-primary: #142653;
+    --water-secondary: #5b85b0;
+    --water-secondary-ui: #5b85b0;
+    --water-secondary-light: #7ca3cc;
+    --water-secondary-dark: #4a6d93;
+    --water-image: url("assets/themes/water.jpg");
+    --water-animation: 25s;
+
+    /* Lights Theme */
+    --lights-bg: #1a0e0c;
+    --lights-primary: #4a2013;
+    --lights-secondary: #d85c38;
+    --lights-secondary-ui: #d85c38;
+    --lights-secondary-light: #e67d5c;
+    --lights-secondary-dark: #b4461f;
+    --lights-image: url("assets/themes/lights.jpg");
+    --lights-animation: 40s;
+
+    /* Mountain Theme */
+    --mountain-bg: #0f1016;
+    --mountain-primary: #191d35;
+    --mountain-secondary: #8494b7;
+    --mountain-secondary-ui: #8494b7;
+    --mountain-secondary-light: #a3b0cc;
+    --mountain-secondary-dark: #6a7a9d;
+    --mountain-image: url("assets/themes/mountain.jpg");
+    --mountain-animation: 35s;
+
+    /* Active theme (defaults to forest) */
+    --color-background: var(--forrest-bg);
+    --theme-primary: var(--forrest-primary);
+    --color-secondary: var(--forrest-secondary-ui);
+    --color-secondary-light: var(--forrest-secondary-light);
+    --color-secondary-dark: var(--forrest-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--theme-primary) 0%, var(--color-background) 100%);
+    --theme-background-image: var(--forrest-image);
+    --animation-speed: var(--forrest-animation);
+}
+
+[data-theme="ocean"] {
+    --color-background: var(--ocean-bg);
+    --theme-primary: var(--ocean-primary);
+    --color-secondary: var(--ocean-secondary-ui);
+    --color-secondary-light: var(--ocean-secondary-light);
+    --color-secondary-dark: var(--ocean-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--ocean-primary) 0%, var(--ocean-bg) 100%);
+    --theme-background-image: var(--ocean-image);
+    --animation-speed: var(--ocean-animation);
+}
+
+[data-theme="beach"] {
+    --color-background: var(--beach-bg);
+    --theme-primary: var(--beach-primary);
+    --color-secondary: var(--beach-secondary-ui);
+    --color-secondary-light: var(--beach-secondary-light);
+    --color-secondary-dark: var(--beach-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--beach-primary) 0%, var(--beach-bg) 100%);
+    --theme-background-image: var(--beach-image);
+    --animation-speed: var(--beach-animation);
+}
+
+[data-theme="water"] {
+    --color-background: var(--water-bg);
+    --theme-primary: var(--water-primary);
+    --color-secondary: var(--water-secondary-ui);
+    --color-secondary-light: var(--water-secondary-light);
+    --color-secondary-dark: var(--water-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--water-primary) 0%, var(--water-bg) 100%);
+    --theme-background-image: var(--water-image);
+    --animation-speed: var(--water-animation);
+}
+
+[data-theme="lights"] {
+    --color-background: var(--lights-bg);
+    --theme-primary: var(--lights-primary);
+    --color-secondary: var(--lights-secondary-ui);
+    --color-secondary-light: var(--lights-secondary-light);
+    --color-secondary-dark: var(--lights-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--lights-primary) 0%, var(--lights-bg) 100%);
+    --theme-background-image: var(--lights-image);
+    --animation-speed: var(--lights-animation);
+}
+
+[data-theme="mountain"] {
+    --color-background: var(--mountain-bg);
+    --theme-primary: var(--mountain-primary);
+    --color-secondary: var(--mountain-secondary-ui);
+    --color-secondary-light: var(--mountain-secondary-light);
+    --color-secondary-dark: var(--mountain-secondary-dark);
+    --theme-gradient: linear-gradient(135deg, var(--mountain-primary) 0%, var(--mountain-bg) 100%);
+    --theme-background-image: var(--mountain-image);
+    --animation-speed: var(--mountain-animation);
+}
+
+/* === Base Styles === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-background);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Background image layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: var(--theme-background-image);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    animation: subtle-movement var(--animation-speed) ease-in-out infinite alternate;
+    transition: var(--theme-transition), background-image 0.1s ease-in;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--theme-gradient);
+    opacity: 0.6;
+    z-index: -1;
+    transition: var(--theme-transition);
+}
+
+@keyframes subtle-movement {
+    0% {
+        transform: scale(1.05) translate(-0.5%, -0.5%);
+    }
+    100% {
+        transform: scale(1.1) translate(0.5%, 0.5%);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* === Header === */
+.site-header {
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    text-align: center;
+}
+
+.site-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+}
+
+.site-header p {
+    color: var(--color-text-light);
+    margin-top: var(--spacing-xs);
+    font-size: 0.95rem;
+}
+
+/* === Video Grid === */
+main {
+    padding: 0 0 var(--spacing-xl);
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .video-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.video-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background-color: rgba(20, 20, 30, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    transition: var(--theme-transition), transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-secondary);
+}
+
+.video-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+}
+
+.video-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-media iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.play-button {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 44px;
+    min-width: 44px;
+    transition: background 0.2s ease;
+}
+
+.play-button:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.play-button svg {
+    width: 56px;
+    height: 56px;
+    fill: rgba(255, 255, 255, 0.92);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.video-duration {
+    position: absolute;
+    bottom: var(--spacing-xs);
+    right: var(--spacing-xs);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-shadow: none;
+}
+
+.video-card-body {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.video-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+}
+
+.video-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+}
+
+.video-instructor {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: auto;
+}
+
+/* === Theme Switcher === */
+.theme-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background-color: rgba(20, 20, 30, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--theme-transition), transform 0.2s ease;
+}
+
+.theme-switcher:hover {
+    transform: scale(1.08);
+}
+
+.theme-switcher svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-secondary);
+}
+
+.theme-panel {
+    position: fixed;
+    bottom: 76px;
+    right: 20px;
+    background-color: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 99;
+    width: 260px;
+    max-width: calc(100vw - 32px);
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+}
+
+.theme-panel.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.theme-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.theme-panel-title {
+    font-size: 1rem;
+}
+
+.theme-panel-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-light);
+    font-size: 22px;
+    line-height: 1;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.04);
+    min-height: 44px;
+}
+
+.theme-option:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.theme-option.active {
+    border-color: var(--color-secondary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-preview {
+    width: 100%;
+    height: 56px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-xs);
+}
+
+.theme-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.theme-name {
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+/* === Empty state === */
+.no-videos-message {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-light);
+}
+
+/* === Responsive tweaks === */
+@media (max-width: 480px) {
+    .site-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .theme-panel {
+        width: 220px;
+        right: 15px;
+        bottom: 70px;
+    }
+
+    .theme-switcher {
+        bottom: 15px;
+        right: 15px;
+    }
+}

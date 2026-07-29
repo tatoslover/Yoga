@@ -1,0 +1,240 @@
+videos:
+  - id: "hJbRpHZr_d0"
+    title: "30 Min Morning Yoga Flow"
+    slug: "morning-yoga-flow"
+    description: "Start your day with this energizing yoga flow that will wake up your body and mind. This practice focuses on gentle stretching, building heat, and setting intentions for the day ahead."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Yoga With Adriene"
+    tags: ["morning", "energizing", "flow"]
+
+  - id: "GLy2rYHwUqY"
+    title: "Yoga For Beginners - 20 Minute Home Yoga Workout"
+    slug: "beginners-home-yoga"
+    description: "Perfect for complete beginners, this gentle session introduces fundamental yoga poses and breathing techniques. Focus on proper alignment and building a strong foundation for your practice."
+    duration: "20:00"
+    type: "Hatha"
+    difficulty: "Beginner"
+    instructor: "Yoga With Adriene"
+    tags: ["beginner", "gentle", "foundation"]
+
+  - id: "4PgIfOOHwH8"
+    title: "Deep Stretch Yoga For Flexibility"
+    slug: "deep-stretch-flexibility"
+    description: "This deep stretching session targets all major muscle groups to increase overall flexibility. Hold poses longer to release tension and create space in your body."
+    duration: "45:00"
+    type: "Yin"
+    difficulty: "All Levels"
+    instructor: "Yoga By Kassandra"
+    tags: ["stretching", "flexibility", "relaxation"]
+
+  - id: "oBu-pQG6sTY"
+    title: "Power Yoga For Strength"
+    slug: "power-yoga-strength"
+    description: "Build strength and endurance with this challenging power yoga session. Focuses on core engagement, arm balances, and flowing sequences that build heat and muscle tone."
+    duration: "40:00"
+    type: "Power"
+    difficulty: "Advanced"
+    instructor: "Fightmaster Yoga"
+    tags: ["strength", "power", "core"]
+
+  - id: "NQzDFgnyYAo"
+    title: "Yoga for Men | Episode 1"
+    slug: "yoga-for-men-episode-1"
+    description: "Join Flo for a yoga for men vinyasa practice that focuses on twists, standing poses, and upper body strength."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "strength", "flexibility"]
+
+  - id: "Zg9Az19GnZI"
+    title: "Yoga for Men | Episode 29"
+    slug: "yoga-for-men-episode-29"
+    description: "A dynamic 30-minute yoga session that creates space, stability, and strength in all directions."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "stability", "strength"]
+
+  - id: "1jm5FVIICV0"
+    title: "Yoga for Men | Episode 27"
+    slug: "yoga-for-men-episode-27"
+    description: "This flow is all about moving in every direction — building strength, creating space, and working on holistic control. No props needed."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "mobility", "control"]
+
+  - id: "p1VMUvhHyJs"
+    title: "Yoga for Men | Episode 24"
+    slug: "yoga-for-men-episode-24"
+    description: "A balanced yoga practice focusing on core strength, shoulder mobility, and hip flexibility."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "core", "mobility"]
+
+  - id: "osPoY-1Oz3k"
+    title: "Yoga for Men | Episode 30"
+    slug: "yoga-for-men-episode-30"
+    description: "The latest installment in the popular Yoga for Men series. Builds on previous sessions with a focus on challenging poses."
+    duration: "30:00"
+    type: "Power"
+    difficulty: "Advanced"
+    instructor: "Breathe and Flow"
+    tags: ["men", "challenging", "balance"]
+
+  - id: "9G7D1Z_ux8g"
+    title: "Yoga for Men | Episode 2"
+    slug: "yoga-for-men-episode-2"
+    description: "An early entry in the Yoga for Men series, working through standing strength and steady flowing transitions."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "strength", "flow"]
+
+  - id: "SIfb6zNbOCo"
+    title: "Yoga for Men | Episode 5"
+    slug: "yoga-for-men-episode-5"
+    description: "A grounded vinyasa session building heat through steady sequencing and balance work."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "flow", "balance"]
+
+  - id: "pcWQ5JdoWAk"
+    title: "Yoga for Men | Episode 16"
+    slug: "yoga-for-men-episode-16"
+    description: "A strength-focused flow with an emphasis on shoulder and hip mobility."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "strength", "mobility"]
+
+  - id: "RiAr4qczKQM"
+    title: "Yoga for Men | Episode 21"
+    slug: "yoga-for-men-episode-21"
+    description: "A core-focused practice moving through standing poses into deeper twists."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "core", "flow"]
+
+  - id: "ykOrKmmFDLY"
+    title: "Yoga for Men | Episode 25"
+    slug: "yoga-for-men-episode-25"
+    description: "A balance-driven vinyasa session building strength through longer holds."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "strength", "balance"]
+
+  - id: "PT07hd6O-HE"
+    title: "Yoga for Men | Episode 26"
+    slug: "yoga-for-men-episode-26"
+    description: "A mobility-focused flow working through the hips and shoulders with steady breathwork."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["men", "mobility", "flow"]
+
+  - id: "4CZy78RCCxw"
+    title: "Strong 40 Minute Vinyasa Yoga Flow To Feel Your Best"
+    slug: "strong-40-minute-vinyasa-flow"
+    description: "A longer full-body vinyasa session designed to build strength and leave you feeling energized."
+    duration: "40:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["strength", "full-body", "flow"]
+
+  - id: "-U6Z8iXA43k"
+    title: "30 Minute Full Body Vinyasa Plus Breathing Exercises"
+    slug: "full-body-vinyasa-breathing"
+    description: "A full-body flow paired with breathing exercises to build heat and steady the mind."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["full-body", "breathwork", "flow"]
+
+  - id: "L-njKGV5N5o"
+    title: "20 Min Full Body Vinyasa Flow | The Heart, Breath, & Fluid Motion"
+    slug: "heart-breath-fluid-motion-flow"
+    description: "A shorter full-body flow centered on breath-led, fluid movement."
+    duration: "20:00"
+    type: "Vinyasa"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["full-body", "breathwork", "flow"]
+
+  - id: "Kv7r3_2TYVk"
+    title: "20 Min Full Body Vinyasa Yoga | Stretchy Feel Good Flow"
+    slug: "stretchy-feel-good-flow"
+    description: "A gentle, stretch-forward flow meant to loosen up the whole body."
+    duration: "20:00"
+    type: "Vinyasa"
+    difficulty: "Beginner"
+    instructor: "Breathe and Flow"
+    tags: ["stretching", "feel-good", "flow"]
+
+  - id: "AaK1aqx02wU"
+    title: "30 Minute All Levels Breathe and Flow Vinyasa Yoga Class"
+    slug: "all-levels-vinyasa-class"
+    description: "A well-rounded all-levels vinyasa class covering the full body."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["all-levels", "flow", "full-body"]
+
+  - id: "A83spinhZGs"
+    title: "20 min Vinyasa Yoga All Levels - Full Body Opening Flow"
+    slug: "full-body-opening-flow"
+    description: "A short opening flow that moves through the full body to start the day or a longer practice."
+    duration: "20:00"
+    type: "Vinyasa"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["opening", "full-body", "flow"]
+
+  - id: "9ypJYi20u40"
+    title: "Get Stronger and Move Better with This 30 Min Full Body Vinyasa Yoga"
+    slug: "get-stronger-move-better-flow"
+    description: "A strength-and-mobility focused full-body flow for building steadier movement."
+    duration: "30:00"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["strength", "mobility", "full-body"]
+
+  - id: "yetbSrCW1TQ"
+    title: "Yoga For Beginners: 22 Minute Yoga Flow At Home"
+    slug: "beginners-yoga-flow-at-home"
+    description: "A beginner-friendly home practice covering the fundamentals of a vinyasa flow."
+    duration: "22:00"
+    type: "Hatha"
+    difficulty: "Beginner"
+    instructor: "Breathe and Flow"
+    tags: ["beginner", "home", "foundation"]
+
+  - id: "VB-9GH5mhkM"
+    title: "Give Me 8 Minutes and I Make You Feel Loose, Calm, and Better in Your Body"
+    slug: "8-minute-loose-calm-stretch"
+    description: "A short full-body stretch session meant to release stiffness and calm the nervous system."
+    duration: "8:00"
+    type: "Restorative"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["short", "calming", "stretch"]

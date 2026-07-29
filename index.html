@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" data-theme="forrest">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Mat & Mind — a distraction-free yoga video collection" />
+        <title>Mat & Mind</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <h1>Mat &amp; Mind</h1>
+            <p>A quiet place to practice</p>
+        </header>
+
+        <main>
+            <div id="video-grid" class="video-grid" aria-live="polite"></div>
+        </main>
+
+        <!-- Theme Switcher -->
+        <button class="theme-switcher" aria-label="Change theme" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm0-18c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zm0 3c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5" />
+            </svg>
+        </button>
+
+        <div class="theme-panel">
+            <div class="theme-panel-header">
+                <h2 class="theme-panel-title">Select Theme</h2>
+                <button class="theme-panel-close" aria-label="Close theme panel">&times;</button>
+            </div>
+            <div id="theme-options" class="theme-options"></div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

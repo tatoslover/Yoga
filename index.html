@@ -4,9 +4,23 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Mat & Mind — a distraction-free yoga video collection" />
+        <meta property="og:title" content="Mat & Mind" />
+        <meta property="og:description" content="A quiet place to practice — a distraction-free yoga video collection" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://tatoslover.github.io/Yoga/" />
+        <meta property="og:image" content="https://tatoslover.github.io/Yoga/assets/themes/forrest-thumb.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Mat & Mind" />
+        <meta name="twitter:description" content="A quiet place to practice — a distraction-free yoga video collection" />
+        <meta name="twitter:image" content="https://tatoslover.github.io/Yoga/assets/themes/forrest-thumb.jpg" />
         <title>Mat & Mind</title>
+        <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
         <link rel="stylesheet" href="style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"
+            integrity="sha384-+pxiN6T7yvpryuJmE1gM9PX7yQit15auDb+ZwwvJOd/4be2Cie5/IuVXgQb/S9du"
+            crossorigin="anonymous"
+        ></script>
     </head>
     <body>
         <header class="site-header">
@@ -15,6 +29,7 @@
         </header>
 
         <main>
+            <div id="filter-bar" class="filter-bar" role="group" aria-label="Filter videos"></div>
             <div id="video-grid" class="video-grid" aria-live="polite"></div>
         </main>
 

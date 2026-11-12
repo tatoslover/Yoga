@@ -165,6 +165,21 @@ img {
     display: block;
 }
 
+:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* Background image layer */
 body::before {
     content: "";
@@ -223,6 +238,56 @@ body::after {
     color: var(--color-text-light);
     margin-top: var(--spacing-xs);
     font-size: 0.95rem;
+}
+
+/* === Filter Bar === */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-md) var(--spacing-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.filter-group-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    margin-right: var(--spacing-xs);
+}
+
+.filter-pill {
+    padding: 6px 12px;
+    min-height: 32px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-family: inherit;
+    color: var(--color-text);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: var(--theme-transition);
+}
+
+.filter-pill:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.filter-pill[aria-pressed="true"] {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--theme-primary);
+    font-weight: 600;
 }
 
 /* === Video Grid === */
@@ -314,6 +379,35 @@ main {
     height: 56px;
     fill: rgba(255, 255, 255, 0.92);
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+}
+
+.close-button {
+    position: absolute;
+    top: var(--spacing-xs);
+    right: var(--spacing-xs);
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transition: background 0.2s ease;
+}
+
+.close-button:hover {
+    background: rgba(0, 0, 0, 0.85);
+}
+
+.close-button svg {
+    width: 16px;
+    height: 16px;
+    fill: rgba(255, 255, 255, 0.92);
 }
 
 .video-duration {
@@ -493,8 +587,10 @@ main {
     text-align: center;
 }
 
-/* === Empty state === */
-.no-videos-message {
+/* === Empty / loading state === */
+.no-videos-message,
+.loading-message {
+    grid-column: 1 / -1;
     text-align: center;
     padding: var(--spacing-xl);
     color: var(--color-text-light);

@@ -238,3 +238,103 @@ videos:
     difficulty: "All Levels"
     instructor: "Breathe and Flow"
     tags: ["short", "calming", "stretch"]
+
+  - id: "t2UCGc4eUHo"
+    title: "This 30 Minute Flow Will Expose How Well You Really Move"
+    slug: "expose-how-you-move-flow"
+    description: "A full-body vinyasa practice built around mobility and control, testing how well each transition really moves."
+    duration: "32:26"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["mobility", "control", "flow"]
+
+  - id: "ZfF0Av3U2RU"
+    title: "Do This in the Morning to Feel Strong and Clear All Day"
+    slug: "morning-strong-clear-flow"
+    description: "An energizing morning vinyasa session meant to build strength and mental clarity before the day starts."
+    duration: "32:40"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["morning", "energizing", "strength"]
+
+  - id: "dSxCDF0fxg0"
+    title: "Build Strength, Release Tension, and Feel Better in Your Body in 30 Minutes"
+    slug: "build-strength-release-tension"
+    description: "A total-body vinyasa practice balancing strength work with tension release through the shoulders and hips."
+    duration: "33:14"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["strength", "tension-release", "full-body"]
+
+  - id: "LI3rBPIXB_0"
+    title: "Get Stronger While Remembering What Actually Matters"
+    slug: "get-stronger-remember-what-matters"
+    description: "A strong, grounded vinyasa flow pairing physical effort with intention and presence."
+    duration: "34:14"
+    type: "Power"
+    difficulty: "Advanced"
+    instructor: "Breathe and Flow"
+    tags: ["strength", "mindfulness", "flow"]
+
+  - id: "8lkJi4ldZ90"
+    title: "Do This When Your Whole Body Feels Tight"
+    slug: "when-body-feels-tight"
+    description: "A deep, full-body stretch session for releasing tightness across the hips, back, and shoulders."
+    duration: "29:58"
+    type: "Yin"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["stretching", "tight-body", "relief"]
+
+  - id: "SuaBFurlL5Q"
+    title: "This Yoga Flow Will Expose Where You Lose Control"
+    slug: "flow-expose-where-you-lose-control"
+    description: "A challenging vinyasa flow built around balance and stability, exposing exactly where control breaks down."
+    duration: "42:48"
+    type: "Vinyasa"
+    difficulty: "Advanced"
+    instructor: "Breathe and Flow"
+    tags: ["control", "balance", "challenging"]
+
+  - id: "9v_BhVCFjXk"
+    title: "When You Need a Strong Workout but Only Have 20 Minutes"
+    slug: "strong-20-minute-workout"
+    description: "An efficient, strength-focused full-body flow for days when time is short but the workout still needs to count."
+    duration: "22:13"
+    type: "Power"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["short", "strength", "efficient"]
+
+  - id: "SSoy5FeQq8s"
+    title: "The Flow You Need When You're Sore but Still Want to Move"
+    slug: "flow-when-sore-still-move"
+    description: "A hamstring- and hip-focused recovery practice mixing active stretching with planks and back-body strength holds."
+    duration: "33:57"
+    type: "Vinyasa"
+    difficulty: "Intermediate"
+    instructor: "Breathe and Flow"
+    tags: ["recovery", "mobility", "strength"]
+
+  - id: "CxmC9kN7tRE"
+    title: "This Slow Flow Gets Harder the Longer You Stay"
+    slug: "slow-flow-gets-harder"
+    description: "A slow-paced vinyasa practice that uses longer holds to build strength and endurance as the class progresses."
+    duration: "49:26"
+    type: "Vinyasa"
+    difficulty: "Advanced"
+    instructor: "Breathe and Flow"
+    tags: ["slow-flow", "endurance", "strength"]
+
+  - id: "l6_xMS8jdJw"
+    title: "The 15 Minute Reset Your Body Needs After Pushing Hard"
+    slug: "15-minute-reset-after-pushing-hard"
+    description: "A short restorative practice designed to help the body recover and reset after a harder training session."
+    duration: "13:45"
+    type: "Restorative"
+    difficulty: "All Levels"
+    instructor: "Breathe and Flow"
+    tags: ["short", "recovery", "restorative"]
